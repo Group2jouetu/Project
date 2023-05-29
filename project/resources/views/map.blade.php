@@ -1,5 +1,5 @@
 @extends('layout.layout')
 
 @section('content')
-    <p>マップページ</p>
+    <p>マップページ Test</p>
 @endsection
