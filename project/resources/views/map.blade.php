@@ -1,9 +1,11 @@
 @extends('layout.layout')
 
+@section('title', 'マップページ')
+
 @section('content')
 <div id="map"></div>
 
-    <button onclick="openMyMap()">マイマップを開く</button>
+    <button onclick="openMyMap()">モデルコース機能を開く</button>
 
     <script>
         function initMap() {
