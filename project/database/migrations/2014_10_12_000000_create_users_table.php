@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+/*         初期状態
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -18,6 +19,18 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->timestamps();
+        });
+ */
+        Schema::create('users', function (Blueprint $table) {
+            $table->string('u_id', 30)->primary();
+            $table->string('u_name');
+            $table->string('u_password');
+            $table->string('u_mail')->unique();
+            $table->string('u_address');
+            $table->timestamp('u_lastlogin');
+            $table->integer("age");
+            $table->integer("gender");
             $table->timestamps();
         });
     }

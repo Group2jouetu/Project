@@ -18,4 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/h', [MainController::class, 'index']);
+Route::get('/map', function () {
+    return view('map');
+});
+
+//Route::get('/h', [MainController::class, 'index']);
