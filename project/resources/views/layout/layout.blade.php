@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/map.css">
     <title>@yield('title')</title>
+    @vite('resources/sass/app.scss')
 </head>
 
 <body>
