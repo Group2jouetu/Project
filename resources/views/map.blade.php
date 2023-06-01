@@ -67,11 +67,23 @@
             marker2.addListener('click', function() {
                 infowindow.open(map, marker2);
             });
+
+            google.maps.event.addListener(map, 'click', event => clickListener(event, map));
         }
 
         function openMyMap() {
             window.open("https://www.google.com/maps/d/edit?mid=1OF1wBE2l6vNNrmU7F-b2OBOi5Sc3Awg&usp=sharing");
         }
+        //マップにピンを立てる
+        function clickListener(event, map) {
+            const lat = event.latLng.lat();
+            const lng = event.latLng.lng();
+            const marker = new google.maps.Marker({
+                position: {lat, lng},
+                map
+            });
+        }            
+
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJoO2BmaGEIp_ud8Mctyd5gLDWrEYzMFA&callback=initMap"></script>
