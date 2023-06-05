@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('spots', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->string('picture');
-            $table->string('title');
-            $table->string('explanation');
+            $table->integer('pin_id');
+            $table->integer('user_id');
+            $table->string('message_title');
+            $table->string('message_body');
+            $table->integer('message_flag')->default(0);
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('spots');
+        Schema::dropIfExists('messages');
     }
 };
