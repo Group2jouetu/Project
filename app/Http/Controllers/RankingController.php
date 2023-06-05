@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class RankingController extends Controller
 {
     public function index () 
     {
-        $hello_array = ['Hello', 'こんにちは', 'ニーハオ'];
-
-        return view('ranking', ['data' => $hello_array]);
+        $ranking = DB::select('select * from users');
+        $data = ['title' => 'メンバーリスト', 'ranking' => $ranking];
+        return view('ranking', $data);
     }
 }

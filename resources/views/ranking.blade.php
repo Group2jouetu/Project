@@ -3,8 +3,7 @@
 @section('title', 'ランキング')
 
 @section('content')
-    @foreach ($data as $datas)
-        <p>{{$datas}}</p><br>
-        
+    @foreach ($ranking as $rankings)
+        <li>{{ $rankings->name }}</li>
     @endforeach
 @endsection
