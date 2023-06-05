@@ -37,6 +37,6 @@ Route::middleware('auth')->group(function () {
 });
 
 //ランキング
-Route::get('/ranking', 'App\Http\Controllers\RankingController@index');
+Route::get('/ranking', [RankingController::class, 'index']);
 
 require __DIR__.'/auth.php';

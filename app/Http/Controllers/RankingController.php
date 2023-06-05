@@ -8,8 +8,8 @@ class RankingController extends Controller
 {
     public function index () 
     {
-        $ranking = DB::select('select * from users');
-        $data = ['title' => 'メンバーリスト', 'ranking' => $ranking];
+        $ranking = DB::select('select * from pins');
+        $data = ['ranking' => $ranking];
         return view('ranking', $data);
     }
 }

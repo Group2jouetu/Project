@@ -3,7 +3,9 @@
 @section('title', 'ランキング')
 
 @section('content')
+
     @foreach ($ranking as $rankings)
-        <li>{{ $rankings->name }}</li>
+        <li>いいね数は{{ $rankings->like_count}}</li>
     @endforeach
+
 @endsection
