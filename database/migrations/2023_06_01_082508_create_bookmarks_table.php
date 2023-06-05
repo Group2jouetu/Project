@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('s_id');
             $table->timestamps();
         });
+        // 変わってれば成功
     }
 
     /**
