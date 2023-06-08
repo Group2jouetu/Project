@@ -27,8 +27,8 @@ class PinsTableSeeder extends Seeder
             'like_count' => fake()-> randomNumber(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-        ],
-        [
+        ]);
+        DB::table('pins')->insert([
             'user_id' => 1,
             'latitude' => 37.158159544020826, 
             'longitude' =>  138.20418228174947,
@@ -39,8 +39,8 @@ class PinsTableSeeder extends Seeder
             'like_count' => fake()-> randomNumber(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-        ],
-        [
+        ]);
+        DB::table('pins')->insert([
             'user_id' => 1,
             'latitude' => 37.18496938615054,
             'longitude' =>  138.2350813268282,
