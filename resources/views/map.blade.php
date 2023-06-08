@@ -68,21 +68,28 @@
                 infowindow.open(map, marker2);
             });
 
-            google.maps.event.addListener(map, 'click', event => clickListener(event, map));
+            //mapクリック時の処理
+            map.addListener("click",function(e){
+                //マーカーを立てた場所を画面中央にする
+                this.panTo(e.latLng);
+                //マーカーを立てる
+                var click_marker = new google.maps.Marker({
+                    position: e.latLng,
+                    map: map,
+                    title: e.latLng.toString(),
+                    animation: google.maps.Animation.DROP
+                });
+                // 上で立てたマーカーをもう一度クリックするとマーカーを削除
+                click_marker.addListener("click",function(){
+                    this.setMap(null);
+                });
+            });
+
         }
 
         function openMyMap() {
             window.open("https://www.google.com/maps/d/edit?mid=1OF1wBE2l6vNNrmU7F-b2OBOi5Sc3Awg&usp=sharing");
-        }
-        //マップにピンを立てる
-        function clickListener(event, map) {
-            const lat = event.latLng.lat();
-            const lng = event.latLng.lng();
-            const marker = new google.maps.Marker({
-                position: {lat, lng},
-                map
-            });
-        }            
+        } 
 
     </script>
 
