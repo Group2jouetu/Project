@@ -77,4 +77,6 @@
 
 {{--
 <link rel="stylesheet" href="{{ asset('css/map.css') }}">
-<!-- map.cssのパスが正しい場所になるように修正 --> --}} @endsection
+<!-- map.cssのパスが正しい場所になるように修正 --> --}}
+
+@endsection
