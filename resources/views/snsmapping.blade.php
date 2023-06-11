@@ -3,20 +3,23 @@
 
 {{-- <button onclick="openMyMap()">モデルコース機能を開く</button> --}}
 
-<form action="/" method="get" class="form-example">
-    <div>
-        <input type="file" name="image" id="image-input">
-        <p>本文</p>
-        <input type="text" name="text">
-        <button>キャンセル
-            <script>
-                window.history.back();
-            </script>
-        </button>
-        {{-- <input type="submit" value="キャンセル"> --}}
-        <input type="submit" value="登録">
-    </div>
+<form action="/snsInput" method="post" enctype="multipart/form-data">
+    {{ csrf_field() }}
+    <input type="file" name="image" id="image" class="image" />
+    <p>本文</p>
+    {{-- <input type="text" name="text" /> --}}
+    {{-- <button>キャンセル
+        <script>
+            window.history.back();
+        </script>
+    </button> --}}
+    {{-- <input type="submit" value="キャンセル"> --}}
+    <input type="submit" value="登録">
 </form>
+@if ($message = Session::get('success'))
+        <p>{{ $message }}</p>
+        <img src="{{ asset('images/' . Session::get('image')) }}" width="300">
+    @endif
 <div id="image-container" style="min-width: 256px; height: auto;"></div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -45,10 +48,8 @@
         });
 
         var click_marker;
-
         //mapクリック時の処理
         map.addListener("click", function(e) {
-
             // すでに立てたマーカーがあった場合、そのマーカーを削除
             if (click_marker) {
                 click_marker.setMap(null);

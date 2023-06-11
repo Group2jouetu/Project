@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankingController;
+use App\Http\Controllers\SnsMappingController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 
@@ -47,3 +48,5 @@ require __DIR__ . '/auth.php';
 Route::get('smap', function () {
     return view('snsmapping');
 });
+// Route::get('/snsInput', [SnsMappingController::class, 'index']);
+Route::post('/snsInput', [SnsMappingController::class, 'store']);
