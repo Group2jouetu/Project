@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->id();
-            $table->integer('u_id');
-            $table->integer('s_id');
-            $table->timestamps();
+            $table->integer('user_id');
+            $table->integer('pin_id');
         });
         // 変わってれば成功
     }
