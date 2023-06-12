@@ -18,6 +18,7 @@ return new class extends Migration
             $table->double('longitude');
             $table->string('picture')->nullable();
             $table->string('pin_name');
+            $table->integer('genre')->comment("1:食べ物 2:宿ホテル 3:文化 4:遊び施設 5:自然");
             $table->string('detail');
             $table->integer('pin_flag')->default(0);
             $table->integer('like_count')->default(0);
