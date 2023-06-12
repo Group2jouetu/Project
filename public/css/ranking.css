@@ -1,0 +1,64 @@
+*{
+    background-color: #fff;
+}
+.title{
+    display: flex;
+    justify-content: flex-start;
+    /* margin: 0 0 0 1rem; */
+    align-items: center;
+    font-size: 1rem;
+    margin: 1rem 0 0 1rem;
+}
+/* 冠 */
+.crown {
+    display: flex;
+    justify-content: space-around;
+}
+.crown img{
+    height: 8vh;
+    width: 5vw;
+}
+/* カード */
+.cardMain {
+    display: flex;
+    justify-content: space-around
+}
+.card{
+    width: 30vw;
+}
+.card-body {
+    height: 22vh;
+}
+.card-body h5,p{
+    font-size: 1.2rem;
+}
+@media screen and (max-width: 1024px){
+    /* 冠 */
+    .crown img{
+        height: 6vh;
+        width: 5vw;
+    }
+    .card-body h5,p{
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 768px){
+    /* 冠 */
+    .crown img{
+        height: 7vh;
+        width: 7vw;
+    }
+    .card-body h5,p{
+        font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 480px){
+    /* 冠 */
+    .crown img{
+        height: 8vh;
+        width: 9vw;
+    }
+    .card-body h5,p{
+        font-size: 0.6rem;
+    }
+}
