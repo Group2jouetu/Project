@@ -13,8 +13,6 @@
         <img src="img/crown_01_bronze.png" alt="銅冠" class="card-img-top">
     </div>
     
-
-    {{-- 全て --}}
     
     <div class="cardMain">
 
@@ -23,12 +21,11 @@
             <div class="card">
             {{-- 画像 --}}
             <img src="img/{{ $rankings->picture }}" alt="カードの画像" class="card-img-top">
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ $rankings->pin_name }}</h5>
-                    <p class="card-text">{{ $rankings->detail }}</p>
-                    <p class="card-text">いいね数：{{ $rankings->like_count}}</p>
-                </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><h5 class="card-title">{{ $rankings->pin_name }}</h5></li>
+                        <li class="list-group-item"><p class="card-text">{{ $rankings->detail }}</p></li>
+                        <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $rankings->like_count}}</p></li>
+                    </ul>
             </div>
         
         @endforeach
@@ -44,12 +41,11 @@
             <div class="card">
             {{-- 画像 --}}
             <img src="img/{{ $food_data->picture }}" alt="カードの画像" class="card-img-top">
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ $food_data->pin_name }}</h5>
-                    <p class="card-text">{{ $food_data->detail }}</p>
-                    <p class="card-text">いいね数：{{ $food_data->like_count}}</p>
-                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h5 class="card-title">{{ $food_data->pin_name }}</h5></li>
+                    <li class="list-group-item"><p class="card-text">{{ $food_data->detail }}</p></li>
+                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $food_data->like_count}}</p></li>
+                </ul>
             </div>
         
         @endforeach
@@ -65,12 +61,11 @@
             <div class="card">
             {{-- 画像 --}}
             <img src="img/{{ $hotel_data->picture }}" alt="カードの画像" class="card-img-top">
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ $hotel_data->pin_name }}</h5>
-                    <p class="card-text">{{ $hotel_data->detail }}</p>
-                    <p class="card-text">いいね数：{{ $hotel_data->like_count}}</p>
-                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h5 class="card-title">{{ $hotel_data->pin_name }}</h5></li>
+                    <li class="list-group-item"><p class="card-text">{{ $hotel_data->detail }}</p></li>
+                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $hotel_data->like_count}}</p></li>
+                </ul>
             </div>
         
         @endforeach
@@ -86,12 +81,11 @@
             <div class="card">
             {{-- 画像 --}}
             <img src="img/{{ $culture_data->picture }}" alt="カードの画像" class="card-img-top">
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ $culture_data->pin_name }}</h5>
-                    <p class="card-text">{{ $culture_data->detail }}</p>
-                    <p class="card-text">いいね数：{{ $culture_data->like_count}}</p>
-                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h5 class="card-title">{{ $culture_data->pin_name }}</h5></li>
+                    <li class="list-group-item"><p class="card-text">{{ $culture_data->detail }}</p></li>
+                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $culture_data->like_count}}</p></li>
+                </ul>
             </div>
         
         @endforeach
@@ -107,12 +101,11 @@
             <div class="card">
             {{-- 画像 --}}
             <img src="img/{{ $amusement_data->picture }}" alt="カードの画像" class="card-img-top">
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ $amusement_data->pin_name }}</h5>
-                    <p class="card-text">{{ $amusement_data->detail }}</p>
-                    <p class="card-text">いいね数：{{ $amusement_data->like_count}}</p>
-                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h5 class="card-title">{{ $amusement_data->pin_name }}</h5></li>
+                    <li class="list-group-item"><p class="card-text">{{ $amusement_data->detail }}</p></li>
+                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $amusement_data->like_count}}</p></li>
+                </ul>
             </div>
         
         @endforeach
@@ -128,11 +121,11 @@
             <div class="card">
             {{-- 画像 --}}
             <img src="img/{{ $culture_data->picture }}" alt="カードの画像" class="card-img-top">
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ $nature_data->pin_name }}</h5>
-                    <p class="card-text">いいね数：{{ $culture_data->like_count}}</p>
-                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h5 class="card-title">{{ $culture_data->pin_name }}</h5></li>
+                    <li class="list-group-item"><p class="card-text">{{ $culture_data->detail }}</p></li>
+                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $culture_data->like_count}}</p></li>
+                </ul>
             </div>
         
         @endforeach

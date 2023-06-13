@@ -28,9 +28,15 @@
 }
 .card-body {
     height: 22vh;
+    padding: 0;
 }
-.card-body h5,p{
+.card-title, .card-text{
     font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+li.list-group-item {
+    padding: 1px;
 }
 @media screen and (max-width: 1024px){
     /* 冠 */
@@ -38,7 +44,7 @@
         height: 6vh;
         width: 5vw;
     }
-    .card-body h5,p{
+    .card-title, .card-text{
         font-size: 1rem;
     }
 }
@@ -48,7 +54,7 @@
         height: 7vh;
         width: 7vw;
     }
-    .card-body h5,p{
+    .card-title, .card-text{
         font-size: 0.8rem;
     }
 }
@@ -58,7 +64,7 @@
         height: 8vh;
         width: 9vw;
     }
-    .card-body h5,p{
+    .card-title, .card-text{
         font-size: 0.6rem;
     }
 }
