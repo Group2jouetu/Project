@@ -3,6 +3,7 @@
 @section('title', 'マップページ')
 
 @section('content')
+    <div id="map"></div>
 
 <!-- 旅のしおりのでも処理 -->
 @foreach($items as $item)
@@ -47,12 +48,21 @@
     <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 37.1478, lng: 138.236},
+                center: {
+                    lat: 37.1478,
+                    lng: 138.236
+                },
                 zoom: 12
             });
 
-            var markerPosition = {lat: 37.1478, lng: 138.236};
-            var markerPosition2 = {lat: 37.152780, lng: 138.258531};
+            var markerPosition = {
+                lat: 37.1478,
+                lng: 138.236
+            };
+            var markerPosition2 = {
+                lat: 37.152780,
+                lng: 138.258531
+            };
 
             var marker = new google.maps.Marker({
                 position: markerPosition,
@@ -105,20 +115,24 @@
                 infowindow.open(map, marker2);
             });
 
+            var click_marker;
+
             //mapクリック時の処理
-            map.addListener("click",function(e){
+            map.addListener("click", function(e) {
+
+                // すでに立てたマーカーがあった場合、そのマーカーを削除
+                if (click_marker) {
+                    click_marker.setMap(null);
+                }
+
                 //マーカーを立てた場所を画面中央にする
                 this.panTo(e.latLng);
                 //マーカーを立てる
-                var click_marker = new google.maps.Marker({
+                click_marker = new google.maps.Marker({
                     position: e.latLng,
                     map: map,
                     title: e.latLng.toString(),
                     animation: google.maps.Animation.DROP
-                });
-                // 上で立てたマーカーをもう一度クリックするとマーカーを削除
-                click_marker.addListener("click",function(){
-                    this.setMap(null);
                 });
             });
 
@@ -126,11 +140,11 @@
 
         function openMyMap() {
             window.open("https://www.google.com/maps/d/edit?mid=1OF1wBE2l6vNNrmU7F-b2OBOi5Sc3Awg&usp=sharing");
-        } 
-
+        }
     </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJoO2BmaGEIp_ud8Mctyd5gLDWrEYzMFA&callback=initMap"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJoO2BmaGEIp_ud8Mctyd5gLDWrEYzMFA&callback=initMap"></script>
 
     {{-- <link rel="stylesheet" href="{{ asset('css/map.css') }}"> <!-- map.cssのパスが正しい場所になるように修正 --> --}}
 @endsection

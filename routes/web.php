@@ -3,6 +3,8 @@
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankingController;
+use App\Http\Controllers\SnsMappingController;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +42,16 @@ Route::middleware('auth')->group(function () {
 //ランキング
 Route::get('/ranking', [RankingController::class, 'index']);
 
+require __DIR__ . '/auth.php';
+
+
+// SNSMapping
+// Route::get('smap', function () {
+//     return view('snsmapping');
+// });
+// Route::get('/snsInput', [SnsMappingController::class, 'index']);
+Route::get('/smap', [SnsMappingController::class, 'index']);
+Route::post('/snsInput', [SnsMappingController::class, 'store']);
 //マップ
 Route::get('/map', 'App\Http\Controllers\BookmarkController@index');
 Route::post('/map','App\Http\Controllers\BookmarkController@create');
