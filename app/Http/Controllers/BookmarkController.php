@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Pin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BookmarkController extends Controller
 {
@@ -11,21 +14,28 @@ class BookmarkController extends Controller
      */
     public function index()
     {
+        // ピン情報を取得
+        $pin = new Pin();
+        $pins = $pin::all();
+
         $items = DB::select('select * from bookmarks');
         return view('map',[
             'items' => $items,
+            'pins' => $pins,
         ]);
     }
 
     //登録処理
     public function create(Request $request)
     {
+        $user = Auth::user();
         $param = [
-            'user_id' => $request->user_id, 
+            'user_id' => $user->id, 
             'pin_id' => $request->pin_id, 
         ];
         DB::insert('insert into bookmarks(user_id,pin_id) value(:user_id, :pin_id)',$param);
-        return redirect('map');
+        // return redirect('map');
+        return back();
     }
 
     //削除処理

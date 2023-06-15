@@ -72,25 +72,25 @@
                 title: 'お店の位置2'
             });
 
-            var directionsService = new google.maps.DirectionsService();
-            var directionsRenderer = new google.maps.DirectionsRenderer();
-            directionsRenderer.setMap(map);
+            //var directionsService = new google.maps.DirectionsService();
+            //var directionsRenderer = new google.maps.DirectionsRenderer();
+            //directionsRenderer.setMap(map);
 
             // ルートの要求を作成
-            var request = {
-                origin: markerPosition,
-                destination: markerPosition2,
-                travelMode: google.maps.TravelMode.DRIVING
-            };
+            //var request = {
+            //    origin: markerPosition,
+            //    destination: markerPosition2,
+            //    travelMode: google.maps.TravelMode.DRIVING
+            //};
 
             // ルートの検索を実行
-            directionsService.route(request, function(response, status) {
-                if (status === google.maps.DirectionsStatus.OK) {
-                    directionsRenderer.setDirections(response);
-                } else {
-                    window.alert('ルートの取得に失敗しました。');
-                }
-            });
+            //directionsService.route(request, function(response, status) {
+            //    if (status === google.maps.DirectionsStatus.OK) {
+            //        directionsRenderer.setDirections(response);
+            //    } else {
+            //        window.alert('ルートの取得に失敗しました。');
+            //    }
+            //});
 
             // 情報ウィンドウのコンテンツを作成
             var contentString =
@@ -110,10 +110,9 @@
             marker2.addListener('click', function() {
                 infowindow.open(map, marker2);
             });
-
+            
+            //mapクリック時の処理            
             var click_marker;
-
-            //mapクリック時の処理
             map.addListener("click", function(e) {
 
                 // すでに立てたマーカーがあった場合、そのマーカーを削除
@@ -132,8 +131,55 @@
                 });
             });
 
-        }
+            
+            /* snsmapping.blade.phpより引用 ここから */
+            // DBから取得した位置情報にピンを指す
+            @foreach ($pins as $pin)
+                pinCreate({{ $pin->id }}, {{ $pin->latitude }}, {{ $pin->longitude }});
+            @endforeach
+            function pinCreate(id, lat, lng){
+            // function pinCreate(lat, lng, name){
+                var contentString = 
+                    '<div id="content">' +
+                    '<h3>お店の口コミ</h3>' +
+                    '<p>ここにお店の口コミを表示します。</p>' +
+                    '<form action="/map" method="post">'+
+                    '    {{csrf_field()}}'+
+                    '    <input id="pin_id" type="text" name="pin_id" value="'+id+'" hidden>'+
+                    '    <input type="submit" value="登録する">'+
+                    '</form>'+
+                    '</div>';
 
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                
+                var position = { lat: lat, lng: lng };
+                var marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: 'お店の位置'
+                });
+                marker.addListener('click', function(){
+                    infowindow.open(map, marker);
+                });
+            }
+            /* snsmapping.blade.phpより引用 ここまで */
+
+        }
+    </script>
+
+    <!-- bookmarkの登録ボタンと削除ボタンの切替処理 -->
+    <!-- DBの準備終わり次第実装する -->
+    <script>
+        function disp() {
+            var addrecord = document.getElementById('disp');
+            addrecord.classList.remove('hidden');
+        }
+        function hidd() {
+            var addrecord = document.getElementById('hidd');
+            addrecord.classList.add('hidden');
+        }
     </script>
 
     <script async defer
