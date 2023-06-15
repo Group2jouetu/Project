@@ -4,14 +4,14 @@
 
 @section('content')
 
-
-{{-- 画像表示はまだ成功していないです --}}
-{{-- @foreach ($pins as $pin) --}}
-{{-- $pin->picture --}}
-    {{-- <img src="{{ asset("$pin->picture") }}" alt=""> --}}
-
-{{-- @endforeach --}}
-        
+<!-- <script>
+    @foreach ($pins as $pin)
+</script>
+        <img src="{{ asset("$pin->picture") }}" alt="">
+        <p>{{ $pin->pin_name }}</p>
+        <script>
+    @endforeach
+</script> -->
     <div id="map"></div>
 
     {{-- <button onclick="openMyMap()">モデルコース機能を開く</button> --}}
@@ -28,6 +28,17 @@
                 <img id="preview-image" src="#" style="max-width: 256px; height: auto;">
                 <p>場所の名前を入力してください</p>
                 <input type="text"   name="pin_name" id="title" placeholder="テキストを入力してください。" value="" />
+                <br>
+
+                <select class="form-select" aria-label="Default select example">
+                    <option value="">選択してください</option>
+                    <option value="">食べ物</option>
+                    <option value="">宿・ホテル</option>
+                    <option value="">文化</option>
+                    <option value="">遊び施設</option>
+                    <option value="">自然</option>
+                </select>
+
                 <input type="hidden" name="lat" id="get-lat" />
                 <input type="hidden" name="lng" id="get-lng" />
                 {{-- <button>キャンセル
@@ -42,12 +53,13 @@
     </div>
     <!-- ここまで -->
 
-    <button onclick="pinCreate()"></button>
+    {{-- <button onclick="pinCreate()"></button> --}}
 
 
     <script>
         // googleマップ
         var map;
+        var pin_name;
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {
@@ -59,10 +71,18 @@
             
             // DBから取得した位置情報にピンを指す
             @foreach ($pins as $pin)
-                pinCreate({{ $pin->latitude }}, {{ $pin->longitude }}, {{ $pin->id }}, {{ $pin->picture }})
+                // var pin_name = {{ $pin->pin_name }};
+                // pin_name = pin_name.toString;
+                pinCreate({{ $pin->latitude }}, {{ $pin->longitude }});
+                // pinCreate({{ $pin->latitude }}, {{ $pin->longitude }}, pin_name);
             @endforeach
-            function pinCreate(lat, lng, id, pic){
-                var contentString ="";
+            function pinCreate(lat, lng){
+            // function pinCreate(lat, lng, name){
+                var contentString = 
+                    '<div id="content">' +
+                    '<h3>お店の口コミ</h3>' +
+                    '<p>ここにお店の口コミを表示します。</p>' +
+                    '</div>';
 
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
@@ -90,9 +110,9 @@
                     document.getElementById('image-input').value = "";
                     document.getElementById('title').value = "";
                 }
-                if (infowindow){
-                    infowindow.close();
-                }
+                // if (infowindow){
+                //     infowindow.close();
+                // }
 
                 // クリックした位置の緯度経度を<input type="hidden">に保存しておく
                 document.getElementById('get-lat').value = e.latLng.lat();
