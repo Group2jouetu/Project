@@ -4,16 +4,12 @@
 
 @section('content')
 
-<!-- <script>
+<script>
     @foreach ($pins as $pin)
-</script>
--->
-        <img src="{{ asset("storage/images/"."$pin->picture") }}" alt="">
-        <p>{{ $pin->pin_name }}</p>
-        <!--
-        <script>
+        <p>{{ $pin->genre }}</p>
     @endforeach
-</script> -->
+</script>
+
     <div id="map"></div>
 
     {{-- <button onclick="openMyMap()">モデルコース機能を開く</button> --}}
@@ -26,20 +22,21 @@
             <form action="/snsInput" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input type="file" name="image" id="image-input" class="image" accept="image/*" />
+                <br>
                 {{-- 選択された画像を表示 --}}
-                <img id="preview-image" src="#" style="max-width: 256px; height: auto;">
+                <img id="preview-image" src="" style="max-width: 256px; height: auto;">
                 <p>場所の名前を入力してください</p>
-                <input type="text"   name="pin_name" id="title" placeholder="テキストを入力してください。" value="" />
+                <input type="text" name="pin_name" id="title" placeholder="テキストを入力してください。" value="" />
                 <br>
 
-                {{-- <select class="form-select" aria-label="Default select example">
-                    <option value="">選択してください</option>
-                    <option value="">食べ物</option>
-                    <option value="">宿・ホテル</option>
-                    <option value="">文化</option>
-                    <option value="">遊び施設</option>
-                    <option value="">自然</option>
-                </select> --}}
+                <label for="exampleInputEmail1">以下から選択してください。</label><br>
+                <select name="select_genre" class="form-select" aria-label="Default select example">
+                    <option value="1">食べ物</option>
+                    <option value="2">宿・ホテル</option>
+                    <option value="3">文化</option>
+                    <option value="4">遊び施設</option>
+                    <option value="5">自然</option>
+                </select>
 
                 <input type="hidden" name="lat" id="get-lat" />
                 <input type="hidden" name="lng" id="get-lng" />
@@ -73,22 +70,21 @@
             
             // DBから取得した位置情報にピンを指す
             @foreach ($pins as $pin)
-                // var pin_name = {{ $pin->pin_name }};
-                // pin_name = pin_name.toString;
-                pinCreate({{ $pin->latitude }}, {{ $pin->longitude }});
-                // pinCreate({{ $pin->latitude }}, {{ $pin->longitude }}, pin_name);
+                pinCreate({{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}", "{{ $pin->picture }}");
             @endforeach
-            function pinCreate(lat, lng){
-            // function pinCreate(lat, lng, name){
+            function pinCreate(lat, lng, pin_name, picture){
                 var contentString = 
                     '<div id="content">' +
-                    '<h3>お店の口コミ</h3>' +
+                    '<h3>' + pin_name + '</h3>' +
                     '<p>ここにお店の口コミを表示します。</p>' +
+                    '<img src="{{ asset("storage/images") }}/' + picture + '" alt="" style="max-height: 100px;">' +
                     '</div>';
 
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
+
+                console.log(picture);
                 
                 var position = { lat: lat, lng: lng };
                 var marker = new google.maps.Marker({

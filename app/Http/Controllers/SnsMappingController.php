@@ -48,6 +48,8 @@ class SnsMappingController extends Controller
         $pin->pin_name = $request->pin_name;
         $pin->latitude = $request->lat;
         $pin->longitude = $request->lng;
+        $pin->genre = $request->input('select_genre');
+
         $pin->save();
 
     }
