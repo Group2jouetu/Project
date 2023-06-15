@@ -10,7 +10,12 @@
 
             <div class="card">
             {{-- 画像 --}}
-            <img src="img/{{ $rankings->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $rankings->pin_name }}">
+            @if ($rankings->picture === '')
+                <p>画像がありません</p>
+            @else   
+                <img src="img/{{ $rankings->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $rankings->pin_name }}">
+            @endif
+            
                     <ul class="list-group list-group-flush">
                             @if ($loop->first)
                                 <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $rankings->pin_name }}</h5></li>
@@ -26,7 +31,7 @@
                             @endif
                         <li class="list-group-item"><p class="card-text">{{ $rankings->detail }}</p></li>
                         <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $rankings->like_count}}</p></li>
-                    </ul>
+                    </ul>  
             </div>
 
             <!-- モーダルの設定 -->
@@ -60,7 +65,11 @@
 
             <div class="card">
             {{-- 画像 --}}
-            <img src="img/{{ $food_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $food_data->pin_name }}">
+                @if ($food_data->picture === '')
+                    <p>画像がありません</p>
+                @else
+                    <img src="img/{{ $food_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $food_data->pin_name }}">
+                @endif
                 <ul class="list-group list-group-flush">
                     @if ($loop->first)
                         <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $food_data->pin_name }}</h5></li>
@@ -109,7 +118,11 @@
 
             <div class="card">
             {{-- 画像 --}}
-            <img src="img/{{ $hotel_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $hotel_data->pin_name }}">
+                @if ($hotel_data->picture === '')
+                    <p>画像がありません</p>
+                @else
+                    <img src="img/{{ $hotel_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $hotel_data->pin_name }}">
+                @endif
                 <ul class="list-group list-group-flush">
                     @if ($loop->first)
                         <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $hotel_data->pin_name }}</h5></li>
@@ -162,7 +175,12 @@
 
             <div class="card">
             {{-- 画像 --}}
-            <img src="img/{{ $culture_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $culture_data->pin_name }}">
+                @if ($culture_data->picture === '')
+                    <p>画像がありません</p>
+                @else
+                    <img src="img/{{ $culture_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $culture_data->pin_name }}">
+                @endif
+                
                 <ul class="list-group list-group-flush">
                     @if ($loop->first)
                         <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $culture_data->pin_name }}</h5></li>
@@ -214,7 +232,11 @@
 
             <div class="card">
             {{-- 画像 --}}
-            <img src="img/{{ $amusement_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $amusement_data->pin_name }}">
+                @if ($amusement_data->picture === '')
+                    <p>画像がありません</p>
+                @else
+                    <img src="img/{{ $amusement_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $amusement_data->pin_name }}">
+                @endif
                 <ul class="list-group list-group-flush">
                     @if ($loop->first)
                         <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $amusement_data->pin_name }}</h5></li>
@@ -266,7 +288,12 @@
 
             <div class="card">
             {{-- 画像 --}}
-            <img src="img/{{ $nature_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $nature_data->pin_name }}">
+                @if ($amusement_data->picture === '')
+                    <p>画像がありません</p>
+                @else                
+                    <img src="img/{{ $nature_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $nature_data->pin_name }}">
+                @endif
+
                 <ul class="list-group list-group-flush">
                     @if ($loop->first)
                         <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $nature_data->pin_name }}</h5></li>
