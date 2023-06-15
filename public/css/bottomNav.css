@@ -21,7 +21,21 @@
 	list-style: none;
 	text-align: center;
     opacity: 0.95;
+}
+.menu .map{
+    background: #FF7878;
+}
+.menu .bookMark{
+    background: #FFFB40;
+}
+.menu .model{
     background: #00B49E;
+}
+.menu .ranking{
+    background: #FFB7F8;
+}
+.menu .sns{
+    background: #96ADFF;
 }
 .menu li:hover{
     opacity: 0.7;

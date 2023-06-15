@@ -2,31 +2,31 @@
     <!-- ボトムナビゲーション -->
     <ul class="menu">
 
-        <li>
+        <li class="map">
             <a href="/map"><i class="fa-solid fa-map fa-2x"></i><br>
-            <span class="iconName map">マップ</span></a>
+            <span class="iconName">マップ</span></a>
         </li>
 
 
-        <li>
+        <li class="bookMark">
             <a href=""><i class="fa-solid fa-map-pin fa-2x"></i><br>
-            <span class="iconName bookMark">旅のしおり</span></a>
+            <span class="iconName">旅のしおり</span></a>
         </li>
 
         
-        <li>
+        <li class="model">
             <a href=""><i class="fa-solid fa-road fa-2x"></i><br>
-            <span class="iconName model">モデルコース</span></a>
+            <span class="iconName">モデルコース</span></a>
         </li>
 
-        <li>
+        <li class="ranking">
             <a href="/ranking"><i class="fa-solid fa-crown fa-2x"></i><br>
-            <span class="iconName model">ランキング</span></a>
+            <span class="iconName">ランキング</span></a>
         </li>
 
-        <li>
+        <li class="sns">
             <a href=""><i class="fa-regular fa-image fa-2x"></i><br>
-            <span class="iconName sns">SNSマッピング</span></a>
+            <span class="iconName">SNSマッピング</span></a>
         </li>
 
     </ul>
