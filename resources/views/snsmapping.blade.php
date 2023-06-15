@@ -7,8 +7,10 @@
 <!-- <script>
     @foreach ($pins as $pin)
 </script>
-        <img src="{{ asset("$pin->picture") }}" alt="">
+-->
+        <img src="{{ asset("storage/images/"."$pin->picture") }}" alt="">
         <p>{{ $pin->pin_name }}</p>
+        <!--
         <script>
     @endforeach
 </script> -->
@@ -30,14 +32,14 @@
                 <input type="text"   name="pin_name" id="title" placeholder="テキストを入力してください。" value="" />
                 <br>
 
-                <select class="form-select" aria-label="Default select example">
+                {{-- <select class="form-select" aria-label="Default select example">
                     <option value="">選択してください</option>
                     <option value="">食べ物</option>
                     <option value="">宿・ホテル</option>
                     <option value="">文化</option>
                     <option value="">遊び施設</option>
                     <option value="">自然</option>
-                </select>
+                </select> --}}
 
                 <input type="hidden" name="lat" id="get-lat" />
                 <input type="hidden" name="lng" id="get-lng" />

@@ -28,7 +28,7 @@ class SnsMappingController extends Controller
         $pin = new Pin();
         
         if($request->file('image')){
-            $dir = 'storage/images/';
+            $dir = 'public/images/';
             // $pin->picture = $request->file('image')->store('public/images');
             // ファイル名を取得
             $image_name = Str::random(32);
@@ -36,7 +36,7 @@ class SnsMappingController extends Controller
             $image_name .= '.' . $request->file('image')->extension();
             $request->file('image')->storeAs($dir, $image_name);
             // データベースにはパス+ファイル名を保存
-            $pin->picture = $dir . $image_name;
+            $pin->picture = $image_name;
         }        
 
         // ダミーデータ
