@@ -1,0 +1,111 @@
+.title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2rem;
+    margin: 1rem 0 0.2rem 15%;
+}
+/* 冠 */
+.crown {
+    display: flex;
+    justify-content: space-around;
+}
+.crown img{
+    height: 8vh;
+    width: 5vw;
+}
+/* カード */
+.cardMain {
+    display: flex;
+    width: 70vw;
+    margin: 0 auto;
+    overflow-x: scroll;
+    /* IE, Edge 対応 */
+    -ms-overflow-style: none;
+    /* Firefox 対応 */
+    scrollbar-width: none;
+}
+.cardMain::-webkit-scrollbar {
+    display:none;
+}
+.card{
+    width: 15vw;
+    flex-shrink: 0; 
+}
+.card-body {
+    height: 22vh;
+    padding: 0;
+}
+.card-title, .card-text{
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+h5.card-title {
+    margin: 0;
+}
+li.list-group-item {
+    display: flex;
+    padding: 1px;
+}
+
+@media screen and (max-width: 1024px){
+    .title{
+        font-size: 1.5rem; 
+        margin: 1rem 0 0.2rem 12%;
+    }
+    .cardMain {
+        width: 75vw;
+    }
+    /* 冠 */
+    .crown img{
+        height: 6vh;
+        width: 5vw;
+    }
+    .card{
+        width: 20vw;
+    }
+    .card-title, .card-text{
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 768px){
+    .title{
+        font-size: 1rem;
+        margin: 1rem 0 0.2rem 10%;
+    }
+    .cardMain {
+        width: 80vw;
+    }
+    /* 冠 */
+    .crown img{
+        height: 7vh;
+        width: 7vw;
+    }
+    .card{
+        width: 25vw;
+    }
+    .card-title, .card-text{
+        font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 480px){
+    .title{
+        font-size: 0.7rem;
+        margin: 1rem 0 0.2rem 8%;
+    }
+    .cardMain {
+        width: 90vw;
+    }
+    /* 冠 */
+    .crown img{
+        height: 7vh;
+        width: 9vw;
+    }
+    .card{
+        width: 30vw;
+    }
+    .card-title, .card-text{
+        font-size: 0.6rem;
+    }
+}

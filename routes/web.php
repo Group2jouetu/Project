@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankingController;
 use App\Http\Controllers\SnsMappingController;
@@ -51,3 +52,15 @@ require __DIR__ . '/auth.php';
 // Route::get('/snsInput', [SnsMappingController::class, 'index']);
 Route::get('/smap', [SnsMappingController::class, 'index']);
 Route::post('/snsInput', [SnsMappingController::class, 'store']);
+//マップ
+Route::get('/map', 'App\Http\Controllers\BookmarkController@index');
+Route::post('/map','App\Http\Controllers\BookmarkController@create');
+
+//削除処理と登録処理の併用処理の実装途中
+Route::delete('/map','App\Http\Controllers\BookmarkController@delete');
+
+// モデルコース
+Route::get('model', function () {
+    return view('model');
+});
+require __DIR__.'/auth.php';

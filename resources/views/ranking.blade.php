@@ -1,49 +1,341 @@
 @extends('layout.layout')
 
+@extends('header')
+
 @section('title', 'ランキング')
 
 @section('content')
+ 
+    <div class="cardMain">
 
-    <h1>ランキング</h1>
+        @foreach ($ranking as $rankings)
 
-    @foreach ($ranking as $rankings)
-        <h2> {{ $rankings->pin_name }}</h2>
-        <p>いいね数：{{ $rankings->like_count}}</p>
-        <script>
-            var latitude = {{ $rankings->latitude }}
-            var longitude = {{ $rankings->longitude }}
-        </script>
-    @endforeach
-
-    <script>
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 37.1478, lng: 138.236},
-                zoom: 12
-            });
-
-            const markerPosition = {lat: latitude, lng: longitude};
+            <div class="card">
+            {{-- 画像 --}}
+            @if ($rankings->picture === '')
+                <p>画像がありません</p>
+            @else   
+                <img src="img/{{ $rankings->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $rankings->pin_name }}">
+            @endif
             
-            var marker = new google.maps.Marker({
-                position: markerPosition,
-                map: map,
-                title: 'お店の位置'
-            });
+                    <ul class="list-group list-group-flush">
+                            @if ($loop->first)
+                                <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $rankings->pin_name }}</h5></li>
+                            @endif
+                            @if ($loop->iteration === 2)
+                                <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #808080;"></i>{{ $rankings->pin_name }}</h5></li>
+                            @endif
+                            @if ($loop->iteration === 3)
+                                <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #8c4841;"></i>{{ $rankings->pin_name }}</h5></li>
+                            @endif
+                            @if ($loop->iteration >= 4)
+                                <li class="list-group-item"><h5 class="card-title">{{ $rankings->pin_name }}</h5></li>
+                            @endif
+                        <li class="list-group-item"><p class="card-text">{{ $rankings->detail }}</p></li>
+                        <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $rankings->like_count}}</p></li>
+                    </ul>  
+            </div>
 
-            var directionsService = new google.maps.DirectionsService();
-            var directionsRenderer = new google.maps.DirectionsRenderer();
-            directionsRenderer.setMap(map);
+            <!-- モーダルの設定 -->
+            <div class="modal fade" id="{{ $rankings->pin_name }}" tabindex="-1" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $rankings->pin_name }}
+                        <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $rankings->like_count }}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="img/{{ $rankings->picture }}" alt="カードの画像" class="card-img-top">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    </div><!-- /.modal-footer -->
+                </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            
+        @endforeach
+        
+    </div>
 
-        }
+    {{-- 食べ物 --}}
+    <h2 class="title"><i class="fa-solid fa-utensils"></i>食べ物</h2>
+    <div class="cardMain">
 
-        function openMyMap() {
-            window.open("https://www.google.com/maps/d/edit?mid=1OF1wBE2l6vNNrmU7F-b2OBOi5Sc3Awg&usp=sharing");
-        }
-        </script>
+        @foreach ($food as $food_data)
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJoO2BmaGEIp_ud8Mctyd5gLDWrEYzMFA&callback=initMap"></script>
+            <div class="card">
+            {{-- 画像 --}}
+                @if ($food_data->picture === '')
+                    <p>画像がありません</p>
+                @else
+                    <img src="img/{{ $food_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $food_data->pin_name }}">
+                @endif
+                <ul class="list-group list-group-flush">
+                    @if ($loop->first)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $food_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration === 2)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #808080;"></i>{{ $food_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration === 3)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #8c4841;"></i>{{ $food_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration >= 4)
+                        <li class="list-group-item"><h5 class="card-title">{{ $food_data->pin_name }}</h5></li>
+                    @endif
+                    <li class="list-group-item"><p class="card-text">{{ $food_data->detail }}</p></li>
+                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $food_data->like_count}}</p></li>
+                </ul>
+            </div>
+            <!-- モーダルの設定 -->
+            <div class="modal fade" id="{{ $food_data->pin_name }}" tabindex="-1" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $food_data->pin_name }}
+                        <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $food_data->like_count}}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="img/{{ $food_data->picture }}" alt="カードの画像" class="card-img-top">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    </div><!-- /.modal-footer -->
+                </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        
+        @endforeach
+        
+    </div>
 
-        <div id="map"></div>
+    {{-- 宿泊 --}}
+    <h2 class="title"><i class="fa-solid fa-hotel"></i>宿泊</h2>
+    <div class="cardMain">
+
+        @foreach ($hotel as $hotel_data)
+
+            <div class="card">
+            {{-- 画像 --}}
+                @if ($hotel_data->picture === '')
+                    <p>画像がありません</p>
+                @else
+                    <img src="img/{{ $hotel_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $hotel_data->pin_name }}">
+                @endif
+                <ul class="list-group list-group-flush">
+                    @if ($loop->first)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $hotel_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration === 2)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #808080;"></i>{{ $hotel_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration === 3)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #8c4841;"></i>{{ $hotel_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration >= 4)
+                        <li class="list-group-item"><h5 class="card-title">{{ $hotel_data->pin_name }}</h5></li>
+                    @endif
+                    
+                    <li class="list-group-item"><p class="card-text">{{ $hotel_data->detail }}</p></li>
+                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $hotel_data->like_count}}</p></li>
+                </ul>
+            </div>
+
+            <!-- モーダルの設定 -->
+            <div class="modal fade" id="{{ $hotel_data->pin_name }}" tabindex="-1" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $hotel_data->pin_name }}
+                        <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $hotel_data->like_count}}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="img/{{ $hotel_data->picture }}" alt="カードの画像" class="card-img-top">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    </div><!-- /.modal-footer -->
+                </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        
+        @endforeach
+        
+    </div>
+
+
+
+    {{-- 文化 --}}
+    <h2 class="title"><i class="fa-solid fa-torii-gate"></i>文化</h2>
+    <div class="cardMain">
+
+        @foreach ($culture as $culture_data)
+
+            <div class="card">
+            {{-- 画像 --}}
+                @if ($culture_data->picture === '')
+                    <p>画像がありません</p>
+                @else
+                    <img src="img/{{ $culture_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $culture_data->pin_name }}">
+                @endif
+                
+                <ul class="list-group list-group-flush">
+                    @if ($loop->first)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $culture_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration === 2)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #808080;"></i>{{ $culture_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration === 3)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #8c4841;"></i>{{ $culture_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration >= 4)
+                        <li class="list-group-item"><h5 class="card-title">{{ $culture_data->pin_name }}</h5></li>
+                    @endif
+                    <li class="list-group-item"><p class="card-text">{{ $culture_data->detail }}</p></li>
+                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $culture_data->like_count}}</p></li>
+                </ul>
+            </div>
+
+            <!-- モーダルの設定 -->
+            <div class="modal fade" id="{{ $culture_data->pin_name }}" tabindex="-1" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $culture_data->pin_name }}</h1>
+                        <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $culture_data->like_count}}
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="img/{{ $culture_data->picture }}" alt="カードの画像" class="card-img-top">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    </div><!-- /.modal-footer -->
+                </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        
+        @endforeach
+        
+    </div>
+
+
+
+    {{-- 遊び --}}
+    <h2 class="title"><i class="fa-solid fa-parachute-box"></i>遊び</h2>
+    <div class="cardMain">
+
+        @foreach ($amusement as $amusement_data)
+
+            <div class="card">
+            {{-- 画像 --}}
+                @if ($amusement_data->picture === '')
+                    <p>画像がありません</p>
+                @else
+                    <img src="img/{{ $amusement_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $amusement_data->pin_name }}">
+                @endif
+                <ul class="list-group list-group-flush">
+                    @if ($loop->first)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $amusement_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration === 2)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #808080;"></i>{{ $amusement_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration === 3)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #8c4841;"></i>{{ $amusement_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration >= 4)
+                        <li class="list-group-item"><h5 class="card-title">{{ $amusement_data->pin_name }}</h5></li>
+                    @endif
+                    <li class="list-group-item"><p class="card-text">{{ $amusement_data->detail }}</p></li>
+                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $amusement_data->like_count}}</p></li>
+                </ul>
+            </div>
+
+            <!-- モーダルの設定 -->
+            <div class="modal fade" id="{{ $amusement_data->pin_name }}" tabindex="-1" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $amusement_data->pin_name }}</h1>
+                        <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $amusement_data->like_count}}
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="img/{{ $amusement_data->picture }}" alt="カードの画像" class="card-img-top">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    </div><!-- /.modal-footer -->
+                </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        
+        @endforeach
+        
+    </div>
+
+
+
+    {{-- 自然 --}}
+    <h2 class="title"><i class="fa-solid fa-tree"></i>自然</h2>
+    <div class="cardMain">
+
+        @foreach ($nature as $nature_data)
+
+            <div class="card">
+            {{-- 画像 --}}
+                @if ($amusement_data->picture === '')
+                    <p>画像がありません</p>
+                @else                
+                    <img src="img/{{ $nature_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $nature_data->pin_name }}">
+                @endif
+
+                <ul class="list-group list-group-flush">
+                    @if ($loop->first)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $nature_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration === 2)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #808080;"></i>{{ $nature_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration === 3)
+                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #8c4841;"></i>{{ $nature_data->pin_name }}</h5></li>
+                    @endif
+                    @if ($loop->iteration >= 4)
+                        <li class="list-group-item"><h5 class="card-title">{{ $nature_data->pin_name }}</h5></li>
+                    @endif
+                    <li class="list-group-item"><p class="card-text">{{ $nature_data->detail }}</p></li>
+                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $nature_data->like_count}}</p></li>
+                </ul>
+            </div>
+
+            <!-- モーダルの設定 -->
+            <div class="modal fade" id="{{ $nature_data->pin_name }}" tabindex="-1" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $nature_data->pin_name }}</h1>
+                        <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $nature_data->like_count}}
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="img/{{ $nature_data->picture }}" alt="カードの画像" class="card-img-top">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    </div><!-- /.modal-footer -->
+                </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        
+        @endforeach
+        
+    </div>
 
     
 @endsection
