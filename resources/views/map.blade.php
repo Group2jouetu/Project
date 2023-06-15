@@ -41,8 +41,6 @@
 
 <div id="map"></div>
 
-    <button onclick="openMyMap()">モデルコース機能を開く</button>
-
     <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -136,9 +134,6 @@
 
         }
 
-        function openMyMap() {
-            window.open("https://www.google.com/maps/d/edit?mid=1OF1wBE2l6vNNrmU7F-b2OBOi5Sc3Awg&usp=sharing");
-        }
     </script>
 
     <script async defer
