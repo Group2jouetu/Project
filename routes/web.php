@@ -45,8 +45,9 @@ require __DIR__ . '/auth.php';
 
 
 // SNSMapping
-Route::get('smap', function () {
-    return view('snsmapping');
-});
+// Route::get('smap', function () {
+//     return view('snsmapping');
+// });
 // Route::get('/snsInput', [SnsMappingController::class, 'index']);
+Route::get('/smap', [SnsMappingController::class, 'index']);
 Route::post('/snsInput', [SnsMappingController::class, 'store']);
