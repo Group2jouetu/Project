@@ -8,8 +8,13 @@
     @foreach ($pins as $pin)
 </script>
 -->
+
+        <!-- 画面にDBに登録された画像とpinの名前が表示される -->
+        <!-- 現状画像は表示されてない（エラー） -->
         <img src="{{ asset("storage/images/"."$pin->picture") }}" alt="">
         <p>{{ $pin->pin_name }}</p>
+
+
         <!--
         <script>
     @endforeach
