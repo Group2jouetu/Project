@@ -18,7 +18,6 @@
     align-items: center;
     justify-content: center;
 	width: 100%;
-	padding: 5px;
 	list-style: none;
 	text-align: center;
     opacity: 0.95;
@@ -30,6 +29,10 @@
 .menu a{
     text-decoration: none;
     color: #fff;
+}
+.menu a:hover{
+    text-decoration: none;
+    color: #eee;
 }
 .menu a span {
 	display: block;
