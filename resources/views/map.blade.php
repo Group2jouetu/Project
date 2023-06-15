@@ -3,8 +3,6 @@
 @section('title', 'マップページ')
 
 @section('content')
-    <div id="map"></div>
-
 <!-- 旅のしおりのでも処理 -->
 @foreach($items as $item)
 <tr>
