@@ -24,7 +24,7 @@
 
             
             <li class="model">
-                <a href=""><i class="fa-solid fa-road fa-2x"></i><br>
+                <a href="/model"><i class="fa-solid fa-road fa-2x"></i><br>
                 <span class="iconName">モデルコース</span></a>
             </li>
 
