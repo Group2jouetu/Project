@@ -3,12 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pin;
+use App\Models\Bookmark;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class BookmarkController extends Controller
 {
+    
+    public function map()
+    {
+        // ピン情報を取得
+        $pin = new Pin();
+        $pins = $pin::all();
+        
+        $user = Auth::user();
+        $bookmark = new Bookmark();
+        $items = $bookmark->where('user_id', 2)->get();
+        if($user){      // ログイン済み出なければ実行しない
+            foreach($pins as $pin){
+                $bookmark_flag = $items->where('pin_id', $pin->id)->first()->pin_id;
+                $pin->_bookmark_flag = $bookmark_flag;
+            }
+        }
+        dd($pins);
+        //$items = DB::select('select * from bookmarks');
+        return view('map',[
+            'items' => $items,
+            'pins' => $pins,
+        ]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -18,10 +42,18 @@ class BookmarkController extends Controller
         $pin = new Pin();
         $pins = $pin::all();
 
-        $items = DB::select('select * from bookmarks');
-        return view('map',[
-            'items' => $items,
-            'pins' => $pins,
+        // ログイン済みのユーザー情報を取得
+        // $user = Auth::user();
+
+        $bookmark = new Bookmark();
+        $items = $bookmark::all();
+        $books = $bookmark->where('user_id', 100)->get('pin_id');
+        //$items = DB::select('select * from bookmarks');
+
+        //bookmarkテーブルのpin_idと一致するpinsテーブルのidとpin_nameを取得
+        $bookmarks = $pins->where('id','=',$books);
+        return view('bookmark',[
+            'bookmarks' => $bookmarks,
         ]);
     }
 
@@ -33,8 +65,13 @@ class BookmarkController extends Controller
             'user_id' => $user->id, 
             'pin_id' => $request->pin_id, 
         ];
-        DB::insert('insert into bookmarks(user_id,pin_id) value(:user_id, :pin_id)',$param);
+        // DB::insert('insert into bookmarks(user_id,pin_id) value(:user_id, :pin_id)',$param);
         // return redirect('map');
+        
+        $bookmark = new Bookmark();
+        $bookmark->user_id = $user->id;
+        $bookmark->pin_id = $request->pin_id;
+        $bookmark->save();
         return back();
     }
 
