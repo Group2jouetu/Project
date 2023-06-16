@@ -4,14 +4,7 @@
 
 @section('content')
 <!-- 旅のしおりのでも処理 -->
-@foreach($items as $item)
-<tr>
-    <td>{{$item->id}}</td>
-    <td>{{$item->user_id}}</td>
-    <td>{{$item->pin_id}}</td>
-</tr>
-@endforeach
-
+<!-- 
 <form action="/map" method="post">
     {{csrf_field()}}
     <p>
@@ -37,7 +30,7 @@
     </p>
     <button type="submit"
         class="py-4 w-20 md:hover:bg-slate-200 transition-colors">削除</button>
-</form>
+</form> -->
 
 <div id="map"></div>
 
@@ -50,7 +43,7 @@
                 },
                 zoom: 12
             });
-
+/* 
             var markerPosition = {
                 lat: 37.1478,
                 lng: 138.236
@@ -130,25 +123,36 @@
                     animation: google.maps.Animation.DROP
                 });
             });
-
+ */
             
             /* snsmapping.blade.phpより引用 ここから */
             // DBから取得した位置情報にピンを指す
             @foreach ($pins as $pin)
-                pinCreate({{ $pin->id }}, {{ $pin->latitude }}, {{ $pin->longitude }});
+                pinCreate({{ $pin->id }}, {{ $pin->latitude }}, {{ $pin->longitude }}, {{ $pin->_bookmark_flag }});
             @endforeach
-            function pinCreate(id, lat, lng){
+            function pinCreate(id, lat, lng, flag){
             // function pinCreate(lat, lng, name){
                 var contentString = 
                     '<div id="content">' +
                     '<h3>お店の口コミ</h3>' +
-                    '<p>ここにお店の口コミを表示します。</p>' +
-                    '<form action="/map" method="post">'+
-                    '    {{csrf_field()}}'+
-                    '    <input id="pin_id" type="text" name="pin_id" value="'+id+'" hidden>'+
-                    '    <input type="submit" value="登録する">'+
-                    '</form>'+
-                    '</div>';
+                    '<p>ここにお店の口コミを表示します。</p>';
+                if(flag){
+                    contentString +=
+                        '<form action="/map" method="post">' +
+                        '    @csrf' +
+                        '    @method("DELETE")' +
+                        '    <input id="id" type="text" name="id" value="'+id+'" hidden>' +
+                        '    <input type="submit" value="お気に入り削除">'+
+                        '</form>';
+                }else{
+                    contentString +=
+                        '<form action="/map" method="post">'+
+                        '    @csrf'+
+                        '    <input id="pin_id" type="text" name="pin_id" value="'+id+'" hidden>'+
+                        '    <input type="submit" value="お気に入り登録">'+
+                        '</form>';
+                }
+                contentString +='</div>';
 
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString

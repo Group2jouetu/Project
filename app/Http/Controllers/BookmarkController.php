@@ -15,21 +15,26 @@ class BookmarkController extends Controller
     {
         // ピン情報を取得
         $pin = new Pin();
+        $bookmark = new Bookmark();
+        $user = Auth::user();
+
         $pins = $pin::all();
         
-        $user = Auth::user();
-        $bookmark = new Bookmark();
-        $items = $bookmark->where('user_id', 2)->get();
-        if($user){      // ログイン済み出なければ実行しない
-            foreach($pins as $pin){
-                $bookmark_flag = $items->where('pin_id', $pin->id)->first()->pin_id;
-                $pin->_bookmark_flag = $bookmark_flag;
-            }
+        // $pinsに_bookmark_flagカラムを追加
+        $user_id = null;
+        if($user){      // ログイン済みでなければ実行しない
+            $user_id = $user->id;
         }
-        dd($pins);
-        //$items = DB::select('select * from bookmarks');
+        foreach($pins as $pin){
+            $pin_id = 0;
+            $res = $bookmark->where('user_id', $user_id)->where('pin_id', $pin->id)->first();
+            if($res){
+                $pin_id = 1;
+            }
+            $pin->_bookmark_flag = $pin_id;
+        }
+
         return view('map',[
-            'items' => $items,
             'pins' => $pins,
         ]);
     }
@@ -81,7 +86,10 @@ class BookmarkController extends Controller
         $param = [
             'id' => $request->id,
         ];
-        DB::delete('delete from bookmarks where id = :id',$param);
+        $user = Auth::user();
+        $bookmark = new Bookmark();
+        $bookmark->where('user_id', $user->id)->where('pin_id', $request->id)->delete();
+        // DB::delete('delete from bookmarks where id = :id',$param);
         return redirect('map');
     }
 
