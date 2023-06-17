@@ -49,7 +49,7 @@
                     '<p>ここにお店の口コミを表示します。</p>';
                 if(flag){
                     contentString +=
-                        '<form action="/map" method="post">' +
+                        '<form action="/bookmark" method="post">' +
                         '    @csrf' +
                         '    @method("DELETE")' +
                         '    <input id="id" type="text" name="id" value="'+id+'" hidden>' +
@@ -57,7 +57,7 @@
                         '</form>';
                 }else{
                     contentString +=
-                        '<form action="/map" method="post">'+
+                        '<form action="/bookmark" method="post">'+
                         '    @csrf'+
                         '    <input id="pin_id" type="text" name="pin_id" value="'+id+'" hidden>'+
                         '    <input type="submit" value="お気に入り登録">'+

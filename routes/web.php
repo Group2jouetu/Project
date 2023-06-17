@@ -21,16 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('map', function () {
-    return view('map');
-});
-
-Route::get('/map', function () {
-    return view('map');
-});
-Route::get('/bookmark', function () {
-    return view('bookmark');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -61,8 +51,8 @@ Route::get('/map', 'App\Http\Controllers\BookmarkController@map');
 //旅のしおり
 Route::middleware('auth')->group(function () {
     Route::get('/bookmark', 'App\Http\Controllers\BookmarkController@index');
-    Route::post('/map','App\Http\Controllers\BookmarkController@create');
-    Route::delete('/map','App\Http\Controllers\BookmarkController@delete');
+    Route::post('/bookmark','App\Http\Controllers\BookmarkController@create');
+    Route::delete('/bookmark','App\Http\Controllers\BookmarkController@delete');
 });
 
 // モデルコース
