@@ -34,7 +34,7 @@
             </li>
 
             <li class="sns">
-                <a href=""><i class="fa-regular fa-image fa-2x"></i><br>
+                <a href="/smap"><i class="fa-regular fa-image fa-2x"></i><br>
                 <span class="iconName">SNSマッピング</span></a>
             </li>
 
