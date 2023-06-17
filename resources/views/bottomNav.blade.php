@@ -18,7 +18,7 @@
 
 
             <li class="bookMark">
-                <a href=""><i class="fa-solid fa-map-pin fa-2x"></i><br>
+                <a href="/bookmark"><i class="fa-solid fa-map-pin fa-2x"></i><br>
                 <span class="iconName">旅のしおり</span></a>
             </li>
 
