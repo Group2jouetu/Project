@@ -44,6 +44,7 @@ class SnsMappingController extends Controller
         $pin->detail = "";
         $pin->pin_flag = 0;
         $pin->like_count = 0;
+        $pin->genre = 0;
         
         $pin->pin_name = $request->pin_name;
         $pin->latitude = $request->lat;
