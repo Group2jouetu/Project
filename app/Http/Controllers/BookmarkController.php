@@ -65,17 +65,15 @@ class BookmarkController extends Controller
     public function create(Request $request)
     {
         $user = Auth::user();
-        $param = [
-            'user_id' => $user->id, 
-            'pin_id' => $request->pin_id, 
-        ];
-        // DB::insert('insert into bookmarks(user_id,pin_id) value(:user_id, :pin_id)',$param);
-        // return redirect('map');
+        // 既に登録されている場合のエスケープ
+        if(!(Bookmark::where('user_id', $user->id)->where('pin_id', $request->pin_id)->first())){
+            // ブックマークに登録
+            $bookmark = new Bookmark();
+            $bookmark->user_id = $user->id;
+            $bookmark->pin_id = $request->pin_id;
+            $bookmark->save();
+        }
         
-        $bookmark = new Bookmark();
-        $bookmark->user_id = $user->id;
-        $bookmark->pin_id = $request->pin_id;
-        $bookmark->save();
         return back();
     }
 
