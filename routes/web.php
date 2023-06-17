@@ -40,7 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::post('/map','App\Http\Controllers\BookmarkController@create');
 });
 
 //ランキング
@@ -60,10 +59,11 @@ Route::post('/snsInput', [SnsMappingController::class, 'store']);
 Route::get('/map', 'App\Http\Controllers\BookmarkController@map');
 
 //旅のしおり
-Route::get('/bookmark', 'App\Http\Controllers\BookmarkController@index');
-
-//削除処理と登録処理の併用処理の実装途中
-Route::delete('/map','App\Http\Controllers\BookmarkController@delete');
+Route::middleware('auth')->group(function () {
+    Route::get('/bookmark', 'App\Http\Controllers\BookmarkController@index');
+    Route::post('/map','App\Http\Controllers\BookmarkController@create');
+    Route::delete('/map','App\Http\Controllers\BookmarkController@delete');
+});
 
 // モデルコース
 Route::get('model', function () {

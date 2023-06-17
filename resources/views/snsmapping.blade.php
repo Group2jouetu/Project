@@ -4,7 +4,6 @@
 
 @section('content')
 
-<script>
     @foreach ($pins as $pin)
         <p>{{ $pin->genre }}</p>
 
@@ -14,7 +13,6 @@
         <p>{{ $pin->pin_name }}</p>
 
     @endforeach
-</script>
 
     <div id="map"></div>
 
