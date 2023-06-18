@@ -5,7 +5,7 @@
 @section('content')
 
     <div id="map"></div>
-    
+
     <!-- ここからモーダルウィンドウ -->
     <div id="modal" class="modal">
         <div class="modal-content">
@@ -19,7 +19,8 @@
                 {{-- 選択された画像を表示 --}}
                 <img id="preview-image" src="" style="max-width: 256px; height: auto;">
                 <p>場所の名前を入力してください</p>
-                <input type="text" name="pin_name" id="title" size="30" placeholder="テキストを入力してください。" value="" />
+                <input type="text" name="pin_name" id="title" size="30" placeholder="テキストを入力してください。"
+                    value="" />
                 <br><br>
 
                 <label for="exampleInputEmail1">ジャンルを以下から選択してください。</label><br>
@@ -35,26 +36,27 @@
                 <input type="hidden" name="lng" id="get-lng" />
                 <br>
                 <input type="reset" value="キャンセル" onclick="newPinReset()">
-                <input type="submit" value="登録" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+                <input type="submit" value="登録" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    onclick="dialogSubmit(event)">
             </form>
         </div>
     </div>
     <!-- ここまで -->
-  
+
     <!-- 登録時の確認画面 -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">観光地の登録</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">観光地の登録</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">登録しますか？</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button>
+                    <button type="button" class="btn btn-primary" onclick="saveAction()">はい</button>
+                </div>
             </div>
-            <div class="modal-body">登録しますか？</div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button>
-            <button type="button" class="btn btn-primary" onclick="saveAction()">はい</button>
-            </div>
-        </div>
         </div>
     </div>
 
@@ -70,6 +72,7 @@
         var click_marker;
         // 立っているピンをクリックしたときにピンの情報を保存
         var click_pin;
+
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {
@@ -78,33 +81,37 @@
                 },
                 zoom: 12
             });
-            
+
             // DBから取得した位置情報にピンを指す
             @isset($pins)
                 @foreach ($pins as $pin)
                     pinCreate({{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}", "{{ $pin->picture }}");
                 @endforeach
-                function pinCreate(lat, lng, pin_name, picture){
-                    var contentString = 
+                function pinCreate(lat, lng, pin_name, picture) {
+                    var contentString =
                         '<div id="content">' +
                         '<h3>' + pin_name + '</h3>' +
-                        '<img src="{{ asset("storage/images") }}/' + picture + '" alt="" style="max-height: 100px;"><br><br>' +
+                        '<img src="{{ asset('storage/images') }}/' + picture +
+                        '" alt="" style="max-height: 100px;"><br><br>' +
                         '<p>ここにお店の口コミを表示します。</p>' +
                         '</div>';
 
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString
                     });
-                    
-                    var position = { lat: lat, lng: lng };
+
+                    var position = {
+                        lat: lat,
+                        lng: lng
+                    };
                     var marker = new google.maps.Marker({
                         position: position,
                         map: map,
                         title: 'お店の位置'
                     });
-                    marker.addListener('click', function(){
+                    marker.addListener('click', function() {
                         // 立っているピンがある状態で他のピンをクリックすると立っていたピンの情報が消える
-                        if (click_pin){
+                        if (click_pin) {
                             click_pin.close();
                         }
                         click_pin = infowindow;
@@ -161,10 +168,14 @@
         }
 
         // 入力情報をすべてリセットする関数
-        function newPinReset(){
+        function newPinReset() {
             // すでに立てたマーカーがあった場合、そのマーカーを削除
             if (click_marker) {
                 click_marker.setMap(null);
+
+                // 表示していたピン情報を閉じる
+                click_pin.close();
+
                 // 入力してあった情報をリセット
                 document.getElementById('preview-image').setAttribute('src', "");
                 document.getElementById('image-input').value = "";
@@ -172,7 +183,7 @@
                 modal.style.display = "none";
             }
         }
-        
+
         // 選択した画像を表示する
         document.getElementById('image-input').addEventListener('change', function(e) {
             var file = e.target.files[0];
@@ -184,19 +195,20 @@
 
             reader.readAsDataURL(file);
         });
-        
+
         // formタグの登録ボタンが押された時、確認画面が出るので、フォームの送信を制御
         function dialogSubmit(event) {
             // フォームの送信を一旦止める
             event.preventDefault();
         }
+
         function saveAction() {
             // フォームの送信を再開
             document.getElementById("pinForm").submit();
         }
-        
+
         // ピンの登録に成功したら、メッセージをトーストで表示
-        @if(session('message'))
+        @if (session('message'))
             const jsFrame = new JSFrame();
             jsFrame.showToast({
                 html: '{{ session('message') }}',
@@ -204,8 +216,6 @@
                 duration: 2000
             });
         @endif
-        
-
     </script>
 
     <script async defer
