@@ -170,6 +170,8 @@
                 document.getElementById('image-input').value = "";
                 document.getElementById('title').value = "";
                 modal.style.display = "none";
+                // 開いてあったピンの情報を閉じる
+                click_pin.close();
             }
         }
         
