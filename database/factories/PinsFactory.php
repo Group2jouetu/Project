@@ -25,7 +25,6 @@ class PinsFactory extends Factory
             'pin_name' => $this->faker->streetName(),
             'genre' => $this->faker->numberBetween(1,5),
             'detail' => $this->faker->realText(15),
-            'pin_flag' => $this->faker->numberBetween(0,1),
             'like_count' => $this->faker->numberBetween(1,100),
             
         ];
