@@ -2,6 +2,8 @@
 
 @section('title', 'マップページ')
 
+@extends('header')
+
 @section('content')
 <!-- 旅のしおりのでも処理 -->
 @foreach($bookmarks as $bookmark)
