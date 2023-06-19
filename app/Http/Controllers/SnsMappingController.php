@@ -5,27 +5,33 @@ namespace App\Http\Controllers;
 use App\Models\Pin;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SnsMappingController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
 
         $pin = new Pin();
 
         $pins = $pin::all();
 
-        return view('snsmapping', ["pins" => $pins]);
+        $user = Auth::id();
 
+        dd($uu = Auth::user()->name);
+
+        return view('snsmapping', ["pins" => $pins, "id" => $user]);
     }
-    
-    public function store(Request $request){
+
+    public function store(Request $request)
+    {
 
         // Modelを読み込む
         $pin = new Pin();
-        
-        if($request->file('image')){
+
+        if ($request->file('image')) {
             $dir = 'public/images/';
 
             // 保存するファイル名を生成
@@ -36,15 +42,13 @@ class SnsMappingController extends Controller
             $request->file('image')->storeAs($dir, $image_name);
             // データベースにはファイル名を保存
             $pin->picture = $image_name;
-        }        
+        }
 
         // ダミーデータ
-        $pin->user_id = 100;
         $pin->detail = "";
-        // $pin->pin_flag = 0;
         $pin->like_count = 0;
-        $pin->genre = 0;
-        
+
+        $pin->user_id = Auth::id();
         $pin->pin_name = $request->pin_name;
         $pin->latitude = $request->lat;
         $pin->longitude = $request->lng;
@@ -56,6 +60,5 @@ class SnsMappingController extends Controller
         session()->flash('message', '登録が完了しました。');
 
         return redirect()->back();
-
     }
 }

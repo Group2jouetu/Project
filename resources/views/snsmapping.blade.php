@@ -1,5 +1,7 @@
 @extends('layout.layout')
 
+@extends('header')
+
 @section('title', 'SNSマップページ')
 
 @section('content')
@@ -104,9 +106,13 @@
                         lat: lat,
                         lng: lng
                     };
+
+                    //ピンの画像
+                    var img = "{{ asset('storage/images/pinn.png') }}";
                     var marker = new google.maps.Marker({
                         position: position,
                         map: map,
+                        // icon: img,
                         title: 'お店の位置'
                     });
                     marker.addListener('click', function() {
@@ -173,8 +179,10 @@
             if (click_marker) {
                 click_marker.setMap(null);
 
-                // 表示していたピン情報を閉じる
-                click_pin.close();
+                if (click_pin) {
+                    // 表示していたピン情報を閉じる
+                    click_pin.close();
+                }
 
                 // 入力してあった情報をリセット
                 document.getElementById('preview-image').setAttribute('src', "");
@@ -182,7 +190,7 @@
                 document.getElementById('title').value = "";
                 modal.style.display = "none";
                 // 開いてあったピンの情報を閉じる
-                click_pin.close();
+                // click_pin.close();
             }
         }
 
