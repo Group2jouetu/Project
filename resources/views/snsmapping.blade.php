@@ -4,36 +4,25 @@
 
 @section('content')
 
-    @foreach ($pins as $pin)
-        <p>{{ $pin->genre }}</p>
-
-        <!-- 画面にDBに登録された画像とpinの名前が表示される -->
-        <!-- 現状画像は表示されてない（エラー） -->
-        <img src="{{ asset("storage/images/"."$pin->picture") }}" alt="">
-        <p>{{ $pin->pin_name }}</p>
-
-    @endforeach
-
     <div id="map"></div>
-
-    {{-- <button onclick="openMyMap()">モデルコース機能を開く</button> --}}
     
     <!-- ここからモーダルウィンドウ -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3>新規登録</h3>
-            <form action="/snsInput" method="post" enctype="multipart/form-data">
+            <form action="/snsInput" id="pinForm" method="post" enctype="multipart/form-data">
+                {{-- <form action="/snsInput" id="pinForm" method="post" enctype="multipart/form-data" onsubmit="return confirmSave()"> --}}
                 {{ csrf_field() }}
                 <input type="file" name="image" id="image-input" class="image" accept="image/*" />
                 <br>
                 {{-- 選択された画像を表示 --}}
                 <img id="preview-image" src="" style="max-width: 256px; height: auto;">
                 <p>場所の名前を入力してください</p>
-                <input type="text" name="pin_name" id="title" placeholder="テキストを入力してください。" value="" />
-                <br>
+                <input type="text" name="pin_name" id="title" size="30" placeholder="テキストを入力してください。" value="" />
+                <br><br>
 
-                <label for="exampleInputEmail1">以下から選択してください。</label><br>
+                <label for="exampleInputEmail1">ジャンルを以下から選択してください。</label><br>
                 <select name="select_genre" class="form-select" aria-label="Default select example">
                     <option value="1">食べ物</option>
                     <option value="2">宿・ホテル</option>
@@ -44,25 +33,43 @@
 
                 <input type="hidden" name="lat" id="get-lat" />
                 <input type="hidden" name="lng" id="get-lng" />
-                {{-- <button>キャンセル
-                    <script>
-                        window.history.back();
-                    </script>
-                </button> --}}
-                {{-- <input type="submit" value="キャンセル"> --}}
-                <input type="submit" value="登録">
+                <br>
+                <input type="reset" value="キャンセル" onclick="newPinReset()">
+                <input type="submit" value="登録" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
             </form>
         </div>
     </div>
     <!-- ここまで -->
+  
+    <!-- 登録時の確認画面 -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">観光地の登録</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">登録しますか？</div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button>
+            <button type="button" class="btn btn-primary" onclick="saveAction()">はい</button>
+            </div>
+        </div>
+        </div>
+    </div>
 
-    {{-- <button onclick="pinCreate()"></button> --}}
-
+    {{-- トースト表示ライブラリ --}}
+    <script src="https://riversun.github.io/jsframe/jsframe.js"></script>
 
     <script>
         // googleマップ
         var map;
-        var pin_name;
+        // モーダルウィンドウを操作するための変数
+        var modal;
+        // 新規登録用のピンを立てたり、消したりするための変数
+        var click_marker;
+        // 立っているピンをクリックしたときにピンの情報を保存
+        var click_pin;
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {
@@ -73,48 +80,43 @@
             });
             
             // DBから取得した位置情報にピンを指す
-            @foreach ($pins as $pin)
-                pinCreate({{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}", "{{ $pin->picture }}");
-            @endforeach
-            function pinCreate(lat, lng, pin_name, picture){
-                var contentString = 
-                    '<div id="content">' +
-                    '<h3>' + pin_name + '</h3>' +
-                    '<p>ここにお店の口コミを表示します。</p>' +
-                    '<img src="{{ asset("storage/images") }}/' + picture + '" alt="" style="max-height: 100px;">' +
-                    '</div>';
+            @isset($pins)
+                @foreach ($pins as $pin)
+                    pinCreate({{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}", "{{ $pin->picture }}");
+                @endforeach
+                function pinCreate(lat, lng, pin_name, picture){
+                    var contentString = 
+                        '<div id="content">' +
+                        '<h3>' + pin_name + '</h3>' +
+                        '<img src="{{ asset("storage/images") }}/' + picture + '" alt="" style="max-height: 100px;"><br><br>' +
+                        '<p>ここにお店の口コミを表示します。</p>' +
+                        '</div>';
 
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
-
-                console.log(picture);
-                
-                var position = { lat: lat, lng: lng };
-                var marker = new google.maps.Marker({
-                    position: position,
-                    map: map,
-                    title: 'お店の位置'
-                });
-                marker.addListener('click', function(){
-                    infowindow.open(map, marker);
-                });
-            }
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+                    
+                    var position = { lat: lat, lng: lng };
+                    var marker = new google.maps.Marker({
+                        position: position,
+                        map: map,
+                        title: 'お店の位置'
+                    });
+                    marker.addListener('click', function(){
+                        // 立っているピンがある状態で他のピンをクリックすると立っていたピンの情報が消える
+                        if (click_pin){
+                            click_pin.close();
+                        }
+                        click_pin = infowindow;
+                        infowindow.open(map, marker);
+                    });
+                }
+            @endisset
 
             //mapクリック時の処理
-            var click_marker;
             map.addListener("click", function(e) {
                 // すでに立てたマーカーがあった場合、そのマーカーを削除
-                if (click_marker) {
-                    click_marker.setMap(null);
-                    // 入力してあった情報をリセット
-                    document.getElementById('preview-image').setAttribute('src', "");
-                    document.getElementById('image-input').value = "";
-                    document.getElementById('title').value = "";
-                }
-                // if (infowindow){
-                //     infowindow.close();
-                // }
+                newPinReset();
 
                 // クリックした位置の緯度経度を<input type="hidden">に保存しておく
                 document.getElementById('get-lat').value = e.latLng.lat();
@@ -132,7 +134,7 @@
                 this.panTo(e.latLng);
 
                 // ここからマーカー立てたらモーダルウィンドウ開く処理
-                var modal = document.getElementById("modal");
+                modal = document.getElementById("modal");
                 var button = document.getElementById("modalButton");
                 var close = document.getElementsByClassName("close")[0];
 
@@ -140,21 +142,35 @@
                     modal.style.display = "block";
                 }
 
+                // Xボタンか選択画面以外をクリックしたら入力情報をリセットする
                 close.onclick = function() {
-                    modal.style.display = "none";
+                    newPinReset();
                 }
-
                 window.onclick = function(event) {
                     if (event.target == modal) {
-                        modal.style.display = "none";
+                        newPinReset();
                     }
                 }
+
                 //  ピンを差したらモーダルウィンドウ表示する
-                openModalWindow(click_marker)
+                openModalWindow(click_marker);
 
                 // ここまで
 
             });
+        }
+
+        // 入力情報をすべてリセットする関数
+        function newPinReset(){
+            // すでに立てたマーカーがあった場合、そのマーカーを削除
+            if (click_marker) {
+                click_marker.setMap(null);
+                // 入力してあった情報をリセット
+                document.getElementById('preview-image').setAttribute('src', "");
+                document.getElementById('image-input').value = "";
+                document.getElementById('title').value = "";
+                modal.style.display = "none";
+            }
         }
         
         // 選択した画像を表示する
@@ -168,6 +184,27 @@
 
             reader.readAsDataURL(file);
         });
+        
+        // formタグの登録ボタンが押された時、確認画面が出るので、フォームの送信を制御
+        function dialogSubmit(event) {
+            // フォームの送信を一旦止める
+            event.preventDefault();
+        }
+        function saveAction() {
+            // フォームの送信を再開
+            document.getElementById("pinForm").submit();
+        }
+        
+        // ピンの登録に成功したら、メッセージをトーストで表示
+        @if(session('message'))
+            const jsFrame = new JSFrame();
+            jsFrame.showToast({
+                html: '{{ session('message') }}',
+                align: 'top',
+                duration: 2000
+            });
+        @endif
+        
 
     </script>
 
