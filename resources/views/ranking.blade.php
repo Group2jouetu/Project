@@ -1,8 +1,11 @@
 @extends('layout.layout')
 
-@extends('header')
 
 @section('title', 'ランキング')
+
+@section('add_css')
+    <link rel="stylesheet" href="/css/ranking.css">
+@endsection
 
 @section('content')
  

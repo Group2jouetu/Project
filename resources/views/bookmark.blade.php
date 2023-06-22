@@ -2,10 +2,8 @@
 
 @section('title', 'マップページ')
 
-@extends('header')
-
 @section('add_css')
-    <link rel="stylesheet" href="/css/bookmark.css">
+    <link rel="stylesheet" href="/css/ranking.css">
 @endsection
 
 @section('content')

@@ -2,8 +2,6 @@
 
 @section('title', 'SNSマップページ')
 
-@extends('header')
-
 @section('content')
 
     <div id="map"></div>
