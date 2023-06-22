@@ -27,6 +27,9 @@
                   <li class="nav-item">
                     <a class="nav-link active" href="">Logout</a>
                   </li>
+
+
+                  <!---おっぴ作　いらない部分ーーーーーー>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       SNS
@@ -35,7 +38,7 @@
                         <li><a class="dropdown-item" href="#"><i class="fa-brands fa-twitter fa-2x" style="color: #1da1f2;"></i></a></li>
                         <li><a class="dropdown-item" href="#"><i class="fa-brands fa-youtube fa-2x" style="color: #c4302b;"></i></a></li>
                     </ul>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
             </div>
