@@ -1,6 +1,5 @@
 @extends('layout.layout')
 
-@extends('header')
 
 {{-- <x-app-layout>
     <x-slot name="header">

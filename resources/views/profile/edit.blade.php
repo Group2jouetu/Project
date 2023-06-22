@@ -1,4 +1,24 @@
-<x-app-layout>
+@extends('layout.layout')
+
+@section('title', 'SNSマップページ')
+
+@section('add_css')
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        /* いじるな */
+        .collapse {
+            visibility: visible;
+        }
+    </style>
+
+@endsection
+
+@section('content')
     {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Profile') }}
@@ -26,4 +46,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection
