@@ -2,6 +2,8 @@
 
 @section('title', 'マップページ')
 
+@extends('header')
+
 @section('content')
 
 <div id="map"></div>

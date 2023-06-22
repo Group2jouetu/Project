@@ -1,3 +1,6 @@
+body { 
+	padding: 0 0 3rem 0rem;
+ }
 *{
     margin: 0;
     padding: 0;
@@ -12,6 +15,7 @@
 	bottom: 0;
     margin: 0;
     padding: 0;
+    
 }
 .menu li {
     display: flex;
@@ -22,31 +26,19 @@
 	text-align: center;
     opacity: 0.95;
 }
-.menu .map{
-    background: #FF7878;
-}
-.menu .bookMark{
-    background: #FFFB40;
-}
-.menu .model{
-    background: #00B49E;
-}
-.menu .ranking{
-    background: #FFB7F8;
-}
-.menu .sns{
-    background: #96ADFF;
+.menu{
+    background-color: #fff;
 }
 .menu li:hover{
     opacity: 0.7;
 }
 .menu a{
     text-decoration: none;
-    color: #fff;
+    color: #666;
 }
 .menu a:hover{
     text-decoration: none;
-    color: #eee;
+    color: #888;
 }
 .menu a span {
 	display: block;
