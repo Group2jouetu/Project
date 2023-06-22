@@ -32,8 +32,9 @@
                       SNS
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#"><i class="fa-brands fa-twitter fa-2x" style="color: #1da1f2;"></i></a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-brands fa-youtube fa-2x" style="color: #c4302b;"></i></a></li>
+                        <li><a class="dropdown-item" href="https://twitter.com/joetsu2020"><i class="fa-brands fa-twitter fa-2x" style="color: #1da1f2;"></i></a></li>
+                        <li><a class="dropdown-item" href="https://www.youtube.com/channel/UCqp0KUtWyRlwtxttvLM2A1A"><i class="fa-brands fa-youtube fa-2x" style="color: #c4302b;"></i></a></li>
+                        <li><a class="dropdown-item" href="https://page.line.me/539hgqqy?openQrModal=true"><i class="fa-brands fa-line fa-2x" style="color: #00B900;"></i></a></li>
                     </ul>
                   </li>
                 </ul>

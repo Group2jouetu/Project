@@ -29,6 +29,7 @@
     display:none;
 }
 .card{
+    margin: 0.2rem;
     width: 15vw;
     flex-shrink: 0; 
 }
