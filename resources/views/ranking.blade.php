@@ -7,6 +7,7 @@
 @section('content')
  
     <div class="cardMain">
+        
 
         @foreach ($ranking as $rankings)
 
