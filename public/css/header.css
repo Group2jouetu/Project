@@ -5,10 +5,14 @@ ul.navbar-nav {
     display: flex;
     align-items: center;
 }
+a.nav-link.active {
+    font-size: 1.1rem;
+}
+/* SNS */
 .sns-item {
     display: flex;
     align-items: center;
 }
-.sns-item li{
-    padding: 1rem;
+.sns-item a.dropdown-item {
+    margin: 1rem 2rem;
 }
