@@ -19,13 +19,22 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                    <a class="nav-link active" aria-current="page" href="profile">Profile</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">login</a>
+                    <a class="nav-link active" href="register">Login</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">logout</a>
+                    <a class="nav-link active" href="">Logout</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      SNS
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#"><i class="fa-brands fa-twitter fa-2x" style="color: #1da1f2;"></i></a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fa-brands fa-youtube fa-2x" style="color: #c4302b;"></i></a></li>
+                    </ul>
                   </li>
                 </ul>
               </div>
