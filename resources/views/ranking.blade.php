@@ -6,9 +6,10 @@
 
 @section('content')
  
+    {{-- 総合ランキング --}}
+    <h2 class="title">グルメ</h2>
     <div class="cardMain">
         
-
         @foreach ($ranking as $rankings)
 
             <div class="card">
@@ -61,7 +62,8 @@
     </div>
 
     {{-- 食べ物 --}}
-    <h2 class="title"><i class="fa-solid fa-utensils"></i>食べ物</h2>
+    <h2 class="title">グルメ</h2>
+    {{-- <i class="fa-solid fa-utensils"></i> --}}
     <div class="cardMain">
 
         @foreach ($food as $food_data)
@@ -114,7 +116,8 @@
     </div>
 
     {{-- 宿泊 --}}
-    <h2 class="title"><i class="fa-solid fa-hotel"></i>宿泊</h2>
+    <h2 class="title">宿泊・ホテル</h2>
+    {{-- <i class="fa-solid fa-hotel"></i> --}}
     <div class="cardMain">
 
         @foreach ($hotel as $hotel_data)
@@ -171,7 +174,8 @@
 
 
     {{-- 文化 --}}
-    <h2 class="title"><i class="fa-solid fa-torii-gate"></i>文化</h2>
+    <h2 class="title">文化・歴史</h2>
+    {{-- <i class="fa-solid fa-torii-gate"></i> --}}
     <div class="cardMain">
 
         @foreach ($culture as $culture_data)
@@ -228,7 +232,8 @@
 
 
     {{-- 遊び --}}
-    <h2 class="title"><i class="fa-solid fa-parachute-box"></i>遊び</h2>
+    <h2 class="title">レジャースポット</h2>
+    {{-- <i class="fa-solid fa-parachute-box"></i> --}}
     <div class="cardMain">
 
         @foreach ($amusement as $amusement_data)
@@ -284,7 +289,8 @@
 
 
     {{-- 自然 --}}
-    <h2 class="title"><i class="fa-solid fa-tree"></i>自然</h2>
+    <h2 class="title">自然</h2>
+    {{-- <i class="fa-solid fa-tree"></i> --}}
     <div class="cardMain">
 
         @foreach ($nature as $nature_data)
