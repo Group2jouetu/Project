@@ -2,6 +2,10 @@
 
 @section('title', 'ランキング')
 
+@section('add_css')
+    <link rel="stylesheet" href="/css/map.css">
+@endsection
+
 @section('content')
  
 <div id="map"></div>

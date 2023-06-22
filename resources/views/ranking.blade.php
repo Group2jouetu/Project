@@ -1,6 +1,5 @@
 @extends('layout.layout')
 
-
 @section('title', 'ランキング')
 
 @section('add_css')
@@ -10,7 +9,7 @@
 @section('content')
  
     {{-- 総合ランキング --}}
-    <h2 class="title">グルメ</h2>
+    <h2 class="title">全体ランキング</h2>
     <div class="cardMain">
         
         @foreach ($ranking as $rankings)
@@ -235,7 +234,7 @@
 
 
     {{-- 遊び --}}
-    <h2 class="title">レジャースポット</h2>
+    <h2 class="title">レジャー</h2>
     {{-- <i class="fa-solid fa-parachute-box"></i> --}}
     <div class="cardMain">
 

@@ -18,17 +18,14 @@
               <li class="nav-item">
                 <a class="nav-link active" href="">Logout</a>
               </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  SNS
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="https://twitter.com/joetsu2020"><i class="fa-brands fa-twitter fa-2x" style="color: #1da1f2;"></i></a></li>
-                    <li><a class="dropdown-item" href="https://www.youtube.com/channel/UCqp0KUtWyRlwtxttvLM2A1A"><i class="fa-brands fa-youtube fa-2x" style="color: #c4302b;"></i></a></li>
-                    <li><a class="dropdown-item" href="https://page.line.me/539hgqqy?openQrModal=true"><i class="fa-brands fa-line fa-2x" style="color: #00B900;"></i></a></li>
-                </ul>
+              <li class="nav-item">
+                <div class="sns-item">
+                  <a class="dropdown-item" href="https://twitter.com/joetsu2020"><i class="fa-brands fa-twitter fa-2x" style="color: #1da1f2;"></i></a>
+                  <a class="dropdown-item" href="https://www.youtube.com/channel/UCqp0KUtWyRlwtxttvLM2A1A"><i class="fa-brands fa-youtube fa-2x" style="color: #c4302b;"></i></a>
+                  <a class="dropdown-item" href="https://page.line.me/539hgqqy?openQrModal=true"><i class="fa-brands fa-line fa-2x" style="color: #00B900;"></i></a>
+                </div>
               </li>
+
             </ul>
           </div>
         </div>

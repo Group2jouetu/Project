@@ -1,3 +1,14 @@
 ul.dropdown-menu.show {
     display: flex;
 }
+ul.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+.sns-item {
+    display: flex;
+    align-items: center;
+}
+.sns-item li{
+    padding: 1rem;
+}

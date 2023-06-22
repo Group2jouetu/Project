@@ -36,7 +36,8 @@ body {
 	/* background-color: rgb(229, 255, 0); */
 }
 
-.map:hover{
+/* タイポン作いらない部分 */
+/* .map:hover{
 background-color: #fdadad;
 }
 .bookMark:hover{
@@ -50,7 +51,7 @@ background-color: #fdadad;
 }
 .sns:hover{
 	background-color: #aaeeff;
-}
+} */
 
 .menu a{
     text-decoration: none;
