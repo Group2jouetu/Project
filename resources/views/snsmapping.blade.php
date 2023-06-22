@@ -180,14 +180,13 @@
         function pinCreate(lat, lng, pin_name, picture, genre, detail) {
             var likeButton = '<button id="likeButton">いいね</button>';
 
-            var contentString =
-                '<div id="content">' +
-                '<h3>' + pin_name + '</h3>' +
-                '<img src="{{ asset('storage/images') }}/' + picture +
-                '" alt="" style="max-height: 100px;"><br><br>' +
-                '<p>' + detail + '</p>' +
-                likeButton +
-                '</div>';
+            var contentString = `
+            <div id="content">
+                <h3>${pin_name}</h3>
+                <img src="{{ asset('storage/images') }}/${picture}" alt="" style="max-height: 100px;"><br><br>
+                <p>${detail}</p>
+                ${likeButton}
+            </div>`;
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
@@ -228,7 +227,6 @@
         }
 
         function pinColor(genre) {
-
             var color;
             //ピンのジャンル（食べ物）
             if (genre == 1) {
