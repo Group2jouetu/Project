@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\Pin;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -43,7 +44,6 @@ class SnsMappingController extends Controller
 
         // ダミーデータ
         $pin->like_count = 0;
-        // $pin->detail = "";
 
         $pin->user_id = Auth::id();
         $pin->pin_name = $request->pin_name;
@@ -54,9 +54,20 @@ class SnsMappingController extends Controller
 
         $pin->save();
 
-        // $request->session()->flash('message', '登録に成功しました。');
         session()->flash('message', '登録が完了しました。');
 
         return redirect()->back();
+    }
+
+    public function reply(Request $request)
+    {
+        // Modelを読み込む
+        $message = new Message();
+
+        $message->pin_id = $request->pin_id;
+        $message->message_title = '';
+        $message->message_body = $request->return_datail;
+
+        $message->save();
     }
 }

@@ -89,7 +89,7 @@
             // DBから取得した位置情報にピンを指す
             @isset($pins)
                 @foreach ($pins as $pin)
-                    pinCreate({{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}", "{{ $pin->picture }}",
+                    pinCreate({{ $pin->id }}, {{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}", "{{ $pin->picture }}",
                         {{ $pin->genre }}, "{{ $pin->detail }}");
                 @endforeach
             @endisset
@@ -177,16 +177,23 @@
         // function pinColor(genre, position) {
 
         // 保存済みのピンを表示する関数
-        function pinCreate(lat, lng, pin_name, picture, genre, detail) {
+        function pinCreate(id, lat, lng, pin_name, picture, genre, detail) {
             var likeButton = '<button id="likeButton">いいね</button>';
 
             var contentString = `
-            <div id="content">
-                <h3>${pin_name}</h3>
-                <img src="{{ asset('storage/images') }}/${picture}" alt="" style="max-height: 100px;"><br><br>
-                <p>${detail}</p>
-                ${likeButton}
-            </div>`;
+                <div id="content">
+                    <h3>${pin_name}</h3>
+                    <img src="{{ asset('storage/images') }}/${picture}" alt="" style="max-height: 100px;"><br><br>
+                    <p>${detail}</p>
+                    ${likeButton}
+                    <br>
+                    <form action="/messageReply" id="messageReply" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="pin_id" value="${id}">
+                        <input type="text" name="return_datail" id="title" size="30" placeholder="入力エリア" />
+                        <input type="submit" value="送信する">
+                    </form>
+                </div>
+            `;
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
@@ -197,8 +204,7 @@
                 lng: lng
             };
 
-            var color;
-            color = pinColor(genre);
+            var color = pinColor(genre);
 
             var marker = new google.maps.Marker({
                 position: position,
@@ -227,28 +233,26 @@
         }
 
         function pinColor(genre) {
-            var color;
             //ピンのジャンル（食べ物）
             if (genre == 1) {
-                color = "blue";
+                return "blue";
             }
             //ピンのジャンル（宿・ホテル）
             else if (genre == 2) {
-                color = "red";
+                return "red";
             }
             //ピンのジャンル（文化）
             else if (genre == 3) {
-                color = "black";
+                return "black";
             }
             //ピンのジャンル（遊び施設）
             else if (genre == 4) {
-                color = "white";
+                return "white";
             }
             //ピンのジャンル（自然）
             else if (genre == 5) {
-                color = "yellow";
+                return "yellow";
             }
-            return color;
         }
 
         // formタグの登録ボタンが押された時、確認画面が出るので、フォームの送信を制御
