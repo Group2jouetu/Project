@@ -2,6 +2,10 @@
 
 @section('title', 'SNSマップページ')
 
+@section('add_css')
+    <link rel="stylesheet" href="/css/map.css">
+@endsection
+
 @section('content')
 
     <div id="map"></div>
