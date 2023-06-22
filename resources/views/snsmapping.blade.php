@@ -14,14 +14,16 @@
             <span class="close">&times;</span>
             <h3>新規登録</h3>
             <form action="/snsInput" id="pinForm" method="post" enctype="multipart/form-data">
-                {{-- <form action="/snsInput" id="pinForm" method="post" enctype="multipart/form-data" onsubmit="return confirmSave()"> --}}
                 {{ csrf_field() }}
                 <input type="file" name="image" id="image-input" class="image" accept="image/*" />
                 <br>
                 {{-- 選択された画像を表示 --}}
                 <img id="preview-image" src="" style="max-width: 256px; height: auto;">
-                <p>場所の名前を入力してください</p>
-                <input type="text" name="pin_name" id="title" size="30" placeholder="テキストを入力してください。"
+                <input type="text" name="pin_name" id="title" size="30" placeholder="場所の名前を入力してください"
+                    value="" />
+                <br><br>
+
+                <input type="text" name="detail" id="detail" size="30" placeholder="口コミを入力してください"
                     value="" />
                 <br><br>
 
@@ -87,47 +89,13 @@
             // DBから取得した位置情報にピンを指す
             @isset($pins)
                 @foreach ($pins as $pin)
-                    pinCreate({{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}", "{{ $pin->picture }}");
+                    pinCreate({{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}", "{{ $pin->picture }}",
+                        {{ $pin->genre }}, "{{ $pin->detail }}");
                 @endforeach
-                function pinCreate(lat, lng, pin_name, picture) {
-                    var contentString =
-                        '<div id="content">' +
-                        '<h3>' + pin_name + '</h3>' +
-                        '<img src="{{ asset('storage/images') }}/' + picture +
-                        '" alt="" style="max-height: 100px;"><br><br>' +
-                        '<p>ここにお店の口コミを表示します。</p>' +
-                        '</div>';
-
-                    var infowindow = new google.maps.InfoWindow({
-                        content: contentString
-                    });
-
-                    var position = {
-                        lat: lat,
-                        lng: lng
-                    };
-
-                    //ピンの画像
-                    var img = "{{ asset('storage/images/pinn.png') }}";
-                    var marker = new google.maps.Marker({
-                        position: position,
-                        map: map,
-                        // icon: img,
-                        title: 'お店の位置'
-                    });
-                    marker.addListener('click', function() {
-                        // 立っているピンがある状態で他のピンをクリックすると立っていたピンの情報が消える
-                        if (click_pin) {
-                            click_pin.close();
-                        }
-                        click_pin = infowindow;
-                        infowindow.open(map, marker);
-                    });
-                }
             @endisset
 
             //mapクリック時の処理
-            map.addListener("click", function(e) {
+            map.addListener('click', function(e) {
                 // すでに立てたマーカーがあった場合、そのマーカーを削除
                 newPinReset();
 
@@ -205,6 +173,85 @@
 
             reader.readAsDataURL(file);
         });
+
+        // function pinColor(genre, position) {
+
+        // 保存済みのピンを表示する関数
+        function pinCreate(lat, lng, pin_name, picture, genre, detail) {
+            var likeButton = '<button id="likeButton">いいね</button>';
+
+            var contentString =
+                '<div id="content">' +
+                '<h3>' + pin_name + '</h3>' +
+                '<img src="{{ asset('storage/images') }}/' + picture +
+                '" alt="" style="max-height: 100px;"><br><br>' +
+                '<p>' + detail + '</p>' +
+                likeButton +
+                '</div>';
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var position = {
+                lat: lat,
+                lng: lng
+            };
+
+            var color;
+            color = pinColor(genre);
+
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                // icon: img,
+                title: 'お店の位置',
+                icon: {
+                    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                    scale: 5,
+                    fillColor: color,
+                    fillOpacity: 1,
+                    strokeWeight: 0
+                    // scaledSize: new google.maps.Size(40, 40), // マーカーのサイズ
+                    // origin: new google.maps.Point(0, 0),
+                    // anchor: new google.maps.Point(20, 40) // アイコンのアンカーポイント
+                }
+            });
+            marker.addListener('click', function() {
+                // 立っているピンがある状態で他のピンをクリックすると立っていたピンの情報が消える
+                if (click_pin) {
+                    click_pin.close();
+                }
+                click_pin = infowindow;
+                infowindow.open(map, marker);
+            });
+        }
+
+        function pinColor(genre) {
+
+            var color;
+            //ピンのジャンル（食べ物）
+            if (genre == 1) {
+                color = "blue";
+            }
+            //ピンのジャンル（宿・ホテル）
+            else if (genre == 2) {
+                color = "red";
+            }
+            //ピンのジャンル（文化）
+            else if (genre == 3) {
+                color = "black";
+            }
+            //ピンのジャンル（遊び施設）
+            else if (genre == 4) {
+                color = "white";
+            }
+            //ピンのジャンル（自然）
+            else if (genre == 5) {
+                color = "yellow";
+            }
+            return color;
+        }
 
         // formタグの登録ボタンが押された時、確認画面が出るので、フォームの送信を制御
         function dialogSubmit(event) {

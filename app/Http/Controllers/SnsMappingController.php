@@ -15,12 +15,9 @@ class SnsMappingController extends Controller
     {
 
         $pin = new Pin();
-
         $pins = $pin::all();
 
         $user = Auth::id();
-
-        dd($uu = Auth::user()->name);
 
         return view('snsmapping', ["pins" => $pins, "id" => $user]);
     }
@@ -45,11 +42,12 @@ class SnsMappingController extends Controller
         }
 
         // ダミーデータ
-        $pin->detail = "";
         $pin->like_count = 0;
+        // $pin->detail = "";
 
         $pin->user_id = Auth::id();
         $pin->pin_name = $request->pin_name;
+        $pin->detail = $request->detail;
         $pin->latitude = $request->lat;
         $pin->longitude = $request->lng;
         $pin->genre = $request->input('select_genre');
