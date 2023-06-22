@@ -4,19 +4,23 @@
 
 @extends('header')
 
+@section('add_css')
+    <link rel="stylesheet" href="/css/bookmark.css">
+@endsection
+
 @section('content')
-<!-- 旅のしおりのでも処理 -->
-@foreach($bookmarks as $bookmark)
-<tr>
-    <!-- storageフォルダに画像を入れる処理ができれば画像が表示される -->
-    <td>{{$bookmark->picture}}</td><br>
-    <td>{{$bookmark->pin_name}}</td>
-</tr>
-@endforeach
-     
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJoO2BmaGEIp_ud8Mctyd5gLDWrEYzMFA&callback=initMap"></script>
+<div class="container-fluid">
+    <div class="row">
+        <!-- 旅のしおりのでも処理 -->
+        @foreach($bookmarks as $bookmark)
+        <div class="col-4 text-center">
+            <!-- storageフォルダに画像を入れる処理ができれば画像が表示される -->
+            <img src="{{ asset('storage/images').'/'.$bookmark->picture }}" class="img-fluid" alt="" style="max-height: 100px;"><br>
+            <p>{{$bookmark->pin_name}}</p>
+        </div>
+        @endforeach
+    </div>
+</div>
 
-    <link rel="stylesheet" href="{{ asset('css/map.css') }}"> <!-- map.cssのパスが正しい場所になるように修正 -->
 @endsection
