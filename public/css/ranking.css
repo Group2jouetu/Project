@@ -49,7 +49,10 @@ li.list-group-item {
     display: flex;
     padding: 1px;
 }
-
+/* ボトムナビゲーション */
+.ranking a{
+    color: #d468c9;
+}
 @media screen and (max-width: 1024px){
     .title{
         font-size: 1.5rem; 
