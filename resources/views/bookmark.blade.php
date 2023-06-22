@@ -3,7 +3,7 @@
 @section('title', 'マップページ')
 
 @section('add_css')
-    <link rel="stylesheet" href="/css/ranking.css">
+    <link rel="stylesheet" href="/css/bookmark.css">
 @endsection
 
 @section('content')
