@@ -15,13 +15,14 @@
         @foreach ($ranking as $rankings)
 
             <div class="card">
-            {{-- 画像 --}}
-            @if ($rankings->picture === '')
-                <p>画像がありません</p>
-            @else   
-                <img src="img/{{ $rankings->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $rankings->pin_name }}">
-            @endif
             
+            {{-- 画像 --}}
+            @if ($rankings->picture === null)
+                <p class="card-text">画像がありません</p>
+            @else   
+                <img src="{{ asset('storage/images').'/'.$rankings->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $rankings->pin_name }}">
+            @endif
+
                     <ul class="list-group list-group-flush">
                             @if ($loop->first)
                                 <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $rankings->pin_name }}</h5></li>
@@ -36,7 +37,19 @@
                                 <li class="list-group-item"><h5 class="card-title">{{ $rankings->pin_name }}</h5></li>
                             @endif
                         <li class="list-group-item"><p class="card-text">{{ $rankings->detail }}</p></li>
-                        <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $rankings->like_count}}</p></li>
+                        <li class="list-group-item">
+                            <p class="card-text">
+                                <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                                {{ $rankings->like_count}} 
+                            </p>
+                                {{-- お気に入り設定されていれば --}}
+                                @foreach($bookmark as $bookmarks)
+                                    @if ($bookmarks->pin_id == $rankings->id)
+                                        <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                    @endif  
+                                @endforeach
+                        </li>
+
                     </ul>  
             </div>
 
@@ -50,7 +63,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="img/{{ $rankings->picture }}" alt="カードの画像" class="card-img-top">
+                        <img src="{{ asset('storage/images').'/'.$rankings->picture }}" alt="カードの画像" class="card-img-top">
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
@@ -72,10 +85,10 @@
 
             <div class="card">
             {{-- 画像 --}}
-                @if ($food_data->picture === '')
-                    <p>画像がありません</p>
+                @if ($food_data->picture === null)
+                    <p class="card-text">画像がありません</p>
                 @else
-                    <img src="img/{{ $food_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $food_data->pin_name }}">
+                    <img src="{{ asset('storage/images').'/'.$food_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $food_data->pin_name }}">
                 @endif
                 <ul class="list-group list-group-flush">
                     @if ($loop->first)
@@ -91,7 +104,18 @@
                         <li class="list-group-item"><h5 class="card-title">{{ $food_data->pin_name }}</h5></li>
                     @endif
                     <li class="list-group-item"><p class="card-text">{{ $food_data->detail }}</p></li>
-                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $food_data->like_count}}</p></li>
+                    <li class="list-group-item">
+                        <p class="card-text">
+                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            {{ $food_data->like_count}}
+                        </p>
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $food_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                    </li>                
                 </ul>
             </div>
             <!-- モーダルの設定 -->
@@ -104,7 +128,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="img/{{ $food_data->picture }}" alt="カードの画像" class="card-img-top">
+                        <img src="{{ asset('storage/images').'/'.$food_data->picture }}" alt="カードの画像" class="card-img-top">
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
@@ -126,10 +150,10 @@
 
             <div class="card">
             {{-- 画像 --}}
-                @if ($hotel_data->picture === '')
-                    <p>画像がありません</p>
+                @if ($hotel_data->picture === null)
+                    <p class="card-text">画像がありません</p>
                 @else
-                    <img src="img/{{ $hotel_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $hotel_data->pin_name }}">
+                    <img src="{{ asset('storage/images').'/'.$hotel_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $hotel_data->pin_name }}">
                 @endif
                 <ul class="list-group list-group-flush">
                     @if ($loop->first)
@@ -146,7 +170,18 @@
                     @endif
                     
                     <li class="list-group-item"><p class="card-text">{{ $hotel_data->detail }}</p></li>
-                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $hotel_data->like_count}}</p></li>
+                    <li class="list-group-item">
+                        <p class="card-text">
+                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            {{ $hotel_data->like_count}}
+                        </p>
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $hotel_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                    </li>                     
                 </ul>
             </div>
 
@@ -160,7 +195,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="img/{{ $hotel_data->picture }}" alt="カードの画像" class="card-img-top">
+                        <img src="{{ asset('storage/images').'/'.$hotel_data->picture }}" alt="カードの画像" class="card-img-top">
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
@@ -184,10 +219,10 @@
 
             <div class="card">
             {{-- 画像 --}}
-                @if ($culture_data->picture === '')
-                    <p>画像がありません</p>
+                @if ($culture_data->picture === null)
+                    <p class="card-text">画像がありません</p>
                 @else
-                    <img src="img/{{ $culture_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $culture_data->pin_name }}">
+                    <img src="{{ asset('storage/images').'/'.$culture_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $culture_data->pin_name }}">
                 @endif
                 
                 <ul class="list-group list-group-flush">
@@ -204,7 +239,18 @@
                         <li class="list-group-item"><h5 class="card-title">{{ $culture_data->pin_name }}</h5></li>
                     @endif
                     <li class="list-group-item"><p class="card-text">{{ $culture_data->detail }}</p></li>
-                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $culture_data->like_count}}</p></li>
+                    <li class="list-group-item">
+                        <p class="card-text">
+                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            {{ $culture_data->like_count}}
+                        </p>
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $culture_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                    </li>
                 </ul>
             </div>
 
@@ -218,7 +264,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="img/{{ $culture_data->picture }}" alt="カードの画像" class="card-img-top">
+                        <img src="{{ asset('storage/images').'/'.$culture_data->picture }}" alt="カードの画像" class="card-img-top">
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
@@ -242,10 +288,10 @@
 
             <div class="card">
             {{-- 画像 --}}
-                @if ($amusement_data->picture === '')
-                    <p>画像がありません</p>
+                @if ($amusement_data->picture === null)
+                    <p class="card-text">画像がありません</p>
                 @else
-                    <img src="img/{{ $amusement_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $amusement_data->pin_name }}">
+                    <img src="{{ asset('storage/images').'/'.$amusement_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $amusement_data->pin_name }}">
                 @endif
                 <ul class="list-group list-group-flush">
                     @if ($loop->first)
@@ -261,7 +307,18 @@
                         <li class="list-group-item"><h5 class="card-title">{{ $amusement_data->pin_name }}</h5></li>
                     @endif
                     <li class="list-group-item"><p class="card-text">{{ $amusement_data->detail }}</p></li>
-                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $amusement_data->like_count}}</p></li>
+                    <li class="list-group-item">
+                        <p class="card-text">
+                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            {{ $amusement_data->like_count}}
+                        </p>
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $amusement_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                    </li>
                 </ul>
             </div>
 
@@ -275,7 +332,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="img/{{ $amusement_data->picture }}" alt="カードの画像" class="card-img-top">
+                        <img src="{{ asset('storage/images').'/'.$amusement_data->picture }}" alt="カードの画像" class="card-img-top">
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
@@ -299,10 +356,10 @@
 
             <div class="card">
             {{-- 画像 --}}
-                @if ($amusement_data->picture === '')
-                    <p>画像がありません</p>
+                @if ($nature_data->picture === null)
+                    <p class="card-text">画像がありません</p>
                 @else                
-                    <img src="img/{{ $nature_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $nature_data->pin_name }}">
+                    <img src="{{ asset('storage/images').'/'.$nature_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#{{ $nature_data->pin_name }}">
                 @endif
 
                 <ul class="list-group list-group-flush">
@@ -319,7 +376,18 @@
                         <li class="list-group-item"><h5 class="card-title">{{ $nature_data->pin_name }}</h5></li>
                     @endif
                     <li class="list-group-item"><p class="card-text">{{ $nature_data->detail }}</p></li>
-                    <li class="list-group-item"><p class="card-text"><i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $nature_data->like_count}}</p></li>
+                    <li class="list-group-item">
+                        <p class="card-text">
+                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            {{ $nature_data->like_count}}
+                        </p>
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $nature_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                    </li>
                 </ul>
             </div>
 
@@ -333,7 +401,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="img/{{ $nature_data->picture }}" alt="カードの画像" class="card-img-top">
+                        <img src="{{ asset('storage/images').'/'.$nature_data->picture }}" alt="カードの画像" class="card-img-top">
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
