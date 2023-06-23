@@ -1,8 +1,12 @@
+p{
+    margin: 0;
+    padding: 0;
+}
 .title{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.2rem;
     margin: 1rem 0 0.2rem 15%;
 }
 /* 冠 */
@@ -33,6 +37,9 @@
     width: 15vw;
     flex-shrink: 0; 
 }
+p.card-text {
+    text-align: center;
+}
 .card-body {
     height: 22vh;
     padding: 0;
@@ -47,7 +54,8 @@ h5.card-title {
 }
 li.list-group-item {
     display: flex;
-    padding: 1px;
+    justify-content: space-between;
+    align-items: center;
 }
 /* ボトムナビゲーション */
 .ranking a{
@@ -55,7 +63,7 @@ li.list-group-item {
 }
 @media screen and (max-width: 1024px){
     .title{
-        font-size: 1.5rem; 
+        font-size: 1rem; 
         margin: 1rem 0 0.2rem 12%;
     }
     .cardMain {
@@ -75,7 +83,7 @@ li.list-group-item {
 }
 @media screen and (max-width: 768px){
     .title{
-        font-size: 1rem;
+        font-size: 0.8rem;
         margin: 1rem 0 0.2rem 10%;
     }
     .cardMain {
