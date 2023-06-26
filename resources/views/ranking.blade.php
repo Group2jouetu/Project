@@ -7,7 +7,93 @@
 @endsection
 
 @section('content')
- 
+
+    {{-- 検索 --}}
+    <div class="input-group mb-3">
+        <form action="{{ route('ranking.index') }}" method="GET">
+            <input type="text" name="search" class="form-control" placeholder="観光地名" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">検索</button>
+        </form>
+    </div>
+
+    
+        
+    {{-- 検索結果ランキング --}}
+    <div class="cardMain">
+        
+        @foreach ($searchRanking as $searchRankings)
+
+        @if (isset($searchRankings->pin_name))
+            <div class="card">
+            
+            {{-- 画像 --}}
+            @if ($searchRankings->picture === null)
+                <p class="card-text">画像がありません</p>
+            @else   
+                <img src="{{ asset('storage/images').'/'.$searchRankings->picture }}" alt="カードの画像" class="card-img-top">
+            @endif
+
+                    <ul class="list-group list-group-flush">
+                            @if ($loop->first)
+                                <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $searchRankings->pin_name }}</h5></li>
+                            @endif
+                            @if ($loop->iteration === 2)
+                                <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #808080;"></i>{{ $searchRankings->pin_name }}</h5></li>
+                            @endif
+                            @if ($loop->iteration === 3)
+                                <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #8c4841;"></i>{{ $searchRankings->pin_name }}</h5></li>
+                            @endif
+                            @if ($loop->iteration >= 4)
+                                <li class="list-group-item"><h5 class="card-title">{{ $searchRankings->pin_name }}</h5></li>
+                            @endif
+                            <li class="list-group-item">
+                                <p class="card-text">
+                                    <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                                    {{ $searchRankings->like_count}} 
+                                </p>
+                                {{-- お気に入り設定されていれば --}}
+                                @foreach($bookmark as $bookmarks)
+                                    @if ($bookmarks->pin_id == $searchRankings->id)
+                                        <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                    @endif  
+                                @endforeach
+                            </li>
+                            {{-- 詳細 --}}
+                            <li class="list-group-item detailIcon"><i class="fa-solid fa-ellipsis" data-bs-toggle="modal" data-bs-target="#example{{ $searchRankings->id }}"></i></li>
+                        </ul>  
+            </div>
+
+            <!-- モーダルの設定 -->
+            <div class="modal fade" id="example{{ $searchRankings->id }}" tabindex="-1" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $searchRankings->pin_name }}
+                                <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $searchRankings->like_count }}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="{{ asset('storage/images').'/'.$searchRankings->picture }}" alt="カードの画像" class="card-img-top">
+                                <li class="list-group-item"><p class="card-text">{{ $searchRankings->detail }}</p></li>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    </div><!-- /.modal-footer -->
+                </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        
+        @else
+
+        
+            
+        @endif
+
+        @endforeach
+        
+    </div>
+    
+
     {{-- 総合ランキング --}}
     <h2 class="title">全体ランキング</h2>
     <div class="cardMain">
