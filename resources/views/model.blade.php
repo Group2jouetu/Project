@@ -11,36 +11,257 @@
 <div id="map"></div>
 <div id="log"></div>
 <script src="{{ asset('/js/modelFunction.js') }}"></script>
+<style>
+.p {
+    margin: 0;
+    padding: 0;
+}
 
+.title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 1rem 0 0.2rem 15%;
+}
 
+/* 冠 */
+.crown {
+    display: flex;
+    justify-content: space-around;
+}
+
+.crown img {
+    height: 8vh;
+    width: 5vw;
+}
+
+/* カード */
+.cardMain {
+    display: flex;
+    width: 70vw;
+    margin: 0 auto;
+    overflow-x: scroll;
+    /* IE, Edge 対応 */
+    -ms-overflow-style: none;
+    /* Firefox 対応 */
+    scrollbar-width: none;
+}
+
+.cardMain::-webkit-scrollbar {
+    display:none;
+}
+
+.card {
+    margin: 0.2rem;
+    width: 15vw;
+}
+
+p.card-text {
+    text-align: center;
+}
+
+.card-body {
+    height: 22vh;
+    padding: 0;
+}
+
+.card-title,
+.card-text {
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+
+h5.card-title {
+    margin: 0;
+}
+
+li.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ボトムナビゲーション */
+.ranking a {
+    color: #ed5353;
+}
+
+@media screen and (max-width: 1024px) {
+    .card-container {
+        display: flex;
+    }
+    .title {
+        font-size: 1rem;
+        margin: 1rem 0 0.2rem 12%;
+    }
+
+    .cardMain {
+        width: 75vw;
+    }
+
+    .card {
+        width: 20vw;
+    }
+
+    .card-title,
+    .card-text {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card-container {
+        display: flex;
+    }
+    .title {
+        font-size: 0.8rem;
+        margin: 1rem 0 0.2rem 10%;
+    }
+
+    .cardMain {
+        width: 80vw;
+    }
+
+    .card {
+        width: 25vw;
+    }
+
+    .card-title,
+    .card-text {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card-container {
+        display: flex;
+    }
+    .title {
+        font-size: 0.7rem;
+        margin: 1rem 0 0.2rem 8%;
+    }
+
+    .cardMain {
+        width: 90vw;
+    }
+
+    .card {
+        width: 30vw;
+    }
+
+    .card-title,
+    .card-text {
+        font-size: 0.6rem;
+    }
+}
+</style>
+
+<h4>h4. Bootstrap heading</h4>
 <div class="card-container">
-  <div class="card">
-    <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    
+  <div class="cardMain">
+    <div class="card">
+      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
+        <p class="card-text">概要</p>
+        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <!-- 2番目のカードの内容 -->
+      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
+        <p class="card-text">概要</p>
+        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+      </div>
+    </div>
+
+    <div class="card ml-auto">
+      <!-- 3番目のカードの内容 -->
+      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
+        <p class="card-text">概要</p>
+        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+      </div>
+    </div>
     </div>
   </div>
+</div>
 
-  <div class="card">
-    <!-- 2番目のカードの内容 -->
+<h4>h4. Bootstrap heading</h4>
+<div class="card-container">
+    
+  <div class="cardMain">
+    <div class="card">
     <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <div class="card-body">
+        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
+        <p class="card-text">概要</p>
+        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+      </div>
+    </div>
 
+    <div class="card">
+      <!-- 2番目のカードの内容 -->
+      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
+        <p class="card-text">概要</p>
+        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+      </div>
+    </div>
+
+    <div class="card ml-auto">
+      <!-- 3番目のカードの内容 -->
+      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
+        <p class="card-text">概要</p>
+        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+      </div>
+    </div>
+    </div>
   </div>
-
-  <div class="card">
-    <!-- 3番目のカードの内容 -->
+</div>
+<h4>h4. Bootstrap heading</h4>
+<div class="card-container">
+    
+  <div class="cardMain">
+    <div class="card">
     <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <div class="card-body">
+        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
+        <p class="card-text">概要</p>
+        <a class="btn btn-primary" href="#" role="button" onclick="openModalCourse()">ルートを表示</a>
+      </div>
+    </div>
 
+    <div class="card">
+      <!-- 2番目のカードの内容 -->
+      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
+        <p class="card-text">概要</p>
+        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+      </div>
+    </div>
+
+    <div class="card ml-auto">
+      <!-- 3番目のカードの内容 -->
+      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
+        <p class="card-text">概要</p>
+        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+      </div>
+    </div>
+    </div>
   </div>
 </div>
 
