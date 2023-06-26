@@ -50,3 +50,8 @@
   input{
       margin-bottom: 15px;
   }
+
+  /* ボトムナビゲーション */
+  .map a{
+    color: #ed5353;
+    }
