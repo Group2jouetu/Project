@@ -65,10 +65,14 @@ class SnsMappingController extends Controller
         // Modelを読み込む
         $message = new Message();
 
+
+        $message->user_id = Auth::id();
         $message->pin_id = $request->pin_id;
         $message->message_title = '';
         $message->message_body = $request->return_datail;
 
         $message->save();
+
+        return redirect()->back();
     }
 }

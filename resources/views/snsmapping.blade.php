@@ -1,6 +1,6 @@
 @extends('layout.layout')
 
-@extends('header')
+{{-- @extends('header') --}}
 
 @section('title', 'SNSマップページ')
 
@@ -17,6 +17,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3>新規登録</h3>
+            <div id="alert" style="display: none">入力されていない項目があります</div>
             <form action="/snsInput" id="pinForm" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input type="file" name="image" id="image-input" class="image" accept="image/*" />
@@ -44,8 +45,9 @@
                 <input type="hidden" name="lng" id="get-lng" />
                 <br>
                 <input type="reset" value="キャンセル" onclick="newPinReset()">
-                <input type="submit" value="登録" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    onclick="dialogSubmit(event)">
+                {{-- <input type="submit" value="登録" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    onclick="dialogSubmit(event)"> --}}
+                <input type="submit" value="登録" onclick="event.preventDefault(); dialogSubmit(event)">
             </form>
         </div>
     </div>
@@ -191,7 +193,8 @@
                     <p>${detail}</p>
                     
                     <br>
-                    <form action="/messageReply" id="messageReply" method="post" enctype="multipart/form-data">
+                    <form action="/messageReply" id="messageReply" method="post">
+                        @csrf
                         <input type="hidden" name="pin_id" value="${id}">
                         <input type="text" name="return_datail" id="title" size="30" placeholder="入力エリア" />
                         <input type="submit" value="送信する">
@@ -261,12 +264,26 @@
 
         // formタグの登録ボタンが押された時、確認画面が出るので、フォームの送信を制御
         function dialogSubmit(event) {
+            var name = document.getElementById("title");
+            var detail = document.getElementById("detail");
+            var alert = document.getElementById('alert');
+
+            if (name.value === "" || detail.value === "") {
+                alert.textContent = "※入力されていない項目があります。";
+                alert.style.display = "block";
+                // event.preventDefault();
+            } else {
+                var modalElement = bootstrap.Modal(document.getElementById("#exampleModal"));
+                var bootstrapModal = new bootstrap.Modal(modalElement);
+                bootstrapModal.show();
+            }
+
             // フォームの送信を一旦止める
             event.preventDefault();
+
         }
 
         function saveAction() {
-
             // フォームの送信を再開
             document.getElementById("pinForm").submit();
         }
