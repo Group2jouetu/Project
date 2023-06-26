@@ -83,10 +83,6 @@ li.list-group-item {
     align-items: center;
 }
 
-/* ボトムナビゲーション */
-.ranking a {
-    color: #ed5353;
-}
 
 @media screen and (max-width: 1024px) {
     .card-container {
