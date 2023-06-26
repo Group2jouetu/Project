@@ -12,6 +12,38 @@
 <div id="log"></div>
 <script src="{{ asset('/js/modelFunction.js') }}"></script>
 
+
+<div class="card-container">
+  <div class="card">
+    <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <!-- 2番目のカードの内容 -->
+    <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+  </div>
+
+  <div class="card">
+    <!-- 3番目のカードの内容 -->
+    <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+  </div>
+</div>
+
 <div id="buttonContainer" class="button-container"></div>
 <!-- モデルコース機能 -->
 <div id="button-container" style="display: none;"></div> <!-- ボタンを表示するコンテナ -->
