@@ -18,22 +18,7 @@ class RankingController extends Controller
                     ->orderBy('like_count', 'desc')
                     ->get();
 
-
-        // ランキングいいね数
-        $rankingLike = DB::table('pins')
-                    ->join('bookmarks', 'pins.id', '=', 'bookmarks.pin_id')
-                    ->select('pins.id', DB::raw('count(*) as count'))
-                    ->groupBy('pins.id')
-                    ->orderBy('count', 'desc')
-                    ->get();
-
-        // 取得したいいね数を更新する
-        foreach ($rankingLike as $like) {
-            RankingLike::where('id', $like->id)->update([
-                'like_count' => $like->count
-            ]);
-        }
-
+        // var_dump($ranking);
         // グルメランキング取得
         $food = DB::table('pins')
                     ->where('genre', 1)
@@ -54,9 +39,9 @@ class RankingController extends Controller
 
         // 遊びランキング取得
         $amusement = DB::table('pins')
-                        ->where('genre', 4)
-                        ->orderBy('like_count', 'desc')
-                        ->get();
+                    ->where('genre', 4)
+                    ->orderBy('like_count', 'desc')
+                    ->get();
 
         // 自然ランキング取得
         $nature = DB::table('pins')
@@ -66,9 +51,25 @@ class RankingController extends Controller
 
         // ブックマークされている観光地を取得
         $bookmark = DB::table('pins')
-                ->join('bookmarks', 'pins.id', '=', 'bookmarks.pin_id')
-                ->where('bookmarks.user_id', $user->id)
-                ->get();
+                    ->join('bookmarks', 'pins.id', '=', 'bookmarks.pin_id')
+                    ->where('bookmarks.user_id', $user->id)
+                    ->get();
+                    
+        // ランキングいいね数
+        $rankingLike = DB::table('pins')
+                    ->join('bookmarks', 'pins.id', '=', 'bookmarks.pin_id')
+                    ->select('pins.id', DB::raw('count(*) as count'))
+                    ->groupBy('pins.id')
+                    ->orderBy('count', 'desc')
+                    ->get();
+        // var_dump($rankingLike);
+        
+        // 取得したいいね数を更新する
+        foreach ($rankingLike as $like) {
+            RankingLike::where('id', $like->id)->update([
+                'like_count' => $like->count
+            ]);
+        }
                 
         return view('ranking', [
             'ranking' => $ranking,

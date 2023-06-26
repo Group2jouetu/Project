@@ -22,6 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// ログアウト
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

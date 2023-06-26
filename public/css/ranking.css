@@ -57,6 +57,10 @@ li.list-group-item {
     justify-content: space-between;
     align-items: center;
 }
+li.list-group-item.detailIcon {
+    display: flex;
+    justify-content: flex-end;
+}
 /* ボトムナビゲーション */
 .ranking a{
     color: #ed5353;
