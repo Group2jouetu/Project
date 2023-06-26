@@ -13,7 +13,9 @@ class Pin extends Model
     // 使用するテーブルの指定
     protected $table = 'pins';
     // 入力させないカラム
+
     protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
+
     // 論理削除（ソフトデリートを使用）
     use SoftDeletes;
 }

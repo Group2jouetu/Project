@@ -1,8 +1,10 @@
 @extends('layout.layout')
 
-@extends('header')
-
 @section('title', 'ランキング')
+
+@section('add_css')
+    <link rel="stylesheet" href="/css/model.css">
+@endsection
 
 @section('content')
  
