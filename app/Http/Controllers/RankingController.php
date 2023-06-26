@@ -8,10 +8,26 @@ use Illuminate\Http\Request;
 
 class RankingController extends Controller
 {
-    public function index () 
+    public function index (Request $request) 
     {
         // ログインしているユーザの情報取得
         $user = Auth::user();
+
+        $query = DB::table('pins');
+
+        if ($request->has('search')) {
+            $search = $request->get('search');
+            $query->where('pin_name', 'like', '%' . $search . '%');
+        }
+        
+        $searchRanking = $query->orderBy('like_count', 'desc')->get();
+        
+        if ($searchRanking->isEmpty()) {
+            // 検索結果がない場合の処理を記述する
+            // 例えば、エラーメッセージを表示するか、デフォルトの値を設定するなど
+            return '検索結果はありません。';
+        }
+        var_dump($searchRanking);
 
         // 総合ランキング取得
         $ranking = DB::table('pins')
@@ -72,6 +88,7 @@ class RankingController extends Controller
         }
                 
         return view('ranking', [
+            'searchRanking' => $searchRanking,
             'ranking' => $ranking,
             'food' => $food,
             'hotel' => $hotel,

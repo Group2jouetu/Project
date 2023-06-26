@@ -12,9 +12,9 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="profile">プロフィール</a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a class="nav-link active" href="register">ログイン</a>
-              </li>
+              </li> --}}
               <li class="nav-item">
                 <a class="nav-link active" href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
               </li>
