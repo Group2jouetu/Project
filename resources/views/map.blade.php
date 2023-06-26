@@ -2,7 +2,9 @@
 
 @section('title', 'マップページ')
 
-@extends('header')
+@section('add_css')
+    <link rel="stylesheet" href="/css/map.css">
+@endsection
 
 @section('content')
 

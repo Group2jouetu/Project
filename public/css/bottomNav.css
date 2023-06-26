@@ -1,5 +1,6 @@
 body { 
-	padding: 0 0 3rem 0rem;
+	padding: 0 0 4rem 0rem;
+	background-color: #f8f8f8;
  }
 *{
     margin: 0;
@@ -30,8 +31,28 @@ body {
     background-color: #fff;
 }
 .menu li:hover{
-    opacity: 0.7;
+    /* opacity: 0.7; */
+	/* background-color: rgb(229, 255, 0); */
+	/* background-color: rgb(229, 255, 0); */
 }
+
+/* タイポン作いらない部分 */
+/* .map:hover{
+background-color: #fdadad;
+}
+.bookMark:hover{
+	background-color: #FFFB97;
+}
+.model:hover{
+	background-color:#AAFFB3;
+}
+.ranking:hover{
+	background-color: #FFB7F8;
+}
+.sns:hover{
+	background-color: #aaeeff;
+} */
+
 .menu a{
     text-decoration: none;
     color: #666;

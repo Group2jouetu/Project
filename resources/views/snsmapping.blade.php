@@ -2,7 +2,9 @@
 
 @section('title', 'SNSマップページ')
 
-@extends('header')
+@section('add_css')
+    <link rel="stylesheet" href="/css/snsmapping.css">
+@endsection
 
 @section('content')
 
