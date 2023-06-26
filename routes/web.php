@@ -39,24 +39,22 @@ require __DIR__ . '/auth.php';
 
 
 // SNSMapping
-// Route::get('smap', function () {
-//     return view('snsmapping');
-// });
-// Route::get('/snsInput', [SnsMappingController::class, 'index']);
 Route::get('/smap', [SnsMappingController::class, 'index']);
 Route::post('/snsInput', [SnsMappingController::class, 'store']);
+Route::post('/messageReply', [SnsMappingController::class, 'reply']);
+
 //マップ
 Route::get('/map', 'App\Http\Controllers\BookmarkController@map');
 
 //旅のしおり
 Route::middleware('auth')->group(function () {
     Route::get('/bookmark', 'App\Http\Controllers\BookmarkController@index');
-    Route::post('/bookmark','App\Http\Controllers\BookmarkController@create');
-    Route::delete('/bookmark','App\Http\Controllers\BookmarkController@delete');
+    Route::post('/bookmark', 'App\Http\Controllers\BookmarkController@create');
+    Route::delete('/bookmark', 'App\Http\Controllers\BookmarkController@delete');
 });
 
 // モデルコース
 Route::get('model', function () {
     return view('model');
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
