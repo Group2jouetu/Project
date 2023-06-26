@@ -10,14 +10,18 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="profile">Profile</a>
+                <a class="nav-link active" aria-current="page" href="profile">プロフィール</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="register">Login</a>
+                <a class="nav-link active" href="register">ログイン</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="">Logout</a>
+                <a class="nav-link active" href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
               </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+              
               <li class="nav-item">
                 <div class="sns-item">
                   <a class="dropdown-item" href="https://twitter.com/joetsu2020"><i class="fa-brands fa-twitter fa-2x" style="color: #1da1f2;"></i></a>
