@@ -167,7 +167,7 @@ li.list-group-item {
       <div class="card-body">
         <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
         <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+        <a class="btn btn-primary" href="#" role="button"onclick="createTogglePinsFunction(pins);">ルートを表示</a>
       </div>
     </div>
 
@@ -238,7 +238,7 @@ li.list-group-item {
       <div class="card-body">
         <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
         <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button" onclick="openModalCourse()">ルートを表示</a>
+        <a class="btn btn-primary" href="#" role="button" onclick="openModalCourse(button1)">ルートを表示</a>
       </div>
     </div>
 
@@ -343,6 +343,7 @@ function initMap() {
 }
 
 function toggleModelCourse() {
+
     buttonContainer = document.getElementById('button-container');
     mapContainer = document.getElementById('map-container');
     
@@ -357,6 +358,7 @@ function toggleModelCourse() {
         mapContainer.style.display = 'block';
         clearModelCourse();
     }
+  
 }
 
 function openModelCourse() {
@@ -365,6 +367,7 @@ function openModelCourse() {
 
     var buttons = [
         {
+            id: 'button1',
             label: '穴場の神秘&パワースポットツアー',
             image: '/img/samplePicture.jpg',
             pins: [
@@ -433,6 +436,7 @@ function openModelCourse() {
         },
     ];
 
+    createTogglePinsFunction(buttons); 
 
     for (var i = 0; i < buttons.length; i++) {
     var button = document.createElement('button');
@@ -552,6 +556,8 @@ function clearModelCourse() {
 }
 
 initMap();
+toggleModelCourse();
+
 </script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJoO2BmaGEIp_ud8Mctyd5gLDWrEYzMFA&callback=initMap"></script>
