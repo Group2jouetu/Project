@@ -59,6 +59,7 @@ class SnsMappingController extends Controller
         return redirect()->back();
     }
 
+    // メッセージ登録処理
     public function reply(Request $request)
     {
         // Modelを読み込む

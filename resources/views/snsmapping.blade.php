@@ -93,7 +93,8 @@
             // DBから取得した位置情報にピンを指す
             @isset($pins)
                 @foreach ($pins as $pin)
-                    pinCreate({{ $pin->id }}, {{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}", "{{ $pin->picture }}",
+                    pinCreate({{ $pin->id }}, {{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}",
+                        "{{ $pin->picture }}",
                         {{ $pin->genre }}, "{{ $pin->detail }}");
                 @endforeach
             @endisset
@@ -182,14 +183,13 @@
 
         // 保存済みのピンを表示する関数
         function pinCreate(id, lat, lng, pin_name, picture, genre, detail) {
-            var likeButton = '<button id="likeButton">いいね</button>';
 
             var contentString = `
                 <div id="content">
                     <h3>${pin_name}</h3>
                     <img src="{{ asset('storage/images') }}/${picture}" alt="" style="max-height: 100px;"><br><br>
                     <p>${detail}</p>
-                    ${likeButton}
+                    
                     <br>
                     <form action="/messageReply" id="messageReply" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="pin_id" value="${id}">
@@ -266,6 +266,7 @@
         }
 
         function saveAction() {
+
             // フォームの送信を再開
             document.getElementById("pinForm").submit();
         }
