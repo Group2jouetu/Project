@@ -1,7 +1,5 @@
 @extends('layout.layout')
 
-{{-- @extends('header') --}}
-
 @section('title', 'SNSマップページ')
 
 @section('add_css')
