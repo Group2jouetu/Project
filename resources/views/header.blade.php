@@ -10,13 +10,13 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="profile">プロフィール</a>
+                <a class="nav-link active" aria-current="page" href="profile">PROFILE</a>
               </li>
               {{-- <li class="nav-item">
                 <a class="nav-link active" href="register">ログイン</a>
               </li> --}}
               <li class="nav-item">
-                <a class="nav-link active" href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
+                <a class="nav-link active" href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>
               </li>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
