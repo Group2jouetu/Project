@@ -9,150 +9,10 @@
 @section('content')
  
 <div id="map"></div>
+<!-- id=logでモデルコースの所要時間を表示 -->
 <div id="log"></div>
+<!-- ↓使ってなさそう -->
 <script src="{{ asset('/js/modelFunction.js') }}"></script>
-<style>
-.p {
-    margin: 0;
-    padding: 0;
-}
-
-.title {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 1.2rem;
-    margin: 1rem 0 0.2rem 15%;
-}
-
-/* 冠 */
-.crown {
-    display: flex;
-    justify-content: space-around;
-}
-
-.crown img {
-    height: 8vh;
-    width: 5vw;
-}
-
-/* カード */
-.cardMain {
-    display: flex;
-    width: 70vw;
-    margin: 0 auto;
-    overflow-x: scroll;
-    /* IE, Edge 対応 */
-    -ms-overflow-style: none;
-    /* Firefox 対応 */
-    scrollbar-width: none;
-}
-
-.cardMain::-webkit-scrollbar {
-    display:none;
-}
-
-.card {
-    margin: 0.2rem;
-    width: 15vw;
-}
-
-p.card-text {
-    text-align: center;
-}
-
-.card-body {
-    height: 22vh;
-    padding: 0;
-}
-
-.card-title,
-.card-text {
-    font-size: 1.2rem;
-    margin: 0;
-    padding: 0;
-}
-
-h5.card-title {
-    margin: 0;
-}
-
-li.list-group-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-@media screen and (max-width: 1024px) {
-    .card-container {
-        display: flex;
-    }
-    .title {
-        font-size: 1rem;
-        margin: 1rem 0 0.2rem 12%;
-    }
-
-    .cardMain {
-        width: 75vw;
-    }
-
-    .card {
-        width: 20vw;
-    }
-
-    .card-title,
-    .card-text {
-        font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .card-container {
-        display: flex;
-    }
-    .title {
-        font-size: 0.8rem;
-        margin: 1rem 0 0.2rem 10%;
-    }
-
-    .cardMain {
-        width: 80vw;
-    }
-
-    .card {
-        width: 25vw;
-    }
-
-    .card-title,
-    .card-text {
-        font-size: 0.8rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .card-container {
-        display: flex;
-    }
-    .title {
-        font-size: 0.7rem;
-        margin: 1rem 0 0.2rem 8%;
-    }
-
-    .cardMain {
-        width: 90vw;
-    }
-
-    .card {
-        width: 30vw;
-    }
-
-    .card-title,
-    .card-text {
-        font-size: 0.6rem;
-    }
-}
-</style>
 
 <h4>h4. Bootstrap heading</h4>
 <div class="card-container">
@@ -161,9 +21,7 @@ li.list-group-item {
     <div class="card">
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
-        <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+        <p id="model1" class="card-text">概要</p>
       </div>
     </div>
 
@@ -171,9 +29,7 @@ li.list-group-item {
       <!-- 2番目のカードの内容 -->
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
-        <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+        <p id="model2" class="card-text">概要</p>
       </div>
     </div>
 
@@ -181,9 +37,7 @@ li.list-group-item {
       <!-- 3番目のカードの内容 -->
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
-        <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+        <p id="model3" class="card-text">概要</p>
       </div>
     </div>
     </div>
@@ -197,9 +51,7 @@ li.list-group-item {
     <div class="card">
     <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
-        <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+        <p id="model4" class="card-text">概要</p>
       </div>
     </div>
 
@@ -207,9 +59,7 @@ li.list-group-item {
       <!-- 2番目のカードの内容 -->
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
-        <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+        <p id="model5" class="card-text">概要</p>
       </div>
     </div>
 
@@ -217,9 +67,7 @@ li.list-group-item {
       <!-- 3番目のカードの内容 -->
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
-        <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+        <p id="model6" class="card-text">概要</p>
       </div>
     </div>
     </div>
@@ -232,9 +80,7 @@ li.list-group-item {
     <div class="card">
     <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
-        <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button" onclick="openModalCourse()">ルートを表示</a>
+        <p id="model7" class="card-text">概要</p>
       </div>
     </div>
 
@@ -242,9 +88,7 @@ li.list-group-item {
       <!-- 2番目のカードの内容 -->
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
-        <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+        <p id="model8" class="card-text">概要</p>
       </div>
     </div>
 
@@ -266,8 +110,6 @@ li.list-group-item {
 <div id="button-container" style="display: none;"></div> <!-- ボタンを表示するコンテナ -->
 <div id="map-container"></div>
 
-<button onclick="toggleModelCourse();">モデルコース</button>
-
 <script>
 var map;
 var modelCourseEnabled = false;
@@ -282,83 +124,15 @@ function initMap() {
         zoom: 12
     });
 
-    var markerPosition = {lat: 37.1478, lng: 138.236};
-    var markerPosition2 = {lat: 37.152780, lng: 138.258531};
-
-    var marker = new google.maps.Marker({
-        position: markerPosition,
-        map: map,
-        title: 'お店の位置'
-    });
-
-    var marker2 = new google.maps.Marker({
-        position: markerPosition2,
-        map: map,
-        title: 'お店の位置2'
-    });
 
     directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(map);
 
-    var request = {
-        origin: markerPosition,
-        destination: markerPosition2,
-        travelMode: google.maps.TravelMode.DRIVING
-    };
-
-    var directionsService = new google.maps.DirectionsService();
-    directionsService.route(request, function(response, status) {
-        if (status === google.maps.DirectionsStatus.OK) {
-            directionsRenderer.setDirections(response);
-        } else {
-            window.alert('ルートの取得に失敗しました。');
-        }
-    });
-
-    var contentString =
-        '<div id="content">' +
-        '<h3>お店の口コミ</h3>' +
-        '<p>ここにお店の口コミを表示します。</p>' +
-        '</div>';
-
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
-
-    marker.addListener('click', function() {
-        infowindow.open(map, marker);
-    });
-
-    marker2.addListener('click', function() {
-        infowindow.open(map, marker2);
-    });
-
     google.maps.event.addListener(map, 'click', function(event) {
         clickListener(event, map);
     });
-}
 
-function toggleModelCourse() {
-    buttonContainer = document.getElementById('button-container');
-    mapContainer = document.getElementById('map-container');
-    
-    modelCourseEnabled = !modelCourseEnabled;
-
-    if (modelCourseEnabled) {
-        buttonContainer.style.display = 'block';
-        mapContainer.style.display = 'none';
-        openModelCourse();
-    } else {
-        buttonContainer.style.display = 'none';
-        mapContainer.style.display = 'block';
-        clearModelCourse();
-    }
-}
-
-function openModelCourse() {
-    var buttonContainer = document.getElementById('button-container');
-    buttonContainer.innerHTML = '';
-
+    //初期配置テスト
     var buttons = [
         {
             label: '穴場の神秘&パワースポットツアー',
@@ -431,21 +205,33 @@ function openModelCourse() {
 
 
     for (var i = 0; i < buttons.length; i++) {
-    var button = document.createElement('button');
-    button.textContent = buttons[i].label;
+        var h5 = document.createElement('h5');
+        h5.className = 'card-title';
+        h5.textContent = buttons[i].label;
 
-    var image = document.createElement('img');
-    image.src = buttons[i].image;
-    image.style.width = '100px'; // 必要に応じて画像のサイズを調整してください
+        var br = document.createElement('br');
+        var button = document.createElement('button');
+        button.id = 'page-top';
+        button.className = 'btn btn-primary';
+        button.textContent = 'ルート表示';
+        //button.textContent = buttons[i].label;
 
-    var container = document.createElement('div');
-    container.appendChild(button);
-    container.appendChild(image);
+        //var image = document.createElement('img');
+        //image.src = buttons[i].image;
+        //image.style.width = '100px'; // 必要に応じて画像のサイズを調整してください
 
-    button.addEventListener('click', createTogglePinsFunction(buttons[i].pins));
-    buttonContainer.appendChild(container);
-}
-    clearModelCourse(); // 前回のピンとルートをクリア
+        var model_button = document.getElementById(`model${i + 1}`);
+        model_button.before(h5);
+        model_button.after(br);
+        model_button.after(button);
+
+        //var container = document.createElement('div');
+        //container.appendChild(button);
+        //container.appendChild(image);
+
+        button.addEventListener('click', createTogglePinsFunction(buttons[i].pins));
+        //buttonContainer.appendChild(container);
+    }
 }
 
 function clearModelCourse() {
@@ -464,7 +250,7 @@ function clearModelCourse() {
     directionsRenderer.setDirections({ routes: [] });
 }
 
-
+//モデルコースのピンを立てる関数
 function createTogglePinsFunction(pins) {
     var logElement = document.getElementById('log');
     var isMarkersVisible = false;
