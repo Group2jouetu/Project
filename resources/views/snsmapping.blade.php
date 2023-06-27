@@ -15,7 +15,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3>新規登録</h3>
-            <div id="alert" style="display: none">入力されていない項目があります</div>
+            <div id="alert" style="display: none; color:red">※入力されていない項目があります</div>
             <form action="/snsInput" id="pinForm" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input type="file" name="image" id="image-input" class="image" accept="image/*" />
@@ -199,6 +199,8 @@
                     </form>
                 </div>
             `;
+            
+            contentString += contetnMessage(id);
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
@@ -235,6 +237,14 @@
                 click_pin = infowindow;
                 infowindow.open(map, marker);
             });
+        }
+
+        function contetnMessage(id){
+            @foreach($messages as $message)
+                if ({{$message->pin_id}} === id){
+                    return "<p>{{ $message->message_body }}</p>";
+                }
+            @endforeach
         }
 
         function pinColor(genre) {
