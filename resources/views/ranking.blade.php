@@ -34,23 +34,23 @@
                 
                     {{-- 画像 --}}
                     @if ($searchRankings->picture === null)
-                        <p class="card-text">画像がありません</p>
+                        <p class="card-text card-img-top">画像がありません</p>
                     @else   
                         <img src="{{ asset('storage/images').'/'.$searchRankings->picture }}" alt="カードの画像" class="card-img-top">
                     @endif
 
                             <ul class="list-group list-group-flush">
                                     @if ($loop->first)
-                                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $searchRankings->rank }}位：{{ $searchRankings->pin_name }}</h5></li>
+                                        <li class="list-group-item"><h5 class="card-title text-truncate"><i class="fa-solid fa-crown" style="color: #e7e00d;"></i>{{ $searchRankings->rank }}位：{{ $searchRankings->pin_name }}</h5></li>
                                     @endif
                                     @if ($loop->iteration === 2)
-                                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #808080;"></i>{{ $searchRankings->rank }}位：{{ $searchRankings->pin_name }}</h5></li>
+                                        <li class="list-group-item"><h5 class="card-title text-truncate"><i class="fa-solid fa-crown" style="color: #808080;"></i>{{ $searchRankings->rank }}位：{{ $searchRankings->pin_name }}</h5></li>
                                     @endif
                                     @if ($loop->iteration === 3)
-                                        <li class="list-group-item"><h5 class="card-title"><i class="fa-solid fa-crown" style="color: #8c4841;"></i>{{ $searchRankings->rank }}位：{{ $searchRankings->pin_name }}</h5></li>
+                                        <li class="list-group-item"><h5 class="card-title text-truncate"><i class="fa-solid fa-crown" style="color: #8c4841;"></i>{{ $searchRankings->rank }}位：{{ $searchRankings->pin_name }}</h5></li>
                                     @endif
                                     @if ($loop->iteration >= 4)
-                                        <li class="list-group-item"><h5 class="card-title">{{ $searchRankings->rank }}位：{{ $searchRankings->pin_name }}</h5></li>
+                                        <li class="list-group-item"><h5 class="card-title text-truncate">{{ $searchRankings->rank }}位：{{ $searchRankings->pin_name }}</h5></li>
                                     @endif
                                     <li class="list-group-item">
                                         <p class="card-text">
@@ -264,7 +264,7 @@
                 @if ($hotel_data->picture === null)
                     <p class="card-text">画像がありません</p>
                 @else
-                    <img src="{{ asset('storage/images').'/'.$hotel_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#example{{ $hotel_data->id }}">
+                    <img src="{{ asset('storage/images').'/'.$hotel_data->picture }}" alt="カードの画像" class="card-img-top">
                 @endif
                 <ul class="list-group list-group-flush">
                     @if ($loop->first)
@@ -342,7 +342,7 @@
                 @if ($culture_data->picture === null)
                     <p class="card-text">画像がありません</p>
                 @else
-                    <img src="{{ asset('storage/images').'/'.$culture_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#example{{ $culture_data->id }}">
+                    <img src="{{ asset('storage/images').'/'.$culture_data->picture }}" alt="カードの画像" class="card-img-top">
                 @endif
                 
                 <ul class="list-group list-group-flush">
@@ -421,7 +421,7 @@
                 @if ($amusement_data->picture === null)
                     <p class="card-text">画像がありません</p>
                 @else
-                    <img src="{{ asset('storage/images').'/'.$amusement_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#example{{ $amusement_data->id }}">
+                    <img src="{{ asset('storage/images').'/'.$amusement_data->picture }}" alt="カードの画像" class="card-img-top">
                 @endif
                 <ul class="list-group list-group-flush">
                     @if ($loop->first)
@@ -499,7 +499,7 @@
                 @if ($nature_data->picture === null)
                     <p class="card-text">画像がありません</p>
                 @else                
-                    <img src="{{ asset('storage/images').'/'.$nature_data->picture }}" alt="カードの画像" class="card-img-top" data-bs-toggle="modal" data-bs-target="#example{{ $nature_data->id }}">
+                    <img src="{{ asset('storage/images').'/'.$nature_data->picture }}" alt="カードの画像" class="card-img-top">
                 @endif
 
                 <ul class="list-group list-group-flush">

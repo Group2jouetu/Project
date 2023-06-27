@@ -49,6 +49,12 @@ p.searchMessage {
 img.card-img-top {
     height: -webkit-fill-available;
 }
+p.card-text {
+    height: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .cardMain::-webkit-scrollbar {
     display:none;
 }
