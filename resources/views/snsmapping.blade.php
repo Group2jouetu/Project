@@ -1,6 +1,6 @@
 @extends('layout.layout')
 
-@extends('header')
+
 
 @section('title', 'SNSマップページ')
 

@@ -4,6 +4,39 @@
     margin: 0 auto;
 }
 /* ボトムナビゲーション */
-.sns a{
+.sns a {
     color: #ed5353;
+}
+
+/* モーダルウィンドウ */
+#modal {
+    width: 100%;
+}
+#modal .modal-content {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    background-color: rgb(245, 248, 251);
+}
+select.form-select {
+    width: 30vw;
+    margin: 2px auto;
+}
+input#title {
+    width: 80%;
+}
+input[type="reset"] {
+    color: #ffffff;
+    background-color: #6C757D;
+    margin: 4px;
+    padding: 4px 10px;
+    border-radius: 10%;
+
+}
+input[type="submit"] {
+    color: #fff;
+    background-color: #0D6EFD;
+    margin: 2px;
+    padding: 4px;
+    border-radius: 10%;
 }
