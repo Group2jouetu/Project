@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\RankingLike;
@@ -9,14 +10,24 @@ use Illuminate\Http\Request;
 class RankingController extends Controller
 {
     public function index (Request $request) 
-    {
-        // ログインしているユーザの情報取得
-        $user = Auth::user();
+    {   
+        // ログインしているかどうか、sessionが失われた時の処理
+        if(Auth::check()){
+            // ログインしているユーザの情報取得
+            $user = Auth::user();// セッションをクリアする
+        }else{
+            // セッションが失われている場合の処理
+            // エラーメッセージをフラッシュデータに保存
+            session()->flash('error', 'セッションが失われました。ログインし直してください。');
+
+            // ログインページにリダイレクト
+            return redirect()->route('login');
+        }
 
         // pinsテーブル取得
         $query = DB::table('pins');
 
-        // ジャンルごとのランキングを取得する関数
+        // ジャンルごとのランキング順位を取得する関数
         function getGenreRanking($genre) {
             $ranking = DB::table('pins')
                         ->where('genre', $genre)
@@ -32,11 +43,6 @@ class RankingController extends Controller
             return $ranking;
         }
 
-        
-
-        
-
-        
         if ($request->has('search')) {
             $search = $request->get('search');
             $query->where('pin_name', 'like', '%' . $search . '%');
@@ -66,12 +72,11 @@ class RankingController extends Controller
                         $rank++;
                     }
 
-                    // var_dump($ranking);
-                    // グルメランキング取得
-                    $food = DB::table('pins')
-                    ->where('genre', 1)
-                    ->orderBy('like_count', 'desc')
-                    ->get();
+        // グルメランキング取得
+        $food = DB::table('pins')
+        ->where('genre', 1)
+        ->orderBy('like_count', 'desc')
+        ->get();
         // グルメランキング取得
         $food = getGenreRanking(1);
         
@@ -118,20 +123,27 @@ class RankingController extends Controller
                     
         // ランキングいいね数
         $rankingLike = DB::table('pins')
-                    ->join('bookmarks', 'pins.id', '=', 'bookmarks.pin_id')
-                    ->select('pins.id', DB::raw('count(*) as count'))
-                    ->groupBy('pins.id')
-                    ->orderBy('count', 'desc')
-                    ->get();
-        // var_dump($rankingLike);
-        
+            ->leftJoin('bookmarks', 'pins.id', '=', 'bookmarks.pin_id')
+            ->select('pins.id', DB::raw('count(bookmarks.id) as count'))
+            ->groupBy('pins.id')
+            ->get();
+
         // 取得したいいね数を更新する
         foreach ($rankingLike as $like) {
-            RankingLike::where('id', $like->id)->update([
-                'like_count' => $like->count
-            ]);
+            $rankingLikes = RankingLike::where('id', $like->id)->first();
+
+            if ($ranking) {
+                // 関連レコードが存在する場合のみ、いいね数を更新
+                if ($like->count > 0) {
+                    $rankingLikes->like_count = $like->count;
+                } else {
+                    $rankingLikes->like_count = 0;
+                }
+                
+                $rankingLikes->save();
+            }
         }
-        
+
         // viewに値を返す
         return view('ranking', [
             'searchRanking' => $searchRanking,
