@@ -15,12 +15,17 @@ class SnsMappingController extends Controller
     public function index()
     {
 
-        $pin = new Pin();
-        $pins = $pin::all();
+        // pinsテーブルのデータを取得
+        $pins = new Pin();
+        $pins_data = $pins::all();
+        // messagesテーブルのデータを取得
+        $messages = new Message();
+        $messages_data = $messages->messageSelectDesc();
 
+        // ログイン中のユーザーID
         $user = Auth::id();
 
-        return view('snsmapping', ["pins" => $pins, "id" => $user]);
+        return view('snsmapping', ["id" => $user, "pins" => $pins_data, "messages" => $messages_data]);
     }
 
     public function store(Request $request)
