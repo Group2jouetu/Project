@@ -14,4 +14,9 @@ class Message extends Model
     // 入力させないカラム
     protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
     use SoftDeletes;
+
+    public function messageSelectDesc()
+    {
+        return $this->orderBy('created_at', 'desc')->get();
+    }
 }
