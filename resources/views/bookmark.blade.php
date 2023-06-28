@@ -28,12 +28,13 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <!-- pictureとdetailを表示 -->
                 <img src="{{ asset('storage/images').'/'.$bookmark->picture }}" class="btn bd-placeholder-img card-img-top img-fluid" width="100%" height="225" alt="image">
-                <p>{{$bookmark->detail}}</p>
+                <p>{{$bookmark->detail}}ここに説明文が入りますここに説明文が入りますここに説明文が入りますここに説明文が入ります</p>
               </div>
             </div>
           </div>

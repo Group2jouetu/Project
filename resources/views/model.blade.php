@@ -9,106 +9,15 @@
 @section('content')
  
 <div id="map"></div>
-<!-- id=logでモデルコースの所要時間を表示 -->
 <div id="log"></div>
-<!-- ↓使ってなさそう -->
 <script src="{{ asset('/js/modelFunction.js') }}"></script>
-
-<h4>h4. Bootstrap heading</h4>
-<div class="card-container">
-    
-  <div class="cardMain">
-    <div class="card">
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p id="model1" class="card-text">概要</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <!-- 2番目のカードの内容 -->
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p id="model2" class="card-text">概要</p>
-      </div>
-    </div>
-
-    <div class="card ml-auto">
-      <!-- 3番目のカードの内容 -->
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p id="model3" class="card-text">概要</p>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-
-<h4>h4. Bootstrap heading</h4>
-<div class="card-container">
-    
-  <div class="cardMain">
-    <div class="card">
-    <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p id="model4" class="card-text">概要</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <!-- 2番目のカードの内容 -->
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p id="model5" class="card-text">概要</p>
-      </div>
-    </div>
-
-    <div class="card ml-auto">
-      <!-- 3番目のカードの内容 -->
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p id="model6" class="card-text">概要</p>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-<h4>h4. Bootstrap heading</h4>
-<div class="card-container">
-    
-  <div class="cardMain">
-    <div class="card">
-    <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p id="model7" class="card-text">概要</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <!-- 2番目のカードの内容 -->
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p id="model8" class="card-text">概要</p>
-      </div>
-    </div>
-
-    <div class="card ml-auto">
-      <!-- 3番目のカードの内容 -->
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
-        <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
 
 <div id="buttonContainer" class="button-container"></div>
 <!-- モデルコース機能 -->
 <div id="button-container" style="display: none;"></div> <!-- ボタンを表示するコンテナ -->
 <div id="map-container"></div>
+
+<button onclick="toggleModelCourse();">モデルコース</button>
 
 <script>
 var map;
@@ -124,15 +33,83 @@ function initMap() {
         zoom: 12
     });
 
+    var markerPosition = {lat: 37.1478, lng: 138.236};
+    var markerPosition2 = {lat: 37.152780, lng: 138.258531};
+
+    var marker = new google.maps.Marker({
+        position: markerPosition,
+        map: map,
+        title: 'お店の位置'
+    });
+
+    var marker2 = new google.maps.Marker({
+        position: markerPosition2,
+        map: map,
+        title: 'お店の位置2'
+    });
 
     directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(map);
 
+    var request = {
+        origin: markerPosition,
+        destination: markerPosition2,
+        travelMode: google.maps.TravelMode.DRIVING
+    };
+
+    var directionsService = new google.maps.DirectionsService();
+    directionsService.route(request, function(response, status) {
+        if (status === google.maps.DirectionsStatus.OK) {
+            directionsRenderer.setDirections(response);
+        } else {
+            window.alert('ルートの取得に失敗しました。');
+        }
+    });
+
+    var contentString =
+        '<div id="content">' +
+        '<h3>お店の口コミ</h3>' +
+        '<p>ここにお店の口コミを表示します。</p>' +
+        '</div>';
+
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    marker.addListener('click', function() {
+        infowindow.open(map, marker);
+    });
+
+    marker2.addListener('click', function() {
+        infowindow.open(map, marker2);
+    });
+
     google.maps.event.addListener(map, 'click', function(event) {
         clickListener(event, map);
     });
+}
 
-    //初期配置テスト
+function toggleModelCourse() {
+    buttonContainer = document.getElementById('button-container');
+    mapContainer = document.getElementById('map-container');
+    
+    modelCourseEnabled = !modelCourseEnabled;
+
+    if (modelCourseEnabled) {
+        buttonContainer.style.display = 'block';
+        mapContainer.style.display = 'none';
+        openModelCourse();
+    } else {
+        buttonContainer.style.display = 'none';
+        mapContainer.style.display = 'block';
+        clearModelCourse();
+    }
+}
+
+function openModelCourse() {
+    var buttonContainer = document.getElementById('button-container');
+    buttonContainer.innerHTML = '';
+
     var buttons = [
         {
             label: '穴場の神秘&パワースポットツアー',
@@ -205,33 +182,21 @@ function initMap() {
 
 
     for (var i = 0; i < buttons.length; i++) {
-        var h5 = document.createElement('h5');
-        h5.className = 'card-title';
-        h5.textContent = buttons[i].label;
+    var button = document.createElement('button');
+    button.textContent = buttons[i].label;
 
-        var br = document.createElement('br');
-        var button = document.createElement('button');
-        button.id = 'page-top';
-        button.className = 'btn btn-primary';
-        button.textContent = 'ルート表示';
-        //button.textContent = buttons[i].label;
+    var image = document.createElement('img');
+    image.src = buttons[i].image;
+    image.style.width = '100px'; // 必要に応じて画像のサイズを調整してください
 
-        //var image = document.createElement('img');
-        //image.src = buttons[i].image;
-        //image.style.width = '100px'; // 必要に応じて画像のサイズを調整してください
+    var container = document.createElement('div');
+    container.appendChild(button);
+    container.appendChild(image);
 
-        var model_button = document.getElementById(`model${i + 1}`);
-        model_button.before(h5);
-        model_button.after(br);
-        model_button.after(button);
-
-        //var container = document.createElement('div');
-        //container.appendChild(button);
-        //container.appendChild(image);
-
-        button.addEventListener('click', createTogglePinsFunction(buttons[i].pins));
-        //buttonContainer.appendChild(container);
-    }
+    button.addEventListener('click', createTogglePinsFunction(buttons[i].pins));
+    buttonContainer.appendChild(container);
+}
+    clearModelCourse(); // 前回のピンとルートをクリア
 }
 
 function clearModelCourse() {
@@ -250,7 +215,7 @@ function clearModelCourse() {
     directionsRenderer.setDirections({ routes: [] });
 }
 
-//モデルコースのピンを立てる関数
+
 function createTogglePinsFunction(pins) {
     var logElement = document.getElementById('log');
     var isMarkersVisible = false;
