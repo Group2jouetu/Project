@@ -197,7 +197,7 @@
                         <input type="text" name="return_datail" id="title" size="30" placeholder="入力エリア" />
                         <input type="submit" value="送信する">
                     </form>
-                </div>
+                </div><br>
             `;
             
             contentString += contetnMessage(id);
@@ -240,11 +240,13 @@
         }
 
         function contetnMessage(id){
+            var message = '';
             @foreach($messages as $message)
                 if ({{$message->pin_id}} === id){
-                    return "<p>{{ $message->message_body }}</p>";
+                    message += '<div style="border: 1px solid"><p>{{ $message->message_body }}</p></div>';
                 }
             @endforeach
+            return message;
         }
 
         function pinColor(genre) {
