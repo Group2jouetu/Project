@@ -20,6 +20,12 @@
 
             <div class="card-body">
               <p class="card-title">{{$bookmark->pin_name}}</p>
+              <form action="/bookmark" method="post">
+                  @csrf
+                  @method("DELETE")
+                  <input id="id" type="text" name="id" value="{{$bookmark->pin_id}}" hidden>
+                  <input type="submit" value="お気に入り削除">
+              </form>
             </div>
           </div>
         </div>

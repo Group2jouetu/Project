@@ -15,12 +15,17 @@ class SnsMappingController extends Controller
     public function index()
     {
 
+
         // pinsテーブルのデータを取得
         $pins = new Pin();
         $pins_data = $pins::all();
         // messagesテーブルのデータを取得
-        $messages = new Message();
-        $messages_data = $messages->messageSelectDesc();
+        $messages_data = DB::table('messages')
+            ->select('messages.pin_id', 'users.name', 'messages.message_body', 'messages.created_at')
+            ->join('users', 'messages.user_id', '=', 'users.id')
+            ->get();
+        // $messages = new Message();
+        // $messages_data = $messages->messageSelectDesc();
 
         // ログイン中のユーザーID
         $user = Auth::id();
