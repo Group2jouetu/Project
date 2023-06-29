@@ -354,3 +354,8 @@
 #btn-custom_right {
     width: 100px;
 }
+
+.message-table {
+    width: 150px;
+    border: black solid 1px;
+}
