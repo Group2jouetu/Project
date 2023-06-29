@@ -11,62 +11,122 @@
     <div id="map"></div>
 
     <!-- ここからモーダルウィンドウ -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>新規登録</h3>
-            <div id="alert" style="display: none; color:red">※入力されていない項目があります</div>
-            <form action="/snsInput" id="pinForm" method="post" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <input type="file" name="image" id="image-input" class="image" accept="image/*" />
-                <br>
-                {{-- 選択された画像を表示 --}}
-                <img id="preview-image" src="" style="max-width: 256px; height: auto;">
-                <input type="text" name="pin_name" id="title" size="30" placeholder="場所の名前を入力してください"
-                    value="" />
-                <br><br>
+<div id="modal" class="modal" data-backdrop="false">
+    <div class="modal-content">
+        <ul class="modal-newadd-head">
+            <li class="modal-newadd-li-1">
+                <span class="close">&times;</span>
+            </li>
+            <li class="modal-newadd-li-3">
+                <h3 class="modal-newadd-h3">新規ピン登録</h3>
+            </li>
+        </ul>
 
-                <input type="text" name="detail" id="detail" size="30" placeholder="口コミを入力してください"
-                    value="" />
-                <br><br>
+        <form action="/snsInput" id="pinForm" method="post" enctype="multipart/form-data">
 
-                <label for="exampleInputEmail1">ジャンルを以下から選択してください。</label><br>
-                <select name="select_genre" class="form-select" aria-label="Default select example">
-                    <option value="1">食べ物</option>
-                    <option value="2">宿・ホテル</option>
-                    <option value="3">文化</option>
-                    <option value="4">遊び施設</option>
-                    <option value="5">自然</option>
-                </select>
+            <ul class="ly_snsmap_ul">
+                <li class="ly_snsmap_li_1">
+                    <div class="ly_snsmap_li_div_left">
+                        <p class="ly_snsmap_process">ピンの名前を入力してください（必須）</p>
+                        <input type="text" name="pin_name" id="title" size="30" placeholder="ピンの名前" value="" required />
+                        <label for="select-genre">ジャンルを以下から選択してください（必須）</label><br>
+                        <select name="select_genre" id="select-genre" class="form-select" aria-label="Default select example">
+                            <option value="1">食べ物</option>
+                            <option value="2">宿・ホテル</option>
+                            <option value="3">文化</option>
+                            <option value="4">遊び施設</option>
+                            <option value="5">自然</option>
+                        </select>
+                    </div>
+                </li>
+                <li class="ly_snsmap_li_2">
+                    <div class="ly_snsmap_li_div_right">
+                        <p class="ly_snsmap_process">表示する画像を選択（任意）</p>
+                        {{ csrf_field() }}
+                        <label for="image-input" class="image-label">
+                            <input type="file" name="image" id="image-input" class="image" accept="image/*" style="display: none;" />
+                            <img id="preview-image" src="" alt="画像を選択する" />
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            <div class="ly_snsmap_center_div">
+                <p class="ly_snsmap_process">口コミを入力してください（必須）</p>
+                <input type="text" name="detail" id="detail" size="30" placeholder="口コミを入力※◯◯文字以内" value="" required />
+            </div>
 
-                <input type="hidden" name="lat" id="get-lat" />
-                <input type="hidden" name="lng" id="get-lng" />
-                <br>
+            <input type="hidden" name="lat" id="get-lat" />
+            <input type="hidden" name="lng" id="get-lng" />
+            <br>
+            <div class="ly_snsmap_2buttons">
                 <input type="reset" value="キャンセル" onclick="newPinReset()">
-                {{-- <input type="submit" value="登録" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    onclick="dialogSubmit(event)"> --}}
-                <input type="submit" value="登録" onclick="event.preventDefault(); dialogSubmit(event)">
-            </form>
-        </div>
+                <input type="submit" value="登録" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+            </div>
+        </form>
     </div>
+</div>
     <!-- ここまで -->
+    
+<script>
+    function showModal() {
+        // アニメーションクラスを追加してスライド表示する  
+        var modalContent = document.querySelector('.modal-content');
+        modalContent.classList.add('show');
+        var imgElement = document.getElementById('preview-image');
+        imgElement.addEventListener('click', function() {
+            showModal();
+        });
+    }
+</script>
+
 
     <!-- 登録時の確認画面 -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">観光地の登録</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">登録しますか？</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button>
-                    <button type="button" class="btn btn-primary" onclick="saveAction()">はい</button>
-                </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="ly_pin">
+            <div class="ly_pin_inside">
+                <ul class="ly_pin_ul">
+                    <li class="ly_pin_li_1">
+                        <p class="ly_pin_p_small">ピンの名前</p> 
+                        <div class="pin-name-container">
+                            <span id="pinNameValue"></span>
+                        </div>
+                        <p class="ly_pin_p_small">ジャンル</p>
+                        <span id="genreValue"></span>
+                    </li>
+                    <li class="ly_pin_li_2">
+                        <p class="ly_pin_p_small">画像</p>
+                        <div class="image-container">
+                            <img id="imageValue" src="" alt="画像" style="max-height: 100px; max-width: 100%;">
+                        </div>
+                    </li>
+                </ul>
+                <ul class="ly_pin_process_ul">
+                    <li class="ly_pin_process_li_1">
+                        <p class="ly_pin_p_small">口コミ</p>
+                    </li>
+                    <li class="ly_pin_process_li_2">
+                        <span id="detailValue"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="ly_pin_outside">
+                <img id="hukidasi-haikei" src="img/hukidasi.png">
+            </div>
+        </div>
+        <div class="modal-content">    
+            <div class="modal-header">
+                <button type="button" class="btn-close close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="exampleModalLabel">観光地の登録確認</h5>
+            </div>
+            <div class="modal-body">以上の内容で登録しますか？</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btn-custom_left" data-bs-dismiss="modal" onclick="closeSecondModalAndOpenFirstModal()">いいえ</button>
+                <button type="button" class="btn btn-primary" id="btn-custom_right" onclick="saveAction()">はい</button>
             </div>
         </div>
     </div>
+</div>
 
     {{-- トースト表示ライブラリ --}}
     <script src="https://riversun.github.io/jsframe/jsframe.js"></script>
@@ -174,6 +234,8 @@
 
             reader.onload = function(e) {
                 document.getElementById('preview-image').setAttribute('src', e.target.result);
+
+                document.getElementById('imageValue').setAttribute('src', e.target.result);
             }
 
             reader.readAsDataURL(file);
@@ -291,28 +353,63 @@
 
         // formタグの登録ボタンが押された時、確認画面が出るので、フォームの送信を制御
         function dialogSubmit(event) {
-            var name = document.getElementById("title");
-            var detail = document.getElementById("detail");
-            var alert = document.getElementById('alert');
-
-            if (name.value === "" || detail.value === "") {
-                alert.textContent = "※入力されていない項目があります。";
-                alert.style.display = "block";
-                // event.preventDefault();
-            } else {
-                var modalElement = bootstrap.Modal(document.getElementById("#exampleModal"));
-                var bootstrapModal = new bootstrap.Modal(modalElement);
-                bootstrapModal.show();
-            }
-
             // フォームの送信を一旦止める
             event.preventDefault();
 
+            // 1つめのモーダルウインドウを非表示にする
+            var modal = document.getElementById('modal');
+            var secondModal = document.getElementById('exampleModal');
+            modal.style.display = 'none';
+            secondModal.style.display = 'block';
+
+            // 1つめのモーダルウィンドウのフォームの値を取得
+            var pinName = document.getElementById('title').value;
+            var genre_number = parseInt(document.getElementById('select-genre').value, 10);
+            var detail = document.getElementById('detail').value;
+
+            // 2つめのモーダルウィンドウに値をセット
+            document.getElementById('pinNameValue').textContent = pinName;
+            var genre;
+            switch (genre_number) {
+                case 1:
+                    genre = "食べ物";
+                    break;
+                case 2:
+                    genre = "宿・ホテル";
+                    break;
+                case 3:
+                    genre = "文化";
+                    break;
+                case 4:
+                    genre = "遊び施設";
+                    break;
+                case 5:
+                    genre = "自然";
+                    break;
+                default:
+                    genre = "";
+                    break;
+                }
+            document.getElementById('genreValue').textContent = genre;
+            document.getElementById('detailValue').textContent = detail;
         }
+
 
         function saveAction() {
             // フォームの送信を再開
             document.getElementById("pinForm").submit();
+        }
+        
+        function closeSecondModalAndOpenFirstModal() {
+            // 表示/非表示の切り替え
+            var modal = document.getElementById('modal');
+            modal.style.display = 'block';
+            var secondModal = document.getElementById('exampleModal');
+            secondModal.style.display = 'none';
+
+
+            // 1つ目のモーダルウィンドウの入力フォームをリセットしないようにする
+            // document.getElementById('pinForm').reset();
         }
 
         // ピンの登録に成功したら、メッセージをトーストで表示
