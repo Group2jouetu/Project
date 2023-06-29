@@ -20,7 +20,7 @@
 
     {{-- 1番目 --}}
     <div class="card">
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+      <img src="/img/滝寺不動.jpg" class="card-img-top" alt="...">
       <div class="card-body">
         <p id="model1" class="card-text"></p>
 
