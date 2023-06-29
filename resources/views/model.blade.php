@@ -224,7 +224,7 @@ function initMap() {
         model_button.before(h5);
         model_button.after(br);
         model_button.after(button);
-
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         //var container = document.createElement('div');
         //container.appendChild(button);
         //container.appendChild(image);
