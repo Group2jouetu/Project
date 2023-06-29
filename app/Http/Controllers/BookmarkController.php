@@ -47,15 +47,8 @@ class BookmarkController extends Controller
         $user = Auth::user();
         
         $bookmark = new Bookmark();
-/*         // ピン情報を取得
-        $pin = new Pin();
-        $items = $bookmark::all();
-        $books = $bookmark->where('user_id', 100)->get('pin_id');
-        //$items = DB::select('select * from bookmarks');
-        //bookmarkテーブルのpin_idと一致するpinsテーブルのidとpin_nameを取得
-        $bookmarks = $pins->where('id','=',$books); */
-
         $bookmarks = $bookmark->getBookmarksAndInfo($user->id);
+        
         return view('bookmark',[
             'bookmarks' => $bookmarks,
         ]);
