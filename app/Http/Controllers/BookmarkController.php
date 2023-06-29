@@ -86,9 +86,10 @@ class BookmarkController extends Controller
         $pin->like_count = $pin->like_count - 1;
         $pin->save();
         // DB::delete('delete from bookmarks where id = :id',$param);
-        return redirect('map');
+        return back();
     }
 
+    
     /**
      * Store a newly created resource in storage.
      */
