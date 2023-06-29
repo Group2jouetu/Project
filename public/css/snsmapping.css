@@ -3,40 +3,354 @@
     width: 80vw;
     margin: 0 auto;
 }
+
+
 /* ボトムナビゲーション */
+
 .sns a {
     color: #ed5353;
 }
 
-/* モーダルウィンドウ */
-#modal {
-    width: 100%;
-}
-#modal .modal-content {
-    width: 50%;
-    text-align: center;
-    margin: 0 auto;
-    background-color: rgb(245, 248, 251);
-}
-select.form-select {
-    width: 30vw;
-    margin: 2px auto;
-}
-input#title {
-    width: 80%;
-}
-input[type="reset"] {
-    color: #ffffff;
-    background-color: #6C757D;
-    margin: 4px;
-    padding: 4px 10px;
-    border-radius: 10%;
 
+/* モーダルウインドウのCSSここから */
+
+#modal.modal {
+    background-color: transparent;
 }
-input[type="submit"] {
+
+.modal-content {
+    position: absolute;
+    z-index: 10;
+    margin: 78px 0 80px 0;
+    transform: translateY(90%);
+    transition: transform 0.2s ease-in-out;
+}
+
+.modal-newadd-head {
+    display: flex;
+    margin: 0;
+    padding: 1rem 0 1rem 0;
+    justify-content: center;
+    height: 60px;
+}
+
+.ly_snsmap_ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    flex-wrap: wrap;
+    height: 220px;
+}
+
+.ly_snsmap_center_div {
+    text-align: center !important;
+}
+
+.ly_snsmap_li_1 {
+    flex-basis: 50%;
+    width: 50%;
+    padding: 0.5rem;
+}
+
+.ly_snsmap_li_2 {
+    width: 50%;
+    padding: 0.5rem;
+}
+
+.modal-newadd-head li {
+    list-style: none;
+}
+
+.modal-newadd-li-1 {
+    margin: 0 10px 0 10px;
+}
+
+.modal-newadd-li-3 {
+    /* width: 100px; */
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-newadd-icon {
+    position: relative;
+}
+
+#title {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.modal-newadd-icon img {
+    max-width: 250px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.modal-newadd-icon .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.modal-newadd-icon:hover .overlay {
+    opacity: 1;
+}
+
+.modal-newadd-icon .overlay-text {
     color: #fff;
-    background-color: #0D6EFD;
-    margin: 2px;
-    padding: 4px;
-    border-radius: 10%;
+    font-size: 16px;
+}
+
+.modal-newadd-h3 {
+    padding: 10px;
+}
+
+#image-input {
+    padding: 0 0 1rem 0;
+}
+
+#preview-image {
+    padding: 0 0 1rem 0;
+    max-width: 250px;
+    height: 150px;
+}
+
+.ly_snsmap_center_div {
+    justify-content: center;
+    align-items: center;
+}
+
+.ly_snsmap_process {
+    text-align: center;
+}
+
+.image-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    /* 表示幅を調整 */
+    height: 150px;
+    /* 表示高さを調整 */
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #ccc;
+    position: relative;
+}
+
+.image-label:hover {
+    border-color: #000;
+    /* ホバー時の枠線の色を変更 */
+}
+
+.image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#preview-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#detail {
+    display: block;
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.ly_snsmap_2buttons {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.ly_snsmap_2buttons input[type="reset"],
+.ly_snsmap_2buttons input[type="submit"] {
+    width: 100px;
+}
+
+
+/* 確認用モーダルウインドウCSS ここから */
+
+.ly_pin {
+    position: relative;
+}
+
+.ly_pin_inside {
+    position: relative;
+    background-color: #fff;
+    max-width: 63%;
+    margin: 15% auto 0 auto;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.ly_pin_ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 0;
+    flex-wrap: wrap;
+}
+
+.ly_pin_li_1 {
+    flex-basis: 50%;
+    width: 50%;
+    padding: 0.3rem;
+}
+
+.ly_pin_li_2 {
+    width: 50%;
+    padding: 0.3rem;
+}
+
+.ly_pin_p_small {
+    font-size: 8px;
+    margin-bottom: 0.2rem;
+}
+
+.pin-name-container {
+    max-height: 60px;
+    max-width: 100%;
+    height: 60px;
+    width: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+#pinNameValue {
+    font-size: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#genreValue {
+    display: flex;
+    justify-content: center;
+}
+
+.image-container {
+    max-height: 100px;
+    max-width: 110px;
+    height: 100px;
+    width: auto;
+}
+
+.ly_pin_process_ul {
+    display: flex;
+    height: 30px;
+    padding-left: 0.3rem !important;
+    gap: 0.5rem;
+}
+
+.ly_pin_process_li_1 {
+    list-style-type: none;
+    font-size: 12px;
+    width: 20%;
+}
+
+.ly_pin_process_li_2 {
+    list-style-type: none;
+    max-height: 30px;
+    font-size: 18px;
+    max-width: 100%;
+    height: 30px;
+    width: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+#detailValue {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ly_pin_outside {
+    position: absolute;
+    top: -7%;
+    left: 0;
+    z-index: -1;
+}
+
+#hukidasi-haikei {
+    max-width: 70%;
+    max-height: 70%;
+    display: block;
+    margin: 0 auto 0 auto;
+}
+
+.modal-backdrop {
+    background-color: transparent !important;
+}
+
+.modal-dialog {
+    display: initial !important;
+    align-items: initial !important;
+    justify-content: initial !important;
+    min-height: 110vh;
+    padding: 1rem;
+}
+
+.modal-content {
+    margin-top: auto;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: initial !important;
+}
+
+.modal-header h5 {
+    margin: auto;
+}
+
+.close-custom {
+    margin: 0 !important;
+}
+
+.modal-body {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-footer>* {
+    flex: 1;
+    margin: 0 calc(var(--bs-modal-footer-gap) * 0.5);
+}
+
+#btn-custom_left {
+    width: 100px;
+}
+
+#btn-custom_right {
+    width: 100px;
 }
