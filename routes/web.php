@@ -35,7 +35,6 @@ Route::get('model', function () {
     return view('model');
 });
 
-
 /* ログイン必要ページ */
 
 // プロフィール
