@@ -448,8 +448,11 @@
       </div>
     </div>
 
+
+
     </div>
   </div>
+  
 </div>
 
 <div id="buttonContainer" class="button-container"></div>
@@ -464,6 +467,7 @@ var buttonContainer;
 var mapContainer;
 var markers = []; // 追加されたマーカーを管理する配列
 var directionsRenderer;
+
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
