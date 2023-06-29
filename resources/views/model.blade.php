@@ -20,7 +20,34 @@
 
     {{-- 1番目 --}}
     <div class="card">
-      <img src="/img/滝寺不動.jpg" class="card-img-top" alt="...">
+
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/滝寺不動.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/岩殿山明静院.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/岩屋観音堂.jpg" class="card-img-top" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
       <div class="card-body">
         <p id="model1" class="card-text"></p>
 
@@ -83,7 +110,35 @@
     
     {{-- 2番目 --}}
     <div class="card">
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+
+      <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/春日山神社.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/菅原神社.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/地滑り資料館.jpg" class="card-img-top" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+
       <div class="card-body">
 
         <p id="model2" class="card-text"></p>
@@ -134,7 +189,36 @@
 
     {{-- 3番目 --}}
     <div class="card">
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+
+
+      <div id="carouselExampleIndicators3" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/春日山城跡.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/楞厳寺.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/高田城三重櫓.jpeg" class="card-img-top" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+
       <div class="card-body">
         <p id="model3" class="card-text"></p>
 
@@ -189,7 +273,35 @@
     
     {{-- 4番目 --}}
     <div class="card">
-    <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+
+      <div id="carouselExampleIndicators4" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/くびきのレールパーク.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/直江津D51レールパーク.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/直江津駅.jpg" class="card-img-top" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      
       <div class="card-body">
         <p id="model4" class="card-text"></p>
 
@@ -240,7 +352,34 @@
     
     {{-- 5番目 --}}
     <div class="card">
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+
+      <div id="carouselExampleIndicators5" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/松ヶ峰.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/光ヶ原高原.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/妙高サンシャインランド（中郷区）.jpg" class="card-img-top" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
       <div class="card-body">
         <p id="model5" class="card-text"></p>
 
@@ -303,7 +442,34 @@
     
     {{-- 6番目 --}}
     <div class="card">
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+
+      <div id="carouselExampleIndicators6" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators6" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators6" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators6" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/うみがたり.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/雁木通り(瞽女ミュージアム〜高橋孫左衛門商店).jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/旧師団長官舎.jpg" class="card-img-top" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators6" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators6" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
       <div class="card-body">
         <p id="model6" class="card-text"></p>
     
