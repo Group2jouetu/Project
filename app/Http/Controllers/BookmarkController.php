@@ -72,6 +72,10 @@ class BookmarkController extends Controller
             $bookmark->user_id = $user->id;
             $bookmark->pin_id = $request->pin_id;
             $bookmark->save();
+            /* pins.like_countを変更 */
+            $pin = (new Pin())->where('id', $request->pin_id)->first();
+            $pin->like_count = $pin->like_count + 1;
+            $pin->save();
         }
         
         return back();
@@ -80,12 +84,14 @@ class BookmarkController extends Controller
     //削除処理
     public function delete(Request $request)
     {
-        $param = [
-            'id' => $request->id,
-        ];
         $user = Auth::user();
+        /* ブックマークを削除 */
         $bookmark = new Bookmark();
         $bookmark->where('user_id', $user->id)->where('pin_id', $request->id)->delete();
+        /* pins.like_countを変更 */
+        $pin = (new Pin())->where('id', $request->id)->first();
+        $pin->like_count = $pin->like_count - 1;
+        $pin->save();
         // DB::delete('delete from bookmarks where id = :id',$param);
         return redirect('map');
     }
