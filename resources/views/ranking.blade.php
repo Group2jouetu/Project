@@ -79,7 +79,12 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <img src="{{ asset('storage/images').'/'.$searchRankings->picture }}" alt="カードの画像" class="card-img-top">
+                                        {{-- 画像 --}}
+                                        @if ($searchRankings->picture === null)
+                                            <p class="card-text card-img-top">画像がありません</p>
+                                        @else   
+                                            <img src="{{ asset('storage/images').'/'.$searchRankings->picture }}" alt="カードの画像" class="card-img-top">
+                                        @endif
                                     </div>
                                     <div class="modal-footer">
                                         {{-- お気に入り設定されていれば --}}
@@ -157,7 +162,12 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                             </div>
                             <div class="modal-body">
-                                <img src="{{ asset('storage/images').'/'.$rankings->picture }}" alt="カードの画像" class="card-img-top">
+                                {{-- 画像 --}}
+                                @if ($rankings->picture === null)
+                                    <p class="card-text">画像がありません</p>
+                                @else   
+                                    <img src="{{ asset('storage/images').'/'.$rankings->picture }}" alt="カードの画像" class="card-img-top">
+                                @endif
                             </div>
                             <div class="modal-body">
                                 <li class="list-group-item"><p class="card-text">{{ $rankings->detail }}</p></li>
@@ -187,7 +197,7 @@
         @foreach ($food as $food_data)
 
             <div class="card">
-            {{-- 画像 --}}
+                {{-- 画像 --}}
                 @if ($food_data->picture === null)
                     <p class="card-text">画像がありません</p>
                 @else
@@ -232,7 +242,14 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="{{ asset('storage/images').'/'.$food_data->picture }}" alt="カードの画像" class="card-img-top">
+                        {{-- 画像 --}}
+                        @if ($food_data->picture === null)
+                            <p class="card-text">画像がありません</p>
+                        @else
+                            <img src="{{ asset('storage/images').'/'.$food_data->picture }}" alt="カードの画像" class="card-img-top">
+                        @endif
+                    </div>
+                    <div class="modal-body">
                         <li class="list-group-item"><p class="card-text">{{ $food_data->detail }}</p></li>
                     </div>
                     <div class="modal-footer">
@@ -260,7 +277,7 @@
         @foreach ($hotel as $hotel_data)
 
             <div class="card">
-            {{-- 画像 --}}
+                {{-- 画像 --}}
                 @if ($hotel_data->picture === null)
                     <p class="card-text">画像がありません</p>
                 @else
@@ -307,7 +324,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="{{ asset('storage/images').'/'.$hotel_data->picture }}" alt="カードの画像" class="card-img-top">
+                        {{-- 画像 --}}
+                        @if ($hotel_data->picture === null)
+                            <p class="card-text">画像がありません</p>
+                        @else
+                            <img src="{{ asset('storage/images').'/'.$hotel_data->picture }}" alt="カードの画像" class="card-img-top">
+                        @endif
                     </div>
                     <div class="modal-body">
                         <li class="list-group-item"><p class="card-text">{{ $hotel_data->detail }}</p></li>
@@ -338,7 +360,7 @@
         @foreach ($culture as $culture_data)
 
             <div class="card">
-            {{-- 画像 --}}
+                {{-- 画像 --}}
                 @if ($culture_data->picture === null)
                     <p class="card-text">画像がありません</p>
                 @else
@@ -385,7 +407,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="{{ asset('storage/images').'/'.$culture_data->picture }}" alt="カードの画像" class="card-img-top">
+                        {{-- 画像 --}}
+                        @if ($culture_data->picture === null)
+                            <p class="card-text">画像がありません</p>
+                        @else
+                            <img src="{{ asset('storage/images').'/'.$culture_data->picture }}" alt="カードの画像" class="card-img-top">
+                        @endif
                     </div>
                     <div class="modal-body">
                         <li class="list-group-item"><p class="card-text">{{ $culture_data->detail }}</p></li>
@@ -417,7 +444,7 @@
         @foreach ($amusement as $amusement_data)
 
             <div class="card">
-            {{-- 画像 --}}
+                {{-- 画像 --}}
                 @if ($amusement_data->picture === null)
                     <p class="card-text">画像がありません</p>
                 @else
@@ -463,7 +490,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                         </div>
                         <div class="modal-body">
-                            <img src="{{ asset('storage/images').'/'.$amusement_data->picture }}" alt="カードの画像" class="card-img-top">
+                            {{-- 画像 --}}
+                            @if ($amusement_data->picture === null)
+                                <p class="card-text">画像がありません</p>
+                            @else
+                                <img src="{{ asset('storage/images').'/'.$amusement_data->picture }}" alt="カードの画像" class="card-img-top">
+                            @endif
                         </div>
                         <div class="modal-body">
                             <li class="list-group-item"><p class="card-text">{{ $amusement_data->detail }}</p></li>
@@ -495,7 +527,7 @@
         @foreach ($nature as $nature_data)
 
             <div class="card">
-            {{-- 画像 --}}
+                {{-- 画像 --}}
                 @if ($nature_data->picture === null)
                     <p class="card-text">画像がありません</p>
                 @else                
@@ -542,7 +574,12 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                             </div>
                             <div class="modal-body">
-                                <img src="{{ asset('storage/images').'/'.$nature_data->picture }}" alt="カードの画像" class="card-img-top">
+                                {{-- 画像 --}}
+                                @if ($nature_data->picture === null)
+                                    <p class="card-text">画像がありません</p>
+                                @else                
+                                    <img src="{{ asset('storage/images').'/'.$nature_data->picture }}" alt="カードの画像" class="card-img-top">
+                                @endif
                             </div>
                             <div class="modal-body">
                                 <li class="list-group-item"><p class="card-text">{{ $nature_data->detail }}</p></li>
