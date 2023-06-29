@@ -89,6 +89,7 @@ class BookmarkController extends Controller
         return redirect('map');
     }
 
+    
     /**
      * Store a newly created resource in storage.
      */
