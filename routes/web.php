@@ -22,42 +22,38 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// ログアウト
-Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+/* ログイン不要ページ */
 
+//マップ
+Route::get('/map', [BookmarkController::class, 'map']);
+Route::get('/smap', [SnsMappingController::class, 'index']);
+//ランキング
+Route::get('/ranking', [RankingController::class, 'index'])->name('ranking.index');
+// モデルコース
+Route::get('model', function () {
+    return view('model');
+});
+
+
+/* ログイン必要ページ */
+
+// プロフィール
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-//ランキング
-Route::get('/ranking', [RankingController::class, 'index'])->name('ranking.index');
-
-require __DIR__ . '/auth.php';
-
-
 // SNSMapping
-Route::get('/smap', [SnsMappingController::class, 'index']);
-Route::post('/snsInput', [SnsMappingController::class, 'store']);
-Route::post('/messageReply', [SnsMappingController::class, 'reply']);
-
-//マップ
-Route::get('/map', 'App\Http\Controllers\BookmarkController@map');
-
-//旅のしおり
+Route::middleware('auth')->group(function () {
+    Route::post('/snsInput', [SnsMappingController::class, 'store']);
+    Route::post('/messageReply', [SnsMappingController::class, 'reply']);
+});
+// 旅のしおり
 Route::middleware('auth')->group(function () {
     Route::get('/bookmark', 'App\Http\Controllers\BookmarkController@index');
     Route::post('/bookmark', 'App\Http\Controllers\BookmarkController@create');
     Route::delete('/bookmark', 'App\Http\Controllers\BookmarkController@delete');
 });
 
-// モデルコース
-Route::get('model', function () {
-    return view('model');
-});
 require __DIR__ . '/auth.php';
