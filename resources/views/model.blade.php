@@ -98,11 +98,12 @@
       <div class="card-body">
         <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
         <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
+        <a class="btn btn-primary" href="#" role="button" id="route">ルートを表示</a>
       </div>
     </div>
     </div>
   </div>
+  
 </div>
 
 <div id="buttonContainer" class="button-container"></div>
@@ -117,6 +118,13 @@ var buttonContainer;
 var mapContainer;
 var markers = []; // 追加されたマーカーを管理する配列
 var directionsRenderer;
+
+document.getElementById("route").addEventListener("click", function() {
+  // マップの位置までスクロールする
+  const mapElement = document.getElementById("map");
+  mapElement.scrollIntoView({ behavior: 'smooth' });
+});
+
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
