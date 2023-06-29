@@ -1,3 +1,7 @@
+@section('add_css')
+    <link rel="stylesheet" href="/css/register.css">
+    @endsection
+
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -43,7 +47,7 @@
 
             <x-primary-button class="ml-4">
             <a href="{{ route('login') }}">
-                {{ __('ログイン') }}
+                {{ __('　戻る　') }}
             </a>
             </x-primary-button>
 
