@@ -10,97 +10,515 @@
  
 <div id="map"></div>
 <!-- id=logでモデルコースの所要時間を表示 -->
-<div id="log"></div>
+<div id="log">ルート所要時間</div>
 <!-- ↓使ってなさそう -->
 <script src="{{ asset('/js/modelFunction.js') }}"></script>
 
-<h4>h4. Bootstrap heading</h4>
 <div class="card-container">
     
   <div class="cardMain">
+
+    {{-- 1番目 --}}
     <div class="card">
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p id="model1" class="card-text">概要</p>
+        <p id="model1" class="card-text"></p>
+
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+                滝寺不動
+              </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>静な森の中に響き渡る小さな滝の音。その滝のしぶきを浴びる不動明王と周囲の雰囲気が神秘的です。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapseTwo">
+                岩殿山明静院
+              </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>光が差し込む岩と岩の隙間に佇む木の仏像が何とも神秘的。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapseThree">
+                岩屋観音堂
+              </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>お堂に迫るようにせり出した巨岩が大迫力！ 大地のパワーを感じます。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapseThree">
+                いわおの石仏群
+              </button>
+            </h2>
+            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>岩肌に無数に彫られた石仏から人の祈りの力が感じ取れる場所です。</strong>...
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
+
+
+    
+    {{-- 2番目 --}}
     <div class="card">
-      <!-- 2番目のカードの内容 -->
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p id="model2" class="card-text">概要</p>
+
+        <p id="model2" class="card-text"></p>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapseOne">
+                滝寺不動
+              </button>
+            </h2>
+            <div id="collapse5" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>静な森の中に響き渡る小さな滝の音。その滝のしぶきを浴びる不動明王と周囲の雰囲気が神秘的です。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapseTwo">
+                岩殿山明静院
+              </button>
+            </h2>
+            <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>光が差し込む岩と岩の隙間に佇む木の仏像が何とも神秘的。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapseThree">
+                岩屋観音堂
+              </button>
+            </h2>
+            <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>お堂に迫るようにせり出した巨岩が大迫力！ 大地のパワーを感じます。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapseThree">
+                いわおの石仏群
+              </button>
+            </h2>
+            <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>岩肌に無数に彫られた石仏から人の祈りの力が感じ取れる場所です。</strong>...
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card ml-auto">
-      <!-- 3番目のカードの内容 -->
+
+
+
+    {{-- 3番目 --}}
+    <div class="card">
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p id="model3" class="card-text">概要</p>
+        <p id="model3" class="card-text"></p>
+
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="true" aria-controls="collapseOne">
+                滝寺不動
+              </button>
+            </h2>
+            <div id="collapse9" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>静な森の中に響き渡る小さな滝の音。その滝のしぶきを浴びる不動明王と周囲の雰囲気が神秘的です。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapseTwo">
+                岩殿山明静院
+              </button>
+            </h2>
+            <div id="collapse10" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>光が差し込む岩と岩の隙間に佇む木の仏像が何とも神秘的。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapseThree">
+                岩屋観音堂
+              </button>
+            </h2>
+            <div id="collapse11" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>お堂に迫るようにせり出した巨岩が大迫力！ 大地のパワーを感じます。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapseThree">
+                いわおの石仏群
+              </button>
+            </h2>
+            <div id="collapse12" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>岩肌に無数に彫られた石仏から人の祈りの力が感じ取れる場所です。</strong>...
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
     </div>
   </div>
 </div>
-
-<h4>h4. Bootstrap heading</h4>
-<div class="card-container">
     
+
   <div class="cardMain">
+
+    
+    {{-- 4番目 --}}
     <div class="card">
     <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p id="model4" class="card-text">概要</p>
+        <p id="model4" class="card-text"></p>
+
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="true" aria-controls="collapseOne">
+                滝寺不動
+              </button>
+            </h2>
+            <div id="collapse13" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>静な森の中に響き渡る小さな滝の音。その滝のしぶきを浴びる不動明王と周囲の雰囲気が神秘的です。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapseTwo">
+                岩殿山明静院
+              </button>
+            </h2>
+            <div id="collapse14" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>光が差し込む岩と岩の隙間に佇む木の仏像が何とも神秘的。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapseThree">
+                岩屋観音堂
+              </button>
+            </h2>
+            <div id="collapse15" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>お堂に迫るようにせり出した巨岩が大迫力！ 大地のパワーを感じます。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse16" aria-expanded="false" aria-controls="collapseThree">
+                いわおの石仏群
+              </button>
+            </h2>
+            <div id="collapse16" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>岩肌に無数に彫られた石仏から人の祈りの力が感じ取れる場所です。</strong>...
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
+
+
+    
+    {{-- 5番目 --}}
     <div class="card">
-      <!-- 2番目のカードの内容 -->
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p id="model5" class="card-text">概要</p>
+        <p id="model5" class="card-text"></p>
+
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse17" aria-expanded="true" aria-controls="collapseOne">
+                滝寺不動
+              </button>
+            </h2>
+            <div id="collapse17" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>静な森の中に響き渡る小さな滝の音。その滝のしぶきを浴びる不動明王と周囲の雰囲気が神秘的です。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse18" aria-expanded="false" aria-controls="collapseTwo">
+                岩殿山明静院
+              </button>
+            </h2>
+            <div id="collapse18" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>光が差し込む岩と岩の隙間に佇む木の仏像が何とも神秘的。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse19" aria-expanded="false" aria-controls="collapseThree">
+                岩屋観音堂
+              </button>
+            </h2>
+            <div id="collapse19" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>お堂に迫るようにせり出した巨岩が大迫力！ 大地のパワーを感じます。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse20" aria-expanded="false" aria-controls="collapseThree">
+                いわおの石仏群
+              </button>
+            </h2>
+            <div id="collapse20" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>岩肌に無数に彫られた石仏から人の祈りの力が感じ取れる場所です。</strong>...
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <div class="card ml-auto">
-      <!-- 3番目のカードの内容 -->
+
+
+    
+    {{-- 6番目 --}}
+    <div class="card">
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p id="model6" class="card-text">概要</p>
+        <p id="model6" class="card-text"></p>
+    
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse21" aria-expanded="true" aria-controls="collapseOne">
+                    滝寺不動
+                  </button>
+                </h2>
+                <div id="collapse21" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>静な森の中に響き渡る小さな滝の音。その滝のしぶきを浴びる不動明王と周囲の雰囲気が神秘的です。</strong>...
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse22" aria-expanded="false" aria-controls="collapseTwo">
+                    岩殿山明静院
+                  </button>
+                </h2>
+                <div id="collapse22" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>光が差し込む岩と岩の隙間に佇む木の仏像が何とも神秘的。</strong>...
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse23" aria-expanded="false" aria-controls="collapseThree">
+                    岩屋観音堂
+                  </button>
+                </h2>
+                <div id="collapse23" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>お堂に迫るようにせり出した巨岩が大迫力！ 大地のパワーを感じます。</strong>...
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse24" aria-expanded="false" aria-controls="collapseThree">
+                    いわおの石仏群
+                  </button>
+                </h2>
+                <div id="collapse24" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>岩肌に無数に彫られた石仏から人の祈りの力が感じ取れる場所です。</strong>...
+                  </div>
+                </div>
+              </div>
+            </div>
+
       </div>
     </div>
     </div>
   </div>
-</div>
-<h4>h4. Bootstrap heading</h4>
-<div class="card-container">
-    
+
+
+  
+  {{-- 7番目 --}}
   <div class="cardMain">
     <div class="card">
     <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p id="model7" class="card-text">概要</p>
+        <p id="model7" class="card-text"></p>
+
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse25" aria-expanded="true" aria-controls="collapseOne">
+                滝寺不動
+              </button>
+            </h2>
+            <div id="collapse25" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>静な森の中に響き渡る小さな滝の音。その滝のしぶきを浴びる不動明王と周囲の雰囲気が神秘的です。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse26" aria-expanded="false" aria-controls="collapseTwo">
+                岩殿山明静院
+              </button>
+            </h2>
+            <div id="collapse26" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>光が差し込む岩と岩の隙間に佇む木の仏像が何とも神秘的。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse27" aria-expanded="false" aria-controls="collapseThree">
+                岩屋観音堂
+              </button>
+            </h2>
+            <div id="collapse27" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>お堂に迫るようにせり出した巨岩が大迫力！ 大地のパワーを感じます。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse28" aria-expanded="false" aria-controls="collapseThree">
+                いわおの石仏群
+              </button>
+            </h2>
+            <div id="collapse28" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>岩肌に無数に彫られた石仏から人の祈りの力が感じ取れる場所です。</strong>...
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
+
+    
+    {{-- 8番目 --}}
     <div class="card">
-      <!-- 2番目のカードの内容 -->
       <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p id="model8" class="card-text">概要</p>
+        <p id="model8" class="card-text"></p>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse29" aria-expanded="true" aria-controls="collapseOne">
+                滝寺不動
+              </button>
+            </h2>
+            <div id="collapse29" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>静な森の中に響き渡る小さな滝の音。その滝のしぶきを浴びる不動明王と周囲の雰囲気が神秘的です。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse30" aria-expanded="false" aria-controls="collapseTwo">
+                岩殿山明静院
+              </button>
+            </h2>
+            <div id="collapse30" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>光が差し込む岩と岩の隙間に佇む木の仏像が何とも神秘的。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse31" aria-expanded="false" aria-controls="collapseThree">
+                岩屋観音堂
+              </button>
+            </h2>
+            <div id="collapse31" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>お堂に迫るようにせり出した巨岩が大迫力！ 大地のパワーを感じます。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse32" aria-expanded="false" aria-controls="collapseThree">
+                いわおの石仏群
+              </button>
+            </h2>
+            <div id="collapse32" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>岩肌に無数に彫られた石仏から人の祈りの力が感じ取れる場所です。</strong>...
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card ml-auto">
-      <!-- 3番目のカードの内容 -->
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">穴場の神秘&パワースポットツアー</h5>
-        <p class="card-text">概要</p>
-        <a class="btn btn-primary" href="#" role="button">ルートを表示</a>
-      </div>
-    </div>
     </div>
   </div>
 </div>
