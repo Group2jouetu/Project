@@ -1,0 +1,8 @@
+diff a/resources/views/snsmapping.blade.php b/resources/views/snsmapping.blade.php	(rejected hunks)
+@@ -1,5 +1,6 @@
+ @extends('layout.layout')
+ 
++{{-- @extends('header') --}}
+ 
+ @section('title', 'SNSマップページ')
+ 
