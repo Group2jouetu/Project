@@ -1,7 +1,5 @@
 @extends('layout.layout')
 
-
-
 @section('title', 'SNSマップページ')
 
 @section('add_css')
@@ -17,6 +15,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3>新規登録</h3>
+            <div id="alert" style="display: none; color:red">※入力されていない項目があります</div>
             <form action="/snsInput" id="pinForm" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input type="file" name="image" id="image-input" class="image" accept="image/*" />
@@ -44,8 +43,9 @@
                 <input type="hidden" name="lng" id="get-lng" />
                 <br>
                 <input type="reset" value="キャンセル" onclick="newPinReset()">
-                <input type="submit" value="登録" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    onclick="dialogSubmit(event)">
+                {{-- <input type="submit" value="登録" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    onclick="dialogSubmit(event)"> --}}
+                <input type="submit" value="登録" onclick="event.preventDefault(); dialogSubmit(event)">
             </form>
         </div>
     </div>
@@ -93,7 +93,8 @@
             // DBから取得した位置情報にピンを指す
             @isset($pins)
                 @foreach ($pins as $pin)
-                    pinCreate({{ $pin->id }}, {{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}", "{{ $pin->picture }}",
+                    pinCreate({{ $pin->id }}, {{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}",
+                        "{{ $pin->picture }}",
                         {{ $pin->genre }}, "{{ $pin->detail }}");
                 @endforeach
             @endisset
@@ -182,22 +183,24 @@
 
         // 保存済みのピンを表示する関数
         function pinCreate(id, lat, lng, pin_name, picture, genre, detail) {
-            var likeButton = '<button id="likeButton">いいね</button>';
 
             var contentString = `
                 <div id="content">
                     <h3>${pin_name}</h3>
                     <img src="{{ asset('storage/images') }}/${picture}" alt="" style="max-height: 100px;"><br><br>
                     <p>${detail}</p>
-                    ${likeButton}
+                    
                     <br>
-                    <form action="/messageReply" id="messageReply" method="post" enctype="multipart/form-data">
+                    <form action="/messageReply" id="messageReply" method="post">
+                        @csrf
                         <input type="hidden" name="pin_id" value="${id}">
                         <input type="text" name="return_datail" id="title" size="30" placeholder="入力エリア" />
                         <input type="submit" value="送信する">
                     </form>
-                </div>
+                </div><br>
             `;
+            
+            contentString += contetnMessage(id);
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
@@ -236,6 +239,33 @@
             });
         }
 
+        function contetnMessage(id){
+            var messages = "";
+            @foreach($messages as $message)
+                // messages = '<table>';
+                // 表示するピンにメッセージが登録されているか確認する
+                if ({{$message->pin_id}} === id){
+                    var message = `
+                        <table>
+                            <tr>
+                                <td rowspan='2'></td>
+                                <td></td>
+                                <td>{{ $message->created_at }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>{{ $message->message_body }}</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    `;
+                    messages += message;
+                    // message += '<div style="border: 1px solid"><p>{{ $message->message_body }}</p></div>';
+                }
+            @endforeach
+            return messages;
+        }
+
         function pinColor(genre) {
             //ピンのジャンル（食べ物）
             if (genre == 1) {
@@ -261,8 +291,23 @@
 
         // formタグの登録ボタンが押された時、確認画面が出るので、フォームの送信を制御
         function dialogSubmit(event) {
+            var name = document.getElementById("title");
+            var detail = document.getElementById("detail");
+            var alert = document.getElementById('alert');
+
+            if (name.value === "" || detail.value === "") {
+                alert.textContent = "※入力されていない項目があります。";
+                alert.style.display = "block";
+                // event.preventDefault();
+            } else {
+                var modalElement = bootstrap.Modal(document.getElementById("#exampleModal"));
+                var bootstrapModal = new bootstrap.Modal(modalElement);
+                bootstrapModal.show();
+            }
+
             // フォームの送信を一旦止める
             event.preventDefault();
+
         }
 
         function saveAction() {
