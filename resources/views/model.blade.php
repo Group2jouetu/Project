@@ -20,7 +20,7 @@
 
     {{-- 1番目 --}}
     <div class="card">
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+      <img src="/img/滝寺不動.jpg" class="card-img-top" alt="...">
       <div class="card-body">
         <p id="model1" class="card-text"></p>
 
@@ -575,7 +575,7 @@ function initMap() {
         model_button.before(h5);
         model_button.after(br);
         model_button.after(button);
-
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         //var container = document.createElement('div');
         //container.appendChild(button);
         //container.appendChild(image);
