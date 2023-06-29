@@ -89,6 +89,7 @@ class BookmarkController extends Controller
         return back();
     }
 
+    
     /**
      * Store a newly created resource in storage.
      */
