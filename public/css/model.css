@@ -1,6 +1,6 @@
 #map {
     height: 80vh;
-    width: 80vw;
+    width: 90vw;
     margin: 0 auto;
 }
 /* ボトムナビゲーション */
@@ -45,7 +45,13 @@ p.card-text{
 button.btn{
     margin: 0;
 }
+img.card-img-top {
+    height: 42vh;
+}
 @media screen and (max-width: 1024px){
+    img.card-img-top {
+        height: auto;
+    }
 }
 @media screen and (max-width: 768px){
     .card {
@@ -56,6 +62,12 @@ button.btn{
         display: block;
         justify-content: center;
     }
+    img.card-img-top {
+        height: auto;
+    }
 }
 @media screen and (max-width: 480px){
+    img.card-img-top {
+        height: auto;
+    }
 }
