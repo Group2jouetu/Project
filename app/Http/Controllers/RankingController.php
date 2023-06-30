@@ -12,17 +12,17 @@ class RankingController extends Controller
     public function index (Request $request) 
     {   
         // ログインしているかどうか、sessionが失われた時の処理
-        if(Auth::check()){
+        // if(Auth::check()){
             // ログインしているユーザの情報取得
             $user = Auth::user();// セッションをクリアする
-        }else{
+        // }else{
             // セッションが失われている場合の処理
             // エラーメッセージをフラッシュデータに保存
-            session()->flash('error', 'セッションが失われました。ログインし直してください。');
+            // session()->flash('error', 'セッションが失われました。ログインし直してください。');
 
             // ログインページにリダイレクト
-            return redirect()->route('login');
-        }
+            // return redirect()->route('login');
+        // }
 
         // pinsテーブル取得
         $query = DB::table('pins');
@@ -115,11 +115,14 @@ class RankingController extends Controller
         // 自然ランキング取得
         $nature = getGenreRanking(5);
         
+        $bookmark = null;
+        if(Auth::check()){
         // ブックマークされている観光地を取得
         $bookmark = DB::table('pins')
                     ->join('bookmarks', 'pins.id', '=', 'bookmarks.pin_id')
                     ->where('bookmarks.user_id', $user->id)
                     ->get();
+        }
                     
         // ランキングいいね数
         $rankingLike = DB::table('pins')

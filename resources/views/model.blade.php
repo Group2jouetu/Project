@@ -54,11 +54,11 @@
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapseOne">
                 滝寺不動
               </button>
             </h2>
-            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <strong>静な森の中に響き渡る小さな滝の音。その滝のしぶきを浴びる不動明王と周囲の雰囲気が神秘的です。</strong>...
               </div>
@@ -145,11 +145,11 @@
         <div class="accordion" id="accordionExample2">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapseOne">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapseOne">
                 春日山神社
               </button>
             </h2>
-            <div id="collapse5" class="accordion-collapse collapse show" data-bs-parent="#accordionExample2">
+            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionExample2">
               <div class="accordion-body">
                 <strong>受験生の皆さんにおすすめの合格祈願スポット巡りプランです。まずは春日山神社。試験という"戦"の前に、戦国最強とも謳われた上杉謙信公の御加護を得てパワーアップ。</strong>...
               </div>
@@ -225,11 +225,11 @@
         <div class="accordion" id="accordionExample3">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="true" aria-controls="collapseOne">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="true" aria-controls="collapseOne">
               春日山城跡
               </button>
             </h2>
-            <div id="collapse9" class="accordion-collapse collapse show" data-bs-parent="#accordionExample3">
+            <div id="collapse9" class="accordion-collapse collapse" data-bs-parent="#accordionExample3">
               <div class="accordion-body">
                 <strong>上越市内を一望できる本丸からの景色は圧巻の一言！天気は運次第。</strong>...
               </div>
@@ -308,11 +308,11 @@
         <div class="accordion" id="accordionExample4">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="true" aria-controls="collapseOne">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="true" aria-controls="collapseOne">
               くびき野レールパーク
               </button>
             </h2>
-            <div id="collapse13" class="accordion-collapse collapse show" data-bs-parent="#accordionExample4">
+            <div id="collapse13" class="accordion-collapse collapse" data-bs-parent="#accordionExample4">
               <div class="accordion-body">
                 <strong>大正から昭和まで頸城野平野を走った『頸城鉄道』の本社車庫や車両が保管されてる場所。一般公開日に行われる乗車体験は大人も子供も楽しめます。（通常は非公開）</strong>...
               </div>
@@ -386,11 +386,11 @@
         <div class="accordion" id="accordionExample5">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse17" aria-expanded="true" aria-controls="collapseOne">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse17" aria-expanded="true" aria-controls="collapseOne">
               松ヶ峯
               </button>
             </h2>
-            <div id="collapse17" class="accordion-collapse collapse show" data-bs-parent="#accordionExample5">
+            <div id="collapse17" class="accordion-collapse collapse" data-bs-parent="#accordionExample5">
               <div class="accordion-body">
                 <strong>ここでは妙高山×星空×リフレクション！おー！と思わず声に出しちゃうくらい神秘的な写真が撮れますよ！</strong>...
               </div>
@@ -476,11 +476,11 @@
             <div class="accordion" id="accordionExample6">
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse21" aria-expanded="true" aria-controls="collapseOne">
+                  <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse21" aria-expanded="true" aria-controls="collapseOne">
                   上越市立水族博物館 うみがたり
                   </button>
                 </h2>
-                <div id="collapse21" class="accordion-collapse collapse show" data-bs-parent="#accordionExample6">
+                <div id="collapse21" class="accordion-collapse collapse " data-bs-parent="#accordionExample6">
                   <div class="accordion-body">
                     <strong>オシャレな館内と四季で異なるイルカショー。年パスもあるので、雨の日はぶらりと来て優雅な館内散歩も🐬</strong>...
                   </div>
@@ -521,18 +521,41 @@
   {{-- 7番目 --}}
   <div class="cardMain">
     <div class="card">
-    <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+
+      <div id="carouselExampleIndicators7" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators7" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators7" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/光ヶ原高原.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/星のふるさと館.jpg" class="card-img-top" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators7" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators7" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
       <div class="card-body">
         <p id="model7" class="card-text"></p>
 
         <div class="accordion" id="accordionExample7">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse25" aria-expanded="true" aria-controls="collapseOne">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse25" aria-expanded="true" aria-controls="collapseOne">
               光ヶ原高原センター
               </button>
             </h2>
-            <div id="collapse25" class="accordion-collapse collapse show" data-bs-parent="#accordionExample7">
+            <div id="collapse25" class="accordion-collapse collapse" data-bs-parent="#accordionExample7">
               <div class="accordion-body">
                 <strong>光ヶ原高原(板倉区）オリオン座と言えば冬の星座ですが、ここは冬期間は閉鎖で行くことができません。しかし、秋深まる頃に東の空から上ってくるオリオン座を観察できます。</strong>...
               </div>
@@ -558,17 +581,44 @@
     
     {{-- 8番目 --}}
     <div class="card">
-      <img src="/img/samplePicture.jpg" class="card-img-top" alt="...">
+
+      <div id="carouselExampleIndicators8" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators8" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators8" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators8" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/関田峠.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/虫川大杉.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/板山不動滝.jpg" class="card-img-top" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators8" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators8" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
       <div class="card-body">
         <p id="model8" class="card-text"></p>
         <div class="accordion" id="accordionExample8">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse29" aria-expanded="true" aria-controls="collapseOne">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse29" aria-expanded="true" aria-controls="collapseOne">
               関田峠
               </button>
             </h2>
-            <div id="collapse29" class="accordion-collapse collapse show" data-bs-parent="#accordionExample8">
+            <div id="collapse29" class="accordion-collapse collapse" data-bs-parent="#accordionExample8">
               <div class="accordion-body">
                 <strong></strong>...
               </div>
@@ -729,7 +779,7 @@ function initMap() {
         var br = document.createElement('br');
         var button = document.createElement('button');
         button.id = 'page-top';
-        button.className = 'btn btn-primary';
+        button.className = 'btn btn-outline-info';
         button.textContent = 'ルート表示';
         //button.textContent = buttons[i].label;
 
@@ -748,6 +798,19 @@ function initMap() {
 
         button.addEventListener('click', createTogglePinsFunction(buttons[i].pins));
         //buttonContainer.appendChild(container);
+        // マップの位置までスクロールする
+
+      button.addEventListener('click', function() {
+
+      const mapElement = document.getElementById("map");
+
+      mapElement.scrollIntoView({
+
+        behavior: 'smooth'
+
+      });
+
+      });
     }
 }
 

@@ -19,13 +19,13 @@
           </div>
         </li>
         <li class="nav-item right">
-          <a class="nav-link active profile" aria-current="page" href="profile"><i class="fa-solid fa-user logo profile"></i></a>
+          <a class="nav-link active profile" aria-current="page" href="profile">PROFILE</a>
         </li>
         {{-- <li class="nav-item">
                 <a class="nav-link active" href="register">ログイン</a>
               </li> --}}
         <li class="nav-item right">
-          <a class="nav-link active logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket size logout"></i></a>
+          <a class="nav-link active logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>
         </li>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           @csrf
