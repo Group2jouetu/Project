@@ -154,8 +154,8 @@
             @isset($pins)
                 @foreach ($pins as $pin)
                     pinCreate({{ $pin->id }}, {{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}",
-                        "{{ $pin->picture }}",
-                        {{ $pin->genre }}, "{{ $pin->detail }}");
+                        "{{ $pin->picture }}", {{ $pin->genre }},
+                        "{{ $pin->detail }}", {{ $pin->like_count }});
                 @endforeach
             @endisset
 
@@ -222,8 +222,6 @@
                 document.getElementById('image-input').value = "";
                 document.getElementById('title').value = "";
                 modal.style.display = "none";
-                // 開いてあったピンの情報を閉じる
-                // click_pin.close();
             }
         }
 
@@ -241,28 +239,42 @@
             reader.readAsDataURL(file);
         });
 
-        // function pinColor(genre, position) {
-
         // 保存済みのピンを表示する関数
-        function pinCreate(id, lat, lng, pin_name, picture, genre, detail) {
+        function pinCreate(id, lat, lng, pin_name, picture, genre, detail, like_count) {
 
+            // ピンに表示する内容を変数に入れる
             var contentString = `
                 <div id="content">
-                    <h3>${pin_name}</h3>
                     <img src="{{ asset('storage/images') }}/${picture}" alt="" style="max-height: 100px;"><br><br>
+                    <table>
+                        <tr>
+                            <td><h3>${pin_name}</h3></td>
+                            <td>&#10025;</td>
+                            <td>${like_count}</td>
+                        </tr>
+                        </table>
                     <p>${detail}</p>
-                    
                     <br>
-                    <form action="/messageReply" id="messageReply" method="post">
-                        @csrf
-                        <input type="hidden" name="pin_id" value="${id}">
-                        <input type="text" name="return_datail" id="title" size="30" placeholder="入力エリア" />
-                        <input type="submit" value="送信する">
-                    </form>
                 </div><br>
             `;
             
+            // ピンの場所にメッセージがあった場合に追加する処理
             contentString += contetnMessage(id);
+
+            // ピンの場所にメッセージを送るフォーム
+            contentString += `
+                <br>
+                <form action="/messageReply" id="messageReply" method="post">
+                    @csrf
+                    <input type="hidden" name="pin_id" value="${id}">
+                    <table>
+                        <tr>
+                            <td><input type="text" name="return_datail" id="form-message" size="10" placeholder="入力エリア" required /></td>
+                            <td><input type="submit" value="送信する"></td>
+                        </tr>
+                    </table>
+                </form>
+            `;
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
@@ -304,25 +316,22 @@
         function contetnMessage(id){
             var messages = "";
             @foreach($messages as $message)
-                // messages = '<table>';
                 // 表示するピンにメッセージが登録されているか確認する
                 if ({{$message->pin_id}} === id){
-                    var message = `
-                        <table>
+                    var created_at = "{{ $message->created_at }}";
+                    // 作成日付の秒数部分を切り落とす
+                    created_at = created_at.slice(0, -3).replace('-', '/');
+                    messages = `
+                        <table class="message-table">
                             <tr>
-                                <td rowspan='2'></td>
-                                <td></td>
-                                <td>{{ $message->created_at }}</td>
+                                <td>{{ $message->name }}</td>
+                                <td>${created_at}</td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td>{{ $message->message_body }}</td>
-                                <td></td>
+                                <td colspan="2">{{ $message->message_body }}</td>
                             </tr>
                         </table>
                     `;
-                    messages += message;
-                    // message += '<div style="border: 1px solid"><p>{{ $message->message_body }}</p></div>';
                 }
             @endforeach
             return messages;
