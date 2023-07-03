@@ -110,9 +110,6 @@
     
     {{-- 2番目 --}}
     <div class="card">
-<<<<<<< HEAD
-      <img src="/img/春日山神社.jpg" class="card-img-top" alt="...">
-=======
 
       <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -142,7 +139,6 @@
       </div>
 
 
->>>>>>> a8748ebcce44edeb0ee208b4dec40639e02aa516
       <div class="card-body">
 
         <p id="model2" class="card-text"></p>
@@ -193,9 +189,6 @@
 
     {{-- 3番目 --}}
     <div class="card">
-<<<<<<< HEAD
-      <img src="/img/春日山城跡.jpg" class="card-img-top" alt="...">
-=======
 
 
       <div id="carouselExampleIndicators3" class="carousel slide" data-bs-ride="carousel">
@@ -226,7 +219,6 @@
       </div>
 
 
->>>>>>> a8748ebcce44edeb0ee208b4dec40639e02aa516
       <div class="card-body">
         <p id="model3" class="card-text"></p>
 
@@ -281,9 +273,6 @@
     
     {{-- 4番目 --}}
     <div class="card">
-<<<<<<< HEAD
-    <img src="/img/くびきのレールパーク.jpg" class="card-img-top" alt="...">
-=======
 
       <div id="carouselExampleIndicators4" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -313,7 +302,6 @@
       </div>
 
       
->>>>>>> a8748ebcce44edeb0ee208b4dec40639e02aa516
       <div class="card-body">
         <p id="model4" class="card-text"></p>
 
@@ -364,9 +352,6 @@
     
     {{-- 5番目 --}}
     <div class="card">
-<<<<<<< HEAD
-      <img src="/img/松ヶ峰.jpg" class="card-img-top" alt="...">
-=======
 
       <div id="carouselExampleIndicators5" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -395,7 +380,6 @@
         </button>
       </div>
 
->>>>>>> a8748ebcce44edeb0ee208b4dec40639e02aa516
       <div class="card-body">
         <p id="model5" class="card-text"></p>
 
@@ -458,9 +442,6 @@
     
     {{-- 6番目 --}}
     <div class="card">
-<<<<<<< HEAD
-      <img src="/img/うみがたり.jpg" class="card-img-top" alt="...">
-=======
 
       <div id="carouselExampleIndicators6" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -489,7 +470,6 @@
         </button>
       </div>
 
->>>>>>> a8748ebcce44edeb0ee208b4dec40639e02aa516
       <div class="card-body">
         <p id="model6" class="card-text"></p>
     
@@ -541,9 +521,6 @@
   {{-- 7番目 --}}
   <div class="cardMain">
     <div class="card">
-<<<<<<< HEAD
-    <img src="/img/光ヶ原高原.jpg" class="card-img-top" alt="...">
-=======
 
       <div id="carouselExampleIndicators7" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -568,7 +545,6 @@
         </button>
       </div>
 
->>>>>>> a8748ebcce44edeb0ee208b4dec40639e02aa516
       <div class="card-body">
         <p id="model7" class="card-text"></p>
 
@@ -605,9 +581,6 @@
     
     {{-- 8番目 --}}
     <div class="card">
-<<<<<<< HEAD
-      <img src="/img/関田峠.jpg" class="card-img-top" alt="...">
-=======
 
       <div id="carouselExampleIndicators8" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -636,7 +609,6 @@
         </button>
       </div>
 
->>>>>>> a8748ebcce44edeb0ee208b4dec40639e02aa516
       <div class="card-body">
         <p id="model8" class="card-text"></p>
         <div class="accordion" id="accordionExample8">
