@@ -285,22 +285,16 @@
                 lng: lng
             };
 
-            var color = pinColor(genre);
+            //流用するため関数名はそのままだが、ピン画像を扱う
+            var color = pinImage(genre);
 
             var marker = new google.maps.Marker({
                 position: position,
                 map: map,
-                // icon: img,
                 title: 'お店の位置',
                 icon: {
-                    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-                    scale: 5,
-                    fillColor: color,
-                    fillOpacity: 1,
-                    strokeWeight: 0
-                    // scaledSize: new google.maps.Size(40, 40), // マーカーのサイズ
-                    // origin: new google.maps.Point(0, 0),
-                    // anchor: new google.maps.Point(20, 40) // アイコンのアンカーポイント
+                    url: color,
+                    scaledSize: new google.maps.Size(30, 55), // ピン画像のサイズ
                 }
             });
             marker.addListener('click', function() {
@@ -337,26 +331,26 @@
             return messages;
         }
 
-        function pinColor(genre) {
+        function pinImage(genre) {
             //ピンのジャンル（食べ物）
             if (genre == 1) {
-                return "blue";
+                return "/img/gurume_pin.png";
             }
             //ピンのジャンル（宿・ホテル）
             else if (genre == 2) {
-                return "red";
+                return "/img/hotel_pin.png";
             }
             //ピンのジャンル（文化）
             else if (genre == 3) {
-                return "black";
+                return "/img/culture_pin.png";
             }
             //ピンのジャンル（遊び施設）
             else if (genre == 4) {
-                return "white";
+                return "/img/leisure_pin.png";
             }
             //ピンのジャンル（自然）
             else if (genre == 5) {
-                return "yellow";
+                return "/img/nature_pin.png";
             }
         }
 
