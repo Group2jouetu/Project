@@ -12,6 +12,7 @@ div#log {
     background-color: #E7F1FF;
     padding: 1rem;
     border-radius: 1rem;
+    text-align: center;
 }
 .cardMain {
     display: flex;
@@ -44,9 +45,6 @@ p.card-text{
 }
 button.btn{
     margin: 0;
-}
-img.card-img-top {
-    height: 42vh;
 }
 @media screen and (max-width: 1024px){
     img.card-img-top {
