@@ -968,7 +968,7 @@ function createTogglePinsFunction(pins) {
                         return hours + '時間 ' + minutes + '分 ' + seconds + '秒';
                     });
 
-                    var message = 'A~Bの所要時間：' + durationText.join('、B~Cの所要時間：');
+                    var message = 'A~Bの所要時間：' + durationText.join('\nB~Cの所要時間：');
                     logElement.innerText = message;
                 } else {
                     window.alert('ルートの取得に失敗しました。');
