@@ -30,15 +30,21 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/滝寺不動.jpg" class="card-img-top" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>第1スライド ラベル</h5>
+            <div class="carousel-caption">
+              <h5>滝寺不動</h5>
             </div>
           </div>
           <div class="carousel-item">
             <img src="/img/岩殿山明静院.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>岩殿山明静院</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/岩屋観音堂.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>岩屋観音堂</p>
+            </div>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -123,12 +129,21 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/春日山神社.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>春日山神社</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/菅原神社.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>菅原神社</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/地滑り資料館.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>地すべり資料館</p>
+            </div>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
@@ -203,12 +218,21 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/春日山城跡.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>春日山城跡</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/楞厳寺.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>楞厳寺</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/高田城三重櫓.jpeg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>高田城三重櫓</p>
+            </div>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide="prev">
@@ -287,14 +311,20 @@
           <div class="carousel-item active">
             <img src="/img/くびきのレールパーク.jpg" class="card-img-top" alt="...">
             <div class="carousel-caption ">
-              <p>くびきのレールパーク</p>
+              <p>くびき野レールパーク</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="/img/直江津D51レールパーク.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>直江津D51レールパーク</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/直江津駅.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>直江津駅</p>
+            </div>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide="prev">
@@ -368,12 +398,21 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/松ヶ峰.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>松ヶ峯</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/光ヶ原高原.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>上越清里 星のふるさと館</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/光ヶ原高原(板倉区）.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>光ヶ原高原センター</p>
+            </div>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide="prev">
@@ -447,13 +486,21 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/うみがたり.jpg" class="card-img-top" alt="...">
-            
+            <div class="carousel-caption ">
+              <p>上越市立水族博物館 うみがたり</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/雁木通り(瞽女ミュージアム〜高橋孫左衛門商店).jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>瞽女ミュージアム高田</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/旧師団長官舎.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>旧師団長官舎</p>
+            </div>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators6" data-bs-slide="prev">
@@ -527,19 +574,19 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/光ヶ原高原.jpg" class="card-img-top" alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption ">
               <p>光ヶ原高原センター</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="/img/星のふるさと館.jpg" class="card-img-top" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h2>星のふるさと館</ｈ>
+            <div class="carousel-caption ">
+              <p>上越清里 星のふるさと館</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="/img/妙高サンシャインランド（中郷区）.jpg" class="card-img-top" alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption ">
               <p>妙高サンシャインランド</p>
             </div>
           </div>
@@ -612,19 +659,19 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/関田峠.jpg" class="card-img-top" alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption ">
               <p>関田峠</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="/img/虫川大杉.jpg" class="card-img-top" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <p>虫川大杉</p>
+            <div class="carousel-caption ">
+              <p>虫川の大杉</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="/img/板山不動滝.jpg" class="card-img-top" alt="...">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption ">
               <p>板山不動滝</p>
             </div>
           </div>
@@ -921,7 +968,7 @@ function createTogglePinsFunction(pins) {
                         return hours + '時間 ' + minutes + '分 ' + seconds + '秒';
                     });
 
-                    var message = 'A~Bの所要時間：' + durationText.join('、B~Cの所要時間：');
+                    var message = 'A~Bの所要時間：' + durationText.join('\nB~Cの所要時間：');
                     logElement.innerText = message;
                 } else {
                     window.alert('ルートの取得に失敗しました。');
