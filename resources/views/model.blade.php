@@ -30,6 +30,9 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/滝寺不動.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>第1スライド ラベル</h5>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/岩殿山明静院.jpg" class="card-img-top" alt="...">
@@ -55,7 +58,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapseOne">
-                滝寺不動
+                A.滝寺不動
               </button>
             </h2>
             <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -67,7 +70,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapseTwo">
-                岩殿山明静院
+                B.岩殿山明静院
               </button>
             </h2>
             <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -79,7 +82,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapseThree">
-                岩屋観音堂
+                C.岩屋観音堂
               </button>
             </h2>
             <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -146,7 +149,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapseOne">
-                春日山神社
+                A.春日山神社
               </button>
             </h2>
             <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionExample2">
@@ -158,7 +161,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapseTwo">
-              菅原神社
+              B.菅原神社
               </button>
             </h2>
             <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#accordionExample2">
@@ -170,7 +173,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapseThree">
-              地すべり資料館
+              C.地すべり資料館
               </button>
             </h2>
             <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#accordionExample2">
@@ -226,7 +229,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="true" aria-controls="collapseOne">
-              春日山城跡
+              A.春日山城跡
               </button>
             </h2>
             <div id="collapse9" class="accordion-collapse collapse" data-bs-parent="#accordionExample3">
@@ -238,7 +241,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapseTwo">
-              楞厳寺
+              B.楞厳寺
               </button>
             </h2>
             <div id="collapse10" class="accordion-collapse collapse" data-bs-parent="#accordionExample3">
@@ -250,7 +253,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapseThree">
-              高田城三重櫓
+              C.高田城三重櫓
               </button>
             </h2>
             <div id="collapse11" class="accordion-collapse collapse" data-bs-parent="#accordionExample3">
@@ -309,7 +312,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="true" aria-controls="collapseOne">
-              くびき野レールパーク
+              A.くびき野レールパーク
               </button>
             </h2>
             <div id="collapse13" class="accordion-collapse collapse" data-bs-parent="#accordionExample4">
@@ -321,7 +324,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapseTwo">
-              直江津D51レールパーク
+              B.直江津D51レールパーク
               </button>
             </h2>
             <div id="collapse14" class="accordion-collapse collapse" data-bs-parent="#accordionExample4">
@@ -333,7 +336,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapseThree">
-              直江津駅
+              C.直江津駅
               </button>
             </h2>
             <div id="collapse15" class="accordion-collapse collapse" data-bs-parent="#accordionExample4">
@@ -387,7 +390,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse17" aria-expanded="true" aria-controls="collapseOne">
-              松ヶ峯
+              A.松ヶ峯
               </button>
             </h2>
             <div id="collapse17" class="accordion-collapse collapse" data-bs-parent="#accordionExample5">
@@ -399,7 +402,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse18" aria-expanded="false" aria-controls="collapseTwo">
-              上越清里 星のふるさと館
+              B.上越清里 星のふるさと館
               </button>
             </h2>
             <div id="collapse18" class="accordion-collapse collapse" data-bs-parent="#accordionExample5">
@@ -411,7 +414,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse19" aria-expanded="false" aria-controls="collapseThree">
-              光ヶ原高原センター
+              C.光ヶ原高原センター
               </button>
             </h2>
             <div id="collapse19" class="accordion-collapse collapse" data-bs-parent="#accordionExample5">
@@ -466,7 +469,7 @@
               <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse21" aria-expanded="true" aria-controls="collapseOne">
-                  上越市立水族博物館 うみがたり
+                  A.上越市立水族博物館 うみがたり
                   </button>
                 </h2>
                 <div id="collapse21" class="accordion-collapse collapse " data-bs-parent="#accordionExample6">
@@ -478,7 +481,7 @@
               <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse22" aria-expanded="false" aria-controls="collapseTwo">
-                  瞽女ミュージアム高田
+                  B.瞽女ミュージアム高田
                   </button>
                 </h2>
                 <div id="collapse22" class="accordion-collapse collapse" data-bs-parent="#accordionExample6">
@@ -490,7 +493,7 @@
               <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse23" aria-expanded="false" aria-controls="collapseThree">
-                  旧師団長官舎
+                  C.旧師団長官舎
                   </button>
                 </h2>
                 <div id="collapse23" class="accordion-collapse collapse" data-bs-parent="#accordionExample6">
@@ -545,7 +548,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse25" aria-expanded="true" aria-controls="collapseOne">
-              光ヶ原高原センター
+              A.光ヶ原高原センター
               </button>
             </h2>
             <div id="collapse25" class="accordion-collapse collapse" data-bs-parent="#accordionExample7">
@@ -557,7 +560,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse26" aria-expanded="false" aria-controls="collapseTwo">
-              上越清里 星のふるさと館
+              B.上越清里 星のふるさと館
               </button>
             </h2>
             <div id="collapse26" class="accordion-collapse collapse" data-bs-parent="#accordionExample7">
@@ -569,7 +572,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse20" aria-expanded="false" aria-controls="collapseThree">
-              妙高サンシャインランド
+              C.妙高サンシャインランド
               </button>
             </h2>
             <div id="collapse20" class="accordion-collapse collapse" data-bs-parent="#accordionExample5">
@@ -620,7 +623,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse29" aria-expanded="true" aria-controls="collapseOne">
-              関田峠
+              A.関田峠
               </button>
             </h2>
             <div id="collapse29" class="accordion-collapse collapse" data-bs-parent="#accordionExample8">
@@ -632,7 +635,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse30" aria-expanded="false" aria-controls="collapseTwo">
-              虫川の大杉
+              B.虫川の大杉
               </button>
             </h2>
             <div id="collapse30" class="accordion-collapse collapse" data-bs-parent="#accordionExample8">
@@ -644,7 +647,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse31" aria-expanded="false" aria-controls="collapseThree">
-              板山不動尊
+              C.板山不動尊
               </button>
             </h2>
             <div id="collapse31" class="accordion-collapse collapse" data-bs-parent="#accordionExample8">
