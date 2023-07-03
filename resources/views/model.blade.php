@@ -88,7 +88,7 @@
               </div>
             </div>
           </div>
-          <div class="accordion-item">
+          {{-- <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapseThree">
                 いわおの石仏群
@@ -99,7 +99,7 @@
                 <strong>岩肌に無数に彫られた石仏から人の祈りの力が感じ取れる場所です。</strong>...
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
 
       </div>
@@ -367,7 +367,7 @@
             <img src="/img/光ヶ原高原.jpg" class="card-img-top" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="/img/妙高サンシャインランド（中郷区）.jpg" class="card-img-top" alt="...">
+            <img src="/img/光ヶ原高原(板倉区）.jpg" class="card-img-top" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators5" data-bs-slide="prev">
@@ -420,18 +420,7 @@
               </div>
             </div>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse20" aria-expanded="false" aria-controls="collapseThree">
-              妙高サンシャインランド
-              </button>
-            </h2>
-            <div id="collapse20" class="accordion-collapse collapse" data-bs-parent="#accordionExample5">
-              <div class="accordion-body">
-                <strong>妙高サンシャインランド（中郷区）妙高山の向こう側にオリオンが沈みます。空だけでなく湖面に映る星空も是非堪能してください。</strong>...
-              </div>
-            </div>
-          </div>
+          
         </div>
 
       </div>
@@ -526,6 +515,7 @@
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators7" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators7" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators7" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -533,6 +523,9 @@
           </div>
           <div class="carousel-item">
             <img src="/img/星のふるさと館.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/妙高サンシャインランド（中郷区）.jpg" class="card-img-top" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators7" data-bs-slide="prev">
@@ -570,6 +563,18 @@
             <div id="collapse26" class="accordion-collapse collapse" data-bs-parent="#accordionExample7">
               <div class="accordion-body">
                 <strong>星のふるさと館（清里区）ここも冬期間は行くことができません。オリオン座を観察&撮影するなら11月中です。</strong>...
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse20" aria-expanded="false" aria-controls="collapseThree">
+              妙高サンシャインランド
+              </button>
+            </h2>
+            <div id="collapse20" class="accordion-collapse collapse" data-bs-parent="#accordionExample5">
+              <div class="accordion-body">
+                <strong>妙高サンシャインランド（中郷区）妙高山の向こう側にオリオンが沈みます。空だけでなく湖面に映る星空も是非堪能してください。</strong>...
               </div>
             </div>
           </div>
@@ -648,7 +653,7 @@
               </div>
             </div>
           </div>
-          <div class="accordion-item">
+          {{-- <div class="accordion-item">
             <h2 class="accordion-header">
               <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse32" aria-expanded="false" aria-controls="collapseThree">
               船見公園
@@ -659,7 +664,7 @@
                 <strong></strong>...
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
