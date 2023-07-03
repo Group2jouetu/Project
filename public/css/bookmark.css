@@ -5,6 +5,11 @@
     -moz-user-select: none;
     user-select: none;
   }
+  /* nullメッセージ */
+  p.nullMessage {
+    margin: 0 auto;
+    text-align: center;
+}
   /* ボトムナビゲーション */
 .bookMark a{
   color: #ed5353;
