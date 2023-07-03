@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Models\Pin;
+use App\Models\Bookmark;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,8 @@ class SnsMappingController extends Controller
 
     public function index()
     {
-
+        // ログイン中のユーザーID
+        $user = Auth::user();
 
         // pinsテーブルのデータを取得
         $pins = new Pin();
@@ -27,12 +29,25 @@ class SnsMappingController extends Controller
         // $messages = new Message();
         // $messages_data = $messages->messageSelectDesc();
 
-        // ログイン中のユーザーID
-        $user = Auth::id();
 
-        return view('snsmapping', ["id" => $user, "pins" => $pins_data, "messages" => $messages_data]);
+        // $pinsに_bookmark_flagカラムを追加
+        $user_id = null;
+        if($user){      // ログイン済みでなければ実行しない
+            $user_id = $user->id;
+        }
+        foreach($pins_data as $pin){
+            $pin_id = 0;
+            $bookmark = new Bookmark();
+            $res = $bookmark->where('user_id', $user_id)->where('pin_id', $pin->id)->first();
+            if($res){
+                $pin_id = 1;
+            }
+            $pin->_bookmark_flag = $pin_id;
+        }
+
+
+        return view('snsmapping', ["id" => $user->id, "pins" => $pins_data, "messages" => $messages_data]);
     }
-
     public function store(Request $request)
     {
 
@@ -84,5 +99,11 @@ class SnsMappingController extends Controller
         $message->save();
 
         return redirect()->back();
+    }
+
+    // ピンの情報を編集
+    public function edit(Request $request)
+    {
+        $pins = new Pin();
     }
 }

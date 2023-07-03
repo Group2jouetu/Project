@@ -155,7 +155,7 @@
                 @foreach ($pins as $pin)
                     pinCreate({{ $pin->id }}, {{ $pin->latitude }}, {{ $pin->longitude }}, "{{ $pin->pin_name }}",
                         "{{ $pin->picture }}", {{ $pin->genre }},
-                        "{{ $pin->detail }}", {{ $pin->like_count }});
+                        "{{ $pin->detail }}", {{ $pin->like_count }},{{ $pin->_bookmark_flag }});
                 @endforeach
             @endisset
 
@@ -240,7 +240,7 @@
         });
 
         // 保存済みのピンを表示する関数
-        function pinCreate(id, lat, lng, pin_name, picture, genre, detail, like_count) {
+        function pinCreate(id, lat, lng, pin_name, picture, genre, detail, like_count,flag) {
 
             // ピンに表示する内容を変数に入れる
             var contentString = `
@@ -252,11 +252,34 @@
                             <td>&#10025;</td>
                             <td>${like_count}</td>
                         </tr>
-                        </table>
-                    <p>${detail}</p>
-                    <br>
-                </div><br>
+                    </table>
             `;
+
+            if (flag) {
+                contentString += `
+                    <form action="/bookmark" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <input id="id" type="text" name="id" value="${id}" hidden>
+                        <input type="submit" value="お気に入り削除">
+                    </form>
+                `;
+            } else {
+                contentString += `
+                    <form action="/bookmark" method="post">
+                        @csrf
+                        <input id="pin_id" type="text" name="pin_id" value="${id}" hidden>
+                        <input type="submit" value="お気に入り登録">
+                    </form>
+                `;
+            }
+
+            contentString += `
+                <p>${detail}</p>
+                <br>
+            </div><br>
+            `;
+
             
             // ピンの場所にメッセージがあった場合に追加する処理
             contentString += contetnMessage(id);

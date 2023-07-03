@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/snsInput', [SnsMappingController::class, 'store']);
     Route::post('/messageReply', [SnsMappingController::class, 'reply']);
+    Route::post('/pinEdit', [SnsMappingController::class, 'edit']);
 });
 // 旅のしおり
 Route::middleware('auth')->group(function () {
