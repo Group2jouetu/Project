@@ -54,7 +54,7 @@
                                     @endif
                                     <li class="list-group-item">
                                         <p class="card-text">
-                                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                                             {{ $searchRankings->like_count}} 
                                         </p>
                                         {{-- お気に入り設定されていれば --}}
@@ -78,7 +78,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $searchRankings->pin_name }}
-                                        <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $searchRankings->like_count }}</h1>
+                                        いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $searchRankings->like_count }}</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                                     </div>
                                     <div class="modal-body">
@@ -142,7 +142,7 @@
                             @endif
                             <li class="list-group-item">
                                 <p class="card-text">
-                                    <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                                    いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                                     {{ $rankings->like_count}} 
                                 </p>
                                 @if($bookmark != null)
@@ -165,7 +165,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $rankings->pin_name }}
-                                <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $rankings->like_count }}</h1>
+                                いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $rankings->like_count }}</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                             </div>
                             <div class="modal-body">
@@ -227,7 +227,7 @@
                     @endif
                     <li class="list-group-item">
                         <p class="card-text">
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                             {{ $food_data->like_count}}
                         </p>
                         @if($bookmark != null)
@@ -249,7 +249,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $food_data->pin_name }}
-                                <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $food_data->like_count}}</h1>
+                                いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $food_data->like_count}}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
@@ -312,7 +312,7 @@
                     
                     <li class="list-group-item">
                         <p class="card-text">
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                             {{ $hotel_data->like_count}}
                         </p>
                         @if($bookmark != null)
@@ -335,7 +335,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $hotel_data->pin_name }}
-                                <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $hotel_data->like_count}}</h1>
+                                いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $hotel_data->like_count}}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
@@ -400,7 +400,7 @@
                     @endif
                     <li class="list-group-item">
                         <p class="card-text">
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                             {{ $culture_data->like_count}}
                         </p>
                         @if($bookmark != null)
@@ -423,7 +423,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $culture_data->pin_name }}</h1>
-                        <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $culture_data->like_count}}
+                        いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $culture_data->like_count}}
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
@@ -487,7 +487,7 @@
                     @endif
                     <li class="list-group-item">
                         <p class="card-text">
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                             {{ $amusement_data->like_count}}
                         </p>
                         @if($bookmark != null)
@@ -509,7 +509,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $amusement_data->pin_name }}</h1>
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $amusement_data->like_count}}
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $amusement_data->like_count}}
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                         </div>
                         <div class="modal-body">
@@ -574,7 +574,7 @@
                     @endif
                     <li class="list-group-item">
                         <p class="card-text">
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                             {{ $nature_data->like_count}}
                         </p>
                         @if($bookmark != null)
@@ -597,7 +597,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $nature_data->pin_name }}</h1>
-                                <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $nature_data->like_count}}
+                                いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $nature_data->like_count}}
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                             </div>
                             <div class="modal-body">

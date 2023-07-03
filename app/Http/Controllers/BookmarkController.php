@@ -47,6 +47,10 @@ class BookmarkController extends Controller
         $user = Auth::user();
         
         $bookmark = new Bookmark();
+        if (empty($bookmarks)) {
+            $bookmarks = null;
+        }
+        //var_dump($bookmarks);
         $bookmarks = $bookmark->getBookmarksAndInfo($user->id);
         
         return view('bookmark',[
