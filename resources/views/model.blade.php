@@ -286,6 +286,9 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/くびきのレールパーク.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption ">
+              <p>くびきのレールパーク</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/直江津D51レールパーク.jpg" class="card-img-top" alt="...">
