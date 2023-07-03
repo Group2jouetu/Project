@@ -334,7 +334,12 @@
         function pinImage(genre) {
             //ピンのジャンル（食べ物）
             if (genre == 1) {
+<<<<<<< HEAD
+                return "blue";
+
+=======
                 return "/img/gurume_pin.png";
+>>>>>>> 1d13b586e0906d307e8f223c64882d2bd1db0bc3
             }
             //ピンのジャンル（宿・ホテル）
             else if (genre == 2) {
