@@ -441,6 +441,7 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/うみがたり.jpg" class="card-img-top" alt="...">
+            
           </div>
           <div class="carousel-item">
             <img src="/img/雁木通り(瞽女ミュージアム〜高橋孫左衛門商店).jpg" class="card-img-top" alt="...">
@@ -520,12 +521,21 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/光ヶ原高原.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <p>光ヶ原高原センター</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/星のふるさと館.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h2>星のふるさと館</ｈ>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/妙高サンシャインランド（中郷区）.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <p>妙高サンシャインランド</p>
+            </div>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators7" data-bs-slide="prev">
@@ -596,12 +606,21 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/img/関田峠.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <p>関田峠</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/虫川大杉.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <p>虫川大杉</p>
+            </div>
           </div>
           <div class="carousel-item">
             <img src="/img/板山不動滝.jpg" class="card-img-top" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <p>板山不動滝</p>
+            </div>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators8" data-bs-slide="prev">

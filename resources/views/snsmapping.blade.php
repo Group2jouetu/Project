@@ -341,6 +341,7 @@
             //ピンのジャンル（食べ物）
             if (genre == 1) {
                 return "blue";
+
             }
             //ピンのジャンル（宿・ホテル）
             else if (genre == 2) {
