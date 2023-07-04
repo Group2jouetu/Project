@@ -53,18 +53,26 @@
                     '<p>ここにお店の口コミを表示します。</p>';
                 if(flag){
                     contentString +=
-                        '<form action="/bookmark" method="post">' +
+                        '<a href="/bookmark" onclick="event.preventDefault();document.getElementById' +
+                        "('favorite-"+ id +"')" +
+                        '.submit();">' +
+                        '<i class="fa-solid fa-bookmark fa-lg" style="color: #1f2e51;"></i>' +
+                        '</a>' +
+                        '<form id="favorite-'+ id +'" action="/bookmark" method="post">' +
                         '    @csrf' +
                         '    @method("DELETE")' +
                         '    <input id="id" type="text" name="id" value="'+id+'" hidden>' +
-                        '    <input type="submit" value="お気に入り削除">'+
                         '</form>';
                 }else{
                     contentString +=
-                        '<form action="/bookmark" method="post">'+
+                        '<a href="/bookmark" onclick="event.preventDefault();document.getElementById' +
+                        "('favorite-"+ id +"')" +
+                        '.submit();">' +
+                        '<i class="fa-regular fa-bookmark fa-lg" style="color: #1f2e51;"></i>' +
+                        '</a>' +
+                        '<form id="favorite-'+ id +'" action="/bookmark" method="post">'+
                         '    @csrf'+
                         '    <input id="pin_id" type="text" name="pin_id" value="'+id+'" hidden>'+
-                        '    <input type="submit" value="お気に入り登録">'+
                         '</form>';
                 }
                 contentString +='</div>';

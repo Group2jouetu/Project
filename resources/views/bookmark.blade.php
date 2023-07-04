@@ -23,11 +23,13 @@
 
                           <div class="card-body">
                               <p class="card-title">{{$bookmark->pin_name}}</p>
-                              <form action="/bookmark" method="post">
+                              <a href="/bookmark" onclick="event.preventDefault();document.getElementById('favorite-{{$bookmark->pin_id}}').submit();">
+                                <i class="fa-solid fa-bookmark fa-xl" style="color: #1f2e51;"></i>
+                              </a>
+                              <form id="favorite-{{$bookmark->pin_id}}" action="/bookmark" method="POST">
                                   @csrf
                                   @method("DELETE")
                                   <input id="id" type="text" name="id" value="{{$bookmark->pin_id}}" hidden>
-                                  <input type="submit" value="お気に入り削除">
                               </form>
                           </div>
                       </div>
