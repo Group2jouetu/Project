@@ -49,6 +49,7 @@ class RankingController extends Controller
         } else {
             $query->whereRaw('1 = 0'); // 検索条件がない場合に該当しないレコードを返す
         }
+        $query->take(50);
         
         $searchRanking = $query->orderBy('like_count', 'desc')->get();
         
@@ -63,6 +64,7 @@ class RankingController extends Controller
         // 総合ランキング取得
         $ranking = DB::table('pins')
                     ->orderBy('like_count', 'desc')
+                    ->take(50)
                     ->get();
                     
                     $rank = 1;
@@ -76,6 +78,7 @@ class RankingController extends Controller
         $food = DB::table('pins')
         ->where('genre', 1)
         ->orderBy('like_count', 'desc')
+        ->take(50)
         ->get();
         // グルメランキング取得
         $food = getGenreRanking(1);
@@ -84,6 +87,7 @@ class RankingController extends Controller
         $hotel = DB::table('pins')
         ->where('genre', 2)
         ->orderBy('like_count', 'desc')
+        ->take(50)
         ->get();
         // 宿泊・ホテルランキング取得
         $hotel = getGenreRanking(2);
@@ -92,6 +96,7 @@ class RankingController extends Controller
         $culture = DB::table('pins')
         ->where('genre', 3)
         ->orderBy('like_count', 'desc')
+        ->take(50)
         ->get();
         // 文化ランキング取得
         $culture = getGenreRanking(3);
@@ -101,6 +106,7 @@ class RankingController extends Controller
         $amusement = DB::table('pins')
                     ->where('genre', 4)
                     ->orderBy('like_count', 'desc')
+                    ->take(50)
                     ->get();
         // 遊びランキング取得
         $amusement = getGenreRanking(4);
@@ -110,6 +116,7 @@ class RankingController extends Controller
         $nature = DB::table('pins')
         ->where('genre', 5)
         ->orderBy('like_count', 'desc')
+        ->take(50)
         ->get();
         
         // 自然ランキング取得
