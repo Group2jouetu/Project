@@ -32,25 +32,28 @@ class SnsMappingController extends Controller
 
         // $pinsに_bookmark_flagカラムを追加
         $user_id = null;
-        if($user){      // ログイン済みでなければ実行しない
+        // ログイン済みでなければ実行しない
+        if($user){
             $user_id = $user->id;
-        }
-        foreach($pins_data as $pin){
-            $pin_id = 0;
-            $bookmark = new Bookmark();
-            $res = $bookmark->where('user_id', $user_id)->where('pin_id', $pin->id)->first();
-            if($res){
-                $pin_id = 1;
+            foreach($pins_data as $pin){
+                $pin_id = 0;
+                $bookmark = new Bookmark();
+                $res = $bookmark->where('user_id', $user_id)->where('pin_id', $pin->id)->first();
+                if($res){
+                    $pin_id = 1;
+                }
+                $pin->_bookmark_flag = $pin_id;
             }
-            $pin->_bookmark_flag = $pin_id;
+        } else {
+            // return view('login');
         }
-
 
         return view('snsmapping', ["id" => $user->id, "pins" => $pins_data, "messages" => $messages_data]);
+
     }
+
     public function store(Request $request)
     {
-
         // Modelを読み込む
         $pin = new Pin();
 
@@ -90,7 +93,6 @@ class SnsMappingController extends Controller
         // Modelを読み込む
         $message = new Message();
 
-
         $message->user_id = Auth::id();
         $message->pin_id = $request->pin_id;
         $message->message_title = '';
@@ -104,6 +106,29 @@ class SnsMappingController extends Controller
     // ピンの情報を編集
     public function edit(Request $request)
     {
-        $pins = new Pin();
+        $pins = Pin::find($request->id);
+
+        $pins->pin_name = $request->pin_name;
+        $pins->detail = $request->detail;
+        
+        if ($request->file('image')) {
+            $dir = 'public/images/';
+
+            // 保存するファイル名を生成
+            $image_name = Str::random(32);
+            // 送られてきたファイルの拡張子を取得し、生成したファイル名にくっつける
+            $image_name .= '.' . $request->file('image')->extension();
+            // 画像の保存先とファイル名を指定
+            $request->file('image')->storeAs($dir, $image_name);
+            // データベースにはファイル名を保存
+            $pins->picture = $image_name;
+        }
+
+        $pins->save();
+
+        session()->flash('message', '更新に成功しました。');
+
+        return redirect()->back();
+
     }
 }
