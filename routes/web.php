@@ -18,11 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 /* ログイン不要ページ */
 
 //マップ
@@ -49,6 +44,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/snsInput', [SnsMappingController::class, 'store']);
     Route::post('/messageReply', [SnsMappingController::class, 'reply']);
+    Route::post('/pinEdit', [SnsMappingController::class, 'edit']);
 });
 // 旅のしおり
 Route::middleware('auth')->group(function () {

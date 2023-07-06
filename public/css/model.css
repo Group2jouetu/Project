@@ -1,6 +1,6 @@
 #map {
     height: 80vh;
-    width: 80vw;
+    width: 90vw;
     margin: 0 auto;
 }
 /* ボトムナビゲーション */
@@ -12,6 +12,7 @@ div#log {
     background-color: #E7F1FF;
     padding: 1rem;
     border-radius: 1rem;
+    text-align: center;
 }
 .cardMain {
     display: flex;
@@ -46,6 +47,9 @@ button.btn{
     margin: 0;
 }
 @media screen and (max-width: 1024px){
+    img.card-img-top {
+        height: auto;
+    }
 }
 @media screen and (max-width: 768px){
     .card {
@@ -56,6 +60,12 @@ button.btn{
         display: block;
         justify-content: center;
     }
+    img.card-img-top {
+        height: auto;
+    }
 }
 @media screen and (max-width: 480px){
+    img.card-img-top {
+        height: auto;
+    }
 }

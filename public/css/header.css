@@ -37,3 +37,6 @@ button.navbar-toggler {
     padding: 5px 28px 0 ;
     display: flex;
 }
+.navbar-expand-lg .navbar-collapse {
+    justify-content: flex-end;
+}

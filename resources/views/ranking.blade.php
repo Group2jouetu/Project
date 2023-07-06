@@ -54,15 +54,18 @@
                                     @endif
                                     <li class="list-group-item">
                                         <p class="card-text">
-                                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                                             {{ $searchRankings->like_count}} 
                                         </p>
                                         {{-- お気に入り設定されていれば --}}
-                                        @foreach($bookmark as $bookmarks)
-                                            @if ($bookmarks->pin_id == $searchRankings->id)
-                                                <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                                            @endif  
-                                        @endforeach
+                                        @if($bookmark != null)
+                                            {{-- お気に入り設定されていれば --}}
+                                            @foreach($bookmark as $bookmarks)
+                                                @if ($bookmarks->pin_id == $searchRankings->id)
+                                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                                @endif  
+                                            @endforeach
+                                        @endif
                                     </li>
                                     {{-- 詳細 --}}
                                     <li class="list-group-item detailIcon"><i class="fa-solid fa-ellipsis" data-bs-toggle="modal" data-bs-target="#example{{ $searchRankings->id }}"></i></li>
@@ -75,7 +78,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $searchRankings->pin_name }}
-                                        <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $searchRankings->like_count }}</h1>
+                                        いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $searchRankings->like_count }}</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                                     </div>
                                     <div class="modal-body">
@@ -87,12 +90,14 @@
                                         @endif
                                     </div>
                                     <div class="modal-footer">
-                                        {{-- お気に入り設定されていれば --}}
-                                        @foreach($bookmark as $bookmarks)
-                                            @if ($bookmarks->pin_id == $searchRankings->id)
-                                                <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                                            @endif  
-                                        @endforeach
+                                        @if($bookmark != null)
+                                            {{-- お気に入り設定されていれば --}}
+                                            @foreach($bookmark as $bookmarks)
+                                                @if ($bookmarks->pin_id == $searchRankings->id)
+                                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                                @endif  
+                                            @endforeach
+                                        @endif
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                             </div><!-- /.modal-footer -->
                         </div><!-- /.modal-content -->
@@ -137,15 +142,17 @@
                             @endif
                             <li class="list-group-item">
                                 <p class="card-text">
-                                    <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                                    いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                                     {{ $rankings->like_count}} 
                                 </p>
-                                {{-- お気に入り設定されていれば --}}
-                                @foreach($bookmark as $bookmarks)
-                                    @if ($bookmarks->pin_id == $rankings->id)
-                                        <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                                    @endif  
-                                @endforeach
+                                @if($bookmark != null)
+                                    {{-- お気に入り設定されていれば --}}
+                                    @foreach($bookmark as $bookmarks)
+                                        @if ($bookmarks->pin_id == $rankings->id)
+                                            <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                        @endif  
+                                    @endforeach
+                                @endif
                             </li>
                             {{-- 詳細 --}}
                             <li class="list-group-item detailIcon"><i class="fa-solid fa-ellipsis" data-bs-toggle="modal" data-bs-target="#example{{ $rankings->id }}"></i></li>
@@ -158,7 +165,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $rankings->pin_name }}
-                                <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $rankings->like_count }}</h1>
+                                いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $rankings->like_count }}</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                             </div>
                             <div class="modal-body">
@@ -173,12 +180,14 @@
                                 <li class="list-group-item"><p class="card-text">{{ $rankings->detail }}</p></li>
                             </div>
                             <div class="modal-footer">
-                                {{-- お気に入り設定されていれば --}}
-                                @foreach($bookmark as $bookmarks)
-                                    @if ($bookmarks->pin_id == $rankings->id)
-                                        <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                                    @endif  
-                                @endforeach
+                                @if($bookmark != null)
+                                    {{-- お気に入り設定されていれば --}}
+                                    @foreach($bookmark as $bookmarks)
+                                        @if ($bookmarks->pin_id == $rankings->id)
+                                            <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                        @endif  
+                                    @endforeach
+                                @endif
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                     </div><!-- /.modal-footer -->
                 </div><!-- /.modal-content -->
@@ -218,15 +227,17 @@
                     @endif
                     <li class="list-group-item">
                         <p class="card-text">
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                             {{ $food_data->like_count}}
                         </p>
+                        @if($bookmark != null)
                             {{-- お気に入り設定されていれば --}}
                             @foreach($bookmark as $bookmarks)
                                 @if ($bookmarks->pin_id == $food_data->id)
                                     <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
                                 @endif  
                             @endforeach
+                        @endif
                             </li>
                             {{-- 詳細 --}}
                             <li class="list-group-item detailIcon"><i class="fa-solid fa-ellipsis" data-bs-toggle="modal" data-bs-target="#example{{ $food_data->id }}"></i></li>            
@@ -238,7 +249,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $food_data->pin_name }}
-                                <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $food_data->like_count}}</h1>
+                                いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $food_data->like_count}}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
@@ -253,12 +264,14 @@
                         <li class="list-group-item"><p class="card-text">{{ $food_data->detail }}</p></li>
                     </div>
                     <div class="modal-footer">
-                        {{-- お気に入り設定されていれば --}}
-                        @foreach($bookmark as $bookmarks)
-                            @if ($bookmarks->pin_id == $food_data->id)
-                                <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                            @endif  
-                        @endforeach
+                        @if($bookmark != null)
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $food_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                        @endif
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                     </div><!-- /.modal-footer -->
                 </div><!-- /.modal-content -->
@@ -299,15 +312,17 @@
                     
                     <li class="list-group-item">
                         <p class="card-text">
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                             {{ $hotel_data->like_count}}
                         </p>
-                        {{-- お気に入り設定されていれば --}}
-                        @foreach($bookmark as $bookmarks)
-                            @if ($bookmarks->pin_id == $hotel_data->id)
-                                <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                            @endif  
-                        @endforeach
+                        @if($bookmark != null)
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $hotel_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                        @endif
                     </li>
                     {{-- 詳細 --}}
                     <li class="list-group-item detailIcon"><i class="fa-solid fa-ellipsis" data-bs-toggle="modal" data-bs-target="#example{{ $hotel_data->id }}"></i></li>                                
@@ -320,7 +335,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $hotel_data->pin_name }}
-                                <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $hotel_data->like_count}}</h1>
+                                いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $hotel_data->like_count}}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
@@ -335,11 +350,14 @@
                         <li class="list-group-item"><p class="card-text">{{ $hotel_data->detail }}</p></li>
                     </div>
                     <div class="modal-footer">
-                        @foreach($bookmark as $bookmarks)
-                            @if ($bookmarks->pin_id == $hotel_data->id)
-                                <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                            @endif  
-                        @endforeach
+                        @if($bookmark != null)
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $hotel_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                        @endif
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                     </div><!-- /.modal-footer -->
                 </div><!-- /.modal-content -->
@@ -382,15 +400,17 @@
                     @endif
                     <li class="list-group-item">
                         <p class="card-text">
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                             {{ $culture_data->like_count}}
                         </p>
-                        {{-- お気に入り設定されていれば --}}
-                        @foreach($bookmark as $bookmarks)
-                            @if ($bookmarks->pin_id == $culture_data->id)
-                                <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                            @endif  
-                        @endforeach
+                        @if($bookmark != null)
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $culture_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                        @endif
                     </li>
                     {{-- 詳細 --}}
                     <li class="list-group-item detailIcon"><i class="fa-solid fa-ellipsis" data-bs-toggle="modal" data-bs-target="#example{{ $culture_data->id }}"></i></li>
@@ -403,7 +423,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $culture_data->pin_name }}</h1>
-                        <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $culture_data->like_count}}
+                        いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $culture_data->like_count}}
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
                     <div class="modal-body">
@@ -418,12 +438,14 @@
                         <li class="list-group-item"><p class="card-text">{{ $culture_data->detail }}</p></li>
                     </div>
                     <div class="modal-footer">
-                        {{-- お気に入り設定されていれば --}}
-                        @foreach($bookmark as $bookmarks)
-                            @if ($bookmarks->pin_id == $culture_data->id)
-                                <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                            @endif  
-                        @endforeach
+                        @if($bookmark != null)
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $culture_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                        @endif
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                     </div><!-- /.modal-footer -->
                 </div><!-- /.modal-content -->
@@ -465,16 +487,17 @@
                     @endif
                     <li class="list-group-item">
                         <p class="card-text">
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                             {{ $amusement_data->like_count}}
                         </p>
-                        {{-- お気に入り設定されていれば --}}
-                        @foreach($bookmark as $bookmarks)
-                            @if ($bookmarks->pin_id == $amusement_data->id)
-                                <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                            @endif
-                        @endforeach
-                    </li>
+                        @if($bookmark != null)
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $amusement_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                        @endif
                     {{-- 詳細 --}}
                     <li class="list-group-item detailIcon"><i class="fa-solid fa-ellipsis" data-bs-toggle="modal" data-bs-target="#example{{ $amusement_data->id }}"></i></li>
                 </ul>
@@ -486,7 +509,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $amusement_data->pin_name }}</h1>
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $amusement_data->like_count}}
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $amusement_data->like_count}}
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                         </div>
                         <div class="modal-body">
@@ -501,12 +524,14 @@
                             <li class="list-group-item"><p class="card-text">{{ $amusement_data->detail }}</p></li>
                         </div>
                     <div class="modal-footer">
-                        {{-- お気に入り設定されていれば --}}
-                        @foreach($bookmark as $bookmarks)
-                            @if ($bookmarks->pin_id == $amusement_data->id)
-                                <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                            @endif  
-                        @endforeach 
+                        @if($bookmark != null)
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $amusement_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                        @endif
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                     </div><!-- /.modal-footer -->
                 </div><!-- /.modal-content -->
@@ -549,15 +574,17 @@
                     @endif
                     <li class="list-group-item">
                         <p class="card-text">
-                            <i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+                            いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
                             {{ $nature_data->like_count}}
                         </p>
+                        @if($bookmark != null)
                             {{-- お気に入り設定されていれば --}}
                             @foreach($bookmark as $bookmarks)
                                 @if ($bookmarks->pin_id == $nature_data->id)
                                     <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
                                 @endif  
                             @endforeach
+                        @endif
                         </li>
                         {{-- 詳細 --}}
                         <li class="list-group-item detailIcon"><i class="fa-solid fa-ellipsis" data-bs-toggle="modal" data-bs-target="#example{{ $nature_data->id }}"></i></li>
@@ -570,7 +597,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $nature_data->pin_name }}</h1>
-                                <i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $nature_data->like_count}}
+                                いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>{{ $nature_data->like_count}}
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                             </div>
                             <div class="modal-body">
@@ -585,12 +612,14 @@
                                 <li class="list-group-item"><p class="card-text">{{ $nature_data->detail }}</p></li>
                             </div>
                     <div class="modal-footer">
-                        {{-- お気に入り設定されていれば --}}
-                        @foreach($bookmark as $bookmarks)
-                            @if ($bookmarks->pin_id == $nature_data->id)
-                                <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
-                            @endif  
-                        @endforeach
+                        @if($bookmark != null)
+                            {{-- お気に入り設定されていれば --}}
+                            @foreach($bookmark as $bookmarks)
+                                @if ($bookmarks->pin_id == $nature_data->id)
+                                    <i class="fa-solid fa-bookmark" style="color: #e7e00d;"></i>
+                                @endif  
+                            @endforeach
+                        @endif
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                     </div><!-- /.modal-footer -->
                 </div><!-- /.modal-content -->
