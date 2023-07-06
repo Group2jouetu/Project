@@ -110,6 +110,7 @@ class SnsMappingController extends Controller
 
         $pins->pin_name = $request->pin_name;
         $pins->detail = $request->detail;
+        $pins->genre = $request->input('select_genre');
         
         if ($request->file('image')) {
             $dir = 'public/images/';
