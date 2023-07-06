@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Models\Pin;
+use App\Models\Bookmark;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,8 @@ class SnsMappingController extends Controller
 
     public function index()
     {
-
+        // ログイン中のユーザーID
+        $user = Auth::user();
 
         // pinsテーブルのデータを取得
         $pins = new Pin();
@@ -27,15 +29,31 @@ class SnsMappingController extends Controller
         // $messages = new Message();
         // $messages_data = $messages->messageSelectDesc();
 
-        // ログイン中のユーザーID
-        $user = Auth::id();
 
-        return view('snsmapping', ["id" => $user, "pins" => $pins_data, "messages" => $messages_data]);
+        // $pinsに_bookmark_flagカラムを追加
+        $user_id = null;
+        // ログイン済みでなければ実行しない
+        if($user){
+            $user_id = $user->id;
+            foreach($pins_data as $pin){
+                $pin_id = 0;
+                $bookmark = new Bookmark();
+                $res = $bookmark->where('user_id', $user_id)->where('pin_id', $pin->id)->first();
+                if($res){
+                    $pin_id = 1;
+                }
+                $pin->_bookmark_flag = $pin_id;
+            }
+        } else {
+            // return view('login');
+        }
+
+        return view('snsmapping', ["id" => $user->id, "pins" => $pins_data, "messages" => $messages_data]);
+
     }
 
     public function store(Request $request)
     {
-
         // Modelを読み込む
         $pin = new Pin();
 
@@ -75,7 +93,6 @@ class SnsMappingController extends Controller
         // Modelを読み込む
         $message = new Message();
 
-
         $message->user_id = Auth::id();
         $message->pin_id = $request->pin_id;
         $message->message_title = '';
@@ -84,5 +101,35 @@ class SnsMappingController extends Controller
         $message->save();
 
         return redirect()->back();
+    }
+
+    // ピンの情報を編集
+    public function edit(Request $request)
+    {
+        $pins = Pin::find($request->id);
+
+        $pins->pin_name = $request->pin_name;
+        $pins->detail = $request->detail;
+        $pins->genre = $request->input('select_genre');
+        
+        if ($request->file('image')) {
+            $dir = 'public/images/';
+
+            // 保存するファイル名を生成
+            $image_name = Str::random(32);
+            // 送られてきたファイルの拡張子を取得し、生成したファイル名にくっつける
+            $image_name .= '.' . $request->file('image')->extension();
+            // 画像の保存先とファイル名を指定
+            $request->file('image')->storeAs($dir, $image_name);
+            // データベースにはファイル名を保存
+            $pins->picture = $image_name;
+        }
+
+        $pins->save();
+
+        session()->flash('message', '更新に成功しました。');
+
+        return redirect()->back();
+
     }
 }

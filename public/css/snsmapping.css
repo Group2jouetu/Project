@@ -115,11 +115,13 @@
     padding: 10px;
 }
 
-#image-input {
+#image-input,
+#image-update {
     padding: 0 0 1rem 0;
 }
 
-#preview-image {
+#preview-image,
+#edit-image {
     padding: 0 0 1rem 0;
     max-width: 250px;
     height: 150px;
@@ -163,7 +165,7 @@
     height: 100%;
 }
 
-#preview-image {
+#preview-image #edit-image {
     max-width: 100%;
     max-height: 100%;
 }
@@ -358,4 +360,17 @@
 .message-table {
     width: 150px;
     border: black solid 1px;
+}
+
+.countSpanWrapper {
+    margin-bottom: 0;
+}
+
+.error {
+    width: 100%;
+    padding: 0;
+    display: inline-block;
+    font-size: 90%;
+    color: red;
+    box-sizing: border-box;
 }
