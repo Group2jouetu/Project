@@ -212,7 +212,8 @@ input#form-message {
 
 .ly_snsmap_2buttons input[type="reset"],
 .ly_snsmap_2buttons input[type="submit"] {
-    width: 100px;
+    width: 30%;
+    
 }
 
 
@@ -342,9 +343,9 @@ input#form-message {
     padding: 1rem;
 }
 
-.modal-content {
+/* .modal-content {
     margin-top: auto;
-}
+} */
 
 .modal-header {
     display: flex;
@@ -400,4 +401,64 @@ input#form-message {
     font-size: 90%;
     color: red;
     box-sizing: border-box;
+}
+
+@media screen and (max-width:375px) {
+
+    p.ly_snsmap_process {
+        font-size: 12px;
+    }
+
+    #preview-image,
+    #edit-image {
+        /* padding: 0 0 1rem 0;
+        max-width: 250px; */
+        /* height: 150px; */
+    }
+
+
+    .countSpanWrapper {
+        /* margin-bottom: 0; */
+        text-align: center;
+    }
+
+    label {
+        display: inline-block;
+        font-size: 10px;
+        text-align: center;
+    }
+
+    label.janru {
+        font-size: 11px;
+        /* text-align: revert; */
+        margin-bottom: 13px;
+    }
+    .ly_snsmap_li_2 {
+        /* width: 50%; */
+        padding: 0.5rem;
+    }
+    #detail {
+        display: block;
+        width: 90%;
+        height: 50px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .image-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 150px;
+        text-align: center;
+        cursor: pointer;
+        padding: 10px;
+        border: 2px solid #ccc;
+        position: relative;
+        margin: 0 auto;
+    }
+
+}
+input{
+    font-size: 12px;
 }
