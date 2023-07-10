@@ -769,7 +769,7 @@
                     <div class="ly_snsmap_li_div_left">
                         <p class="ly_snsmap_process">ピンの名前を入力（必須）</p>
                         <div class="input-wrapper">
-                            <input class="maxlength showCount" data-maxlength="30" type="text" name="pin_name" id="title" size="30" placeholder="ピンの名前（30文字以内）" value="" />
+                            <input class="maxlength showCount form-control" data-maxlength="30" type="text" name="pin_name" id="title" size="30" placeholder="ピンの名前（30文字以内）" value="" />
                         </div>
                         <label for="select-genre" class="janru">ジャンルを以下から選択（必須）</label><br>
                         <select name="select_genre" id="select-genre" class="form-select" aria-label="Default select example">
@@ -794,14 +794,14 @@
                 </ul>
                 <div class="ly_snsmap_center_div">
                     <p class="ly_snsmap_process">口コミを入力してください（必須）</p>
-                    <textarea class="maxlength showCount" data-maxlength="100" name="detail" id="detail" rows="5" cols="50" placeholder="口コミを入力してください（100文字以内）" required></textarea>
+                    <textarea class="maxlength showCount form-control" data-maxlength="100" name="detail" id="detail" rows="5" cols="50" placeholder="口コミを入力してください（100文字以内）" required></textarea>
                 </div>
                 <input type="hidden" name="lat" id="get-lat" />
                 <input type="hidden" name="lng" id="get-lng" />
                 <br>
                 <div class="ly_snsmap_2buttons">
-                    <input type="reset" value="キャンセル" onclick="newPinReset()">
-                    <input type="submit" value="登録" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+                    <input type="reset" value="キャンセル" class="btn btn-secondary btn-lg" onclick="newPinReset()">
+                    <input type="submit" value="登録" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
                 </div>
             </form>
         </div>
