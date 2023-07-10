@@ -25,11 +25,11 @@
                 <ul class="ly_snsmap_ul">
                     <li class="ly_snsmap_li_1">
                     <div class="ly_snsmap_li_div_left">
-                        <p class="ly_snsmap_process">ピンの名前を入力してください（必須）</p>
+                        <p class="ly_snsmap_process">ピンの名前を入力（必須）</p>
                         <div class="input-wrapper">
                             <input class="maxlength showCount" data-maxlength="30" type="text" name="pin_name" id="title" size="30" placeholder="ピンの名前（30文字以内）" value="" />
                         </div>
-                        <label for="select-genre">ジャンルを以下から選択してください（必須）</label><br>
+                        <label for="select-genre" class="janru">ジャンルを以下から選択（必須）</label><br>
                         <select name="select_genre" id="select-genre" class="form-select" aria-label="Default select example">
                             <option value="1">食べ物</option>
                             <option value="2">宿・ホテル</option>
