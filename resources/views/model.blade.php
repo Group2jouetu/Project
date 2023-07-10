@@ -12,7 +12,7 @@
 <!-- id=logでモデルコースの所要時間を表示 -->
 <div id="log">ルート所要時間</div>
 <!-- ↓使ってなさそう -->
-<script src="{{ asset('/js/modelFunction.js') }}"></script>
+
 
 <div class="card-container">
 
