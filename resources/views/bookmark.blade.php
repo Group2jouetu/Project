@@ -19,8 +19,9 @@
               @foreach($bookmarks as $bookmark)
                   <div class="col">
                       <div class="card shadow-sm">
+                        @if (isset($bookmark->picture))
                           <input type="image" src="{{ asset('storage/images').'/'.$bookmark->picture }}" class="btn bd-placeholder-img card-img-top img-fluid" width="100%" height="225" alt="image" data-bs-toggle="modal" data-bs-target="#exampleModal{{$bookmark->pin_id}}">
-
+                        @endif
                           <div class="card-body">
                               <p class="card-title">{{$bookmark->pin_name}}</p>
                               <a href="/bookmark" onclick="event.preventDefault();document.getElementById('favorite-{{$bookmark->pin_id}}').submit();">
