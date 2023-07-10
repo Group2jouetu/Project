@@ -1446,13 +1446,12 @@
                     <table>
                         <tr>
                             <td><h3>${pin_name}</h3></td>
-                            <td><button onclick="pinEdit(${id}, '${pin_name}', '${detail}', '${picture}', '${genre}')">編集</td>
-                        </tr>
-                        <tr>
-                            <td>&#10025;</td>
-                            <td>${like_count}</td>
+                            <td><button class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;" onclick="pinEdit(${id}, '${pin_name}', '${detail}', '${picture}', '${genre}')">
+                              <i class="fa-solid fa-pen-to-square"></i>
+                            </td>
                         </tr>
                     </table>
+                    <i class="fa-solid fa-star" style="color: #ceec3c;"></i>${like_count}
             `;
 
             if (flag) {
@@ -1461,7 +1460,7 @@
                         @csrf
                         @method("DELETE")
                         <input id="id" type="text" name="id" value="${id}" hidden>
-                        <input type="submit" value="お気に入り削除">
+                        <input class="btn btn-outline-primary" type="submit" value="お気に入り削除">
                     </form>
                 `;
             } else {
@@ -1469,13 +1468,13 @@
                     <form action="/bookmark" method="post">
                         @csrf
                         <input id="pin_id" type="text" name="pin_id" value="${id}" hidden>
-                        <input type="submit" value="お気に入り登録">
+                        <input class="btn btn-outline-primary" type="submit" value="お気に入り登録">
                     </form>
                 `;
             }
 
             contentString += `
-                <p>${detail}</p>
+                <p class="detailComment">${detail}</p>
                 <br>
             </div><br>
             `;
@@ -1491,9 +1490,9 @@
                     @csrf
                     <input type="hidden" name="pin_id" value="${id}">
                     <table>
-                        <tr>
+                        <tr class="commentSend">
                             <td><input type="text" name="return_datail" id="form-message" size="10" placeholder="入力エリア" required /></td>
-                            <td><input type="submit" value="送信する"></td>
+                            <td><input class="btn btn-primary" type="submit" value="送信する"></td>
                         </tr>
                     </table>
                 </form>

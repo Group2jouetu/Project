@@ -4,13 +4,40 @@
     margin: 0 auto;
 }
 
-
 /* ボトムナビゲーション */
+
+h3{
+    margin-bottom: 0 !important;
+}
+
+p{
+    margin-bottom: 0 !important;
+}
+
+button.btn.btn-primary.rounded-circle.p-0 {
+    margin: 0 1rem !important;
+}
+
+.detailComment{
+    margin: 1rem 0 0 0 !important;
+}
+
+input.btn.btn-outline-primary {
+    margin: 1rem 0 0 0;
+}
+
+.commentSend{
+    display: flex;
+    flex-direction: column;
+}
+
+input#form-message {
+    margin-bottom: 0.5rem;
+}
 
 .sns a {
     color: #ed5353;
 }
-
 
 /* モーダルウインドウのCSSここから */
 
