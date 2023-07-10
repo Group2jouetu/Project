@@ -185,7 +185,8 @@
 
 .ly_snsmap_2buttons input[type="reset"],
 .ly_snsmap_2buttons input[type="submit"] {
-    width: 100px;
+    width: 30%;
+    
 }
 
 
@@ -315,9 +316,9 @@
     padding: 1rem;
 }
 
-.modal-content {
+/* .modal-content {
     margin-top: auto;
-}
+} */
 
 .modal-header {
     display: flex;
@@ -430,4 +431,7 @@
         margin: 0 auto;
     }
 
+}
+input{
+    font-size: 12px;
 }
