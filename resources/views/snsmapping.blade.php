@@ -1168,7 +1168,6 @@
             }
 
             reader.readAsDataURL(file);
-            console.log("できてます。");
         });
 
         // 入力されたテキストの文字数をリアルタイムで表示
@@ -1207,13 +1206,14 @@
                 },
                 zoom: 12
             });
+
             modal      = document.getElementById("modal");
             edit_modal = document.getElementById('edit-modal')
-
 
             directionsRenderer = new google.maps.DirectionsRenderer();
             directionsRenderer.setMap(map);
 
+            // ↓ 新規登録ピンがうまく立たない原因 ↓
             // google.maps.event.addListener(map, 'click', function(event) {
             //     clickListener(event, map);
             // });
@@ -1674,7 +1674,6 @@
                 pinName = document.getElementById('title').value;
                 genre_number = parseInt(document.getElementById('select-genre').value, 10);
                 detail = document.getElementById('detail').value;
-                console.log("登録からのアクセス");
             }
 
             if (button_value === "更新") { // 編集から入力されたデータの場合
@@ -1682,7 +1681,6 @@
                 pinName = document.getElementById('edit-title').value;
                 genre_number = parseInt(document.getElementById('edit-genre').value, 10);
                 detail = document.getElementById('edit-detail').value;
-                console.log("更新からのアクセス");
             }
             // 入力データの文字数＆空白確認
             maxlengthElems.forEach((elem) => {
@@ -1693,23 +1691,20 @@
                         createError(elem, maxlength + '文字以内で入力ください');
                         event.preventDefault();
                         val_flg = false;
-                        console.log("正しく入力できてないためfalse");
                     }
                 }
                 if (elem.value == '') {
                     createError(elem, '文字を入力してください');
                     val_flg = false;
-                    console.log("空白のためfalse");
                 }
             });
             // スクリプトの無効化
             pinName = pinName.replace(/<script[^>]*?>.*?<\/script>/gi, '');
             detail = detail.replace(/<script[^>]*?>.*?<\/script>/gi, '');
 
-            console.log(val_flg);
             // モーダルウインドウの表示/非表示
             if (val_flg) {
-                // button_valueが登録　→　1枚目（新規登録）と2枚目（登録確認）の挙動
+                // button_valueが登録 → 1枚目（新規登録）と2枚目（登録確認）の挙動
                 if (button_value === "登録") {
 
                     var modal = document.getElementById('modal');
@@ -1727,7 +1722,7 @@
                         <button type="button" class="btn btn-primary" id="btn-custom_right" onclick="saveAction()">はい</button>`;
 
                 }
-                // button_valueが更新　→　3枚目（編集）と2枚目（編集確認）の挙動
+                // button_valueが更新 → 3枚目（編集）と2枚目（編集確認）の挙動
                 if (button_value === "更新") {
 
                     var editModal = document.getElementById('edit-modal');
@@ -1747,7 +1742,7 @@
                 }
                 // 1つめのモーダルウィンドウを非表示
             } else {
-                // button_valueが登録　→　1枚目（新規登録）と2枚目（登録確認）の挙動
+                // button_valueが登録 → 1枚目（新規登録）と2枚目（登録確認）の挙動
                 if (button_value == "登録") {
 
                     var modal = document.getElementById('modal'); // 新規登録のウインドウを取得
@@ -1762,7 +1757,7 @@
                         <button type="button" class="btn btn-secondary" id="btn-custom_left" data-bs-dismiss="modal" onclick="closeSecondModalAndOpenFirstModal()">戻る</button>
                     `; // 取得した登録確認のレイアウトの変更
                 }
-                // button_valueが更新　→　3枚目（編集）と2枚目（編集確認）の挙動
+                // button_valueが更新 → 3枚目（編集）と2枚目（編集確認）の挙動
                 if (button_value == "更新") {
 
                     var editModal = document.getElementById('edit-modal'); // 編集のウインドウを取得
@@ -1780,8 +1775,6 @@
             }
 
             document.getElementById('pinNameValue').textContent = pinName; // 登録確認のウィンドウに値をセット
-            console.log("pinNameは以下");
-            console.log(pinName);
 
             var genre;
             switch (genre_number) {
