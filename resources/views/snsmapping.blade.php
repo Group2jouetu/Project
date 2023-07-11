@@ -1434,7 +1434,7 @@
             //mapクリック時の処理
             map.addListener('click', function(e) {
                 // すでに立てたマーカーがあった場合、そのマーカーを削除
-                // newPinReset();
+                newPinReset();
 
                 // クリックした位置の緯度経度を<input type="hidden">に保存しておく
                 document.getElementById('get-lat').value = e.latLng.lat();
@@ -1614,7 +1614,8 @@
                 if ({{ $message->pin_id }} === id) {
                     var created_at = "{{ $message->created_at }}";
                     // 作成日付の秒数部分を切り落とす
-                    created_at = created_at.slice(0, -3).replace('-', '/');
+                    // created_at = created_at.slice(0, -3).replace('-', '/');
+                    created_at = created_at.slice(0, -3);
                     messages = `
                         <table class="message-table">
                             <tr>
