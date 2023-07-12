@@ -48,7 +48,10 @@ class SnsMappingController extends Controller
             // return view('login');
         }
 
-        return view('snsmapping', ["id" => $user->id, "pins" => $pins_data, "messages" => $messages_data]);
+        return view('snsmapping', [
+            "pins" => $pins_data, 
+            "messages" => $messages_data,
+        ]);
 
     }
 
