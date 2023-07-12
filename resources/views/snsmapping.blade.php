@@ -800,8 +800,11 @@
                 <input type="hidden" name="lng" id="get-lng" />
                 <br>
                 <div class="ly_snsmap_2buttons">
-                    <input type="reset" value="キャンセル" class="btn btn-secondary btn-lg" onclick="newPinReset()">
-                    <input type="submit" value="登録" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+                  <input type="reset" value="キャンセル" class="btn btn-secondary" onclick="newPinReset()">
+                  <input type="submit" value="登録" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+                  {{-- btn-lgがあるとキャンセルボタンがなぜか右寄せになるので消しました --}}
+                  {{-- <input type="reset" value="キャンセル" class="btn btn-secondary btn-lg" onclick="newPinReset()">
+                  <input type="submit" value="登録" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)"> --}}
                 </div>
             </form>
         </div>
@@ -861,8 +864,8 @@
                 </div>
                 <div class="modal-body">以上の内容で登録しますか？</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="btn-custom_left" data-bs-dismiss="modal" onclick="closeSecondModalAndOpenFirstModal()">いいえ</button>
-                    <button type="button" class="btn btn-primary" id="btn-custom_right" onclick="saveAction()">はい</button>
+                  <button type="button" class="btn btn-secondary" id="btn-custom_left" data-bs-dismiss="modal" onclick="closeSecondModalAndOpenFirstModal()">いいえ</button>
+                  <button type="button" class="btn btn-primary" id="btn-custom_right" onclick="saveAction()">はい</button>
                 </div>
             </div>
         </div>
@@ -917,8 +920,11 @@
                 <input type="hidden" name="lng" id="get-lng" />
                 <br>
               <div class="ly_snsmap_2buttons">
-                <input type="reset" value="キャンセル" class="btn btn-secondary btn-lg" onclick="editCloseButton()">
-                <input type="submit" value="更新" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+                <input type="reset" value="キャンセル" class="btn btn-secondary" onclick="editCloseButton()">
+                <input type="submit" value="更新" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+                {{-- btn-lgがあるとキャンセルボタンがなぜか右寄せになるので消しました --}}
+                {{-- <input type="reset" value="キャンセル" class="btn btn-secondary btn-lg" onclick="editCloseButton()">
+                <input type="submit" value="更新" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)"> --}}
               </div>
             </form>
         </div>
