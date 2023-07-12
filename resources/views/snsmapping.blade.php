@@ -1460,7 +1460,7 @@
                             </td>
                         </tr>
                     </table>
-                    <i class="fa-solid fa-star" style="color: #ceec3c;"></i>${like_count}
+                    いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>${like_count}
             `;
 
             if (flag) {
@@ -1469,7 +1469,7 @@
                         @csrf
                         @method("DELETE")
                         <input id="id" type="text" name="id" value="${id}" hidden>
-                        <input class="btn btn-outline-primary" type="submit" value="お気に入り削除">
+                        <input class="btn btn-outline-primary" type="submit" value="お気に入り済">
                     </form>
                 `;
             } else {
@@ -1477,7 +1477,7 @@
                     <form action="/bookmark" method="post">
                         @csrf
                         <input id="pin_id" type="text" name="pin_id" value="${id}" hidden>
-                        <input class="btn btn-outline-primary" type="submit" value="お気に入り登録">
+                        <input class="btn btn-outline-primary" type="submit" value="お気に入り">
                     </form>
                 `;
             }
@@ -1500,8 +1500,8 @@
                     <input type="hidden" name="pin_id" value="${id}">
                     <table>
                         <tr class="commentSend">
-                            <td><input type="text" name="return_datail" id="form-message" size="10" placeholder="入力エリア" required /></td>
-                            <td><input class="btn btn-primary" type="submit" value="送信する"></td>
+                            <td><input type="text" name="return_datail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="コメント" required></td><br>
+                            <td><input class="btn btn-primary" type="submit" value="送信"></td>
                         </tr>
                     </table>
                 </form>
@@ -1547,14 +1547,23 @@
                     // 作成日付の秒数部分を切り落とす
                     created_at = created_at.slice(0, -3);
                     messages = `
-                        <table class="message-table">
+                        <table class="table">
+                          <thead>
                             <tr>
-                                <td>{{ $message->name }}</td>
-                                <td>${created_at}</td>
+                              <th>名前</th>
+                              <th>投稿時間</th>
                             </tr>
+                          </thead>
+                          <tbody>
                             <tr>
-                                <td colspan="2">{{ $message->message_body }}</td>
+                              <td>{{ $message->name }}</td>
+                              <td>${created_at}</td>
                             </tr>
+                            
+                            <tr>
+                              <td colspan="2"><i class="fa-regular fa-comment-dots"></i>{{ $message->message_body }}</td>
+                            </tr>
+                          </tbody>
                         </table>
                     `;
                 }
