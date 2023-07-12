@@ -21,8 +21,8 @@ use Illuminate\Support\Facades\Route;
 /* ログイン不要ページ */
 
 //マップ
-Route::get('/map', [BookmarkController::class, 'map']);
-Route::get('/smap', [SnsMappingController::class, 'index']);
+Route::get('/', [SnsMappingController::class, 'index']);
+Route::get('/map', [SnsMappingController::class, 'index']);
 //ランキング
 Route::get('/ranking', [RankingController::class, 'index'])->name('ranking.index');
 // モデルコース
