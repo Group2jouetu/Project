@@ -9,6 +9,8 @@
 
 @section('content')
 
+    <video id="video" src="/movie/uesugi.mp4" autoplay muted></video>
+
     <div id="map"></div>
 
     <div id="log">ルート所要時間</div>
@@ -787,7 +789,7 @@
                         {{ csrf_field() }}
                         <label for="image-input" class="image-label">
                         <input type="file" name="image" id="image-input" class="image" accept="image/*" style="display: none;" />
-                        <img id="preview-image" src="" alt="画像を選択する" />
+                        <img id="preview-image" alt="画像を選択する" />
                         </label>
                     </div>
                     </li>
@@ -1064,7 +1066,10 @@
             var reader = new FileReader();
 
             reader.onload = function(e) {
-                document.getElementById('preview-image').setAttribute('src', e.target.result);
+                // document.getElementById('preview-image').setAttribute('src', e.target.result);
+                const prev_img = document.getElementById('preview-image');
+                prev_img.setAttribute('src', e.target.result);
+                prev_img.style.display = "block";
 
                 document.getElementById('imageValue').setAttribute('src', e.target.result);
             }
@@ -1114,12 +1119,24 @@
         ;
 
         function initMap() {
+          const myLatLng = { lat: 37.1478, lng: 138.236 };
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {
-                    lat: 37.1478,
-                    lng: 138.236
-                },
-                zoom: 12
+                center: myLatLng,
+                zoom: 12,
+            });
+            
+            // ピンに表示するカスタム画像を指定
+            const nowPinImage = {
+              url: '/img/Ch_uesugi_walk.png',
+              scaledSize: new google.maps.Size(30, 55), // ピン画像のサイズ
+            };
+
+            // マップ上にピンを立てる
+            new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              title: "現在位置",
+              icon: nowPinImage,
             });
 
             
@@ -1528,7 +1545,7 @@
                 if ({{$message->pin_id}} === id){
                     var created_at = "{{ $message->created_at }}";
                     // 作成日付の秒数部分を切り落とす
-                    created_at = created_at.slice(5, -8).replace('-', '/');
+                    created_at = created_at.slice(0, -3);
                     messages = `
                         <table class="table">
                           <thead>
@@ -1548,7 +1565,7 @@
                             </tr>
                           </tbody>
                         </table>
-                                            `
+                    `;
                 }
             @endforeach
             return messages;
@@ -1781,6 +1798,33 @@
                 edit_modal.style.display = "none";
             }
             openModalWindow();
+            
+            // テキストエリアの文字数をカウントして表示する処理
+            var editTitle = document.getElementById('edit-title');
+            var editDetail = document.getElementById('edit-detail');
+            var titleCountSpan = editTitle.parentElement.querySelector('.countSpan');
+            var detailCountSpan = editDetail.parentElement.querySelector('.countSpan');
+            var titleMaxLength = 30;
+            var detailMaxLength = 100;
+
+            editTitle.addEventListener('input', function(e) {
+              var count = e.currentTarget.value.length;
+              titleCountSpan.textContent = count + '/' + titleMaxLength;
+            });
+
+            editDetail.addEventListener('input', function(e) {
+              var count = e.currentTarget.value.length;
+              detailCountSpan.textContent = count + '/' + detailMaxLength;
+            });
+
+            // 初期表示の文字数をカウントして表示する
+            var initialTitleCount = editTitle.value.length;
+            titleCountSpan.textContent = initialTitleCount;
+            console.log(initialTitleCount);
+
+            var initialDetailCount = editDetail.value.length;
+            detailCountSpan.textContent = initialDetailCount;
+
         }
 
         function editCloseButton() {
@@ -1788,14 +1832,32 @@
         }
 
         // ピンの登録に成功したら、メッセージをトーストで表示
-        @if (session('message'))
-            const jsFrame = new JSFrame();
-            jsFrame.showToast({
-                html: '{{ session('message') }}',
-                align: 'top',
-                duration: 2000
-            });
+        // @if (session('message'))
+        //     const jsFrame = new JSFrame();
+        //     jsFrame.showToast({
+        //         html: '{{ session('message') }}',
+        //         align: 'top',
+        //         duration: 2000
+        //     });
+        // @endif
+        
+        // ピン登録成功時に表示
+        @if(session('message'))
+          
+          // 動画要素を取得
+          const video = document.getElementById('video');
+          video.style.display = "block";
+
+          // 動画再生を開始
+          video.play();
+
+          // 数秒後に動画を停止し、動画要素を非表示にする
+          setTimeout(function() {
+            video.pause();
+            video.style.display = 'none';
+          }, 3000);
         @endif
+        
     </script>
 
     <script async defer
