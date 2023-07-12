@@ -911,7 +911,7 @@
               </ul>
               <div class="ly_snsmap_center_div">
                 <p class="ly_snsmap_process">口コミを入力してください（必須）</p>
-                <textarea class="maxlength showCount form-control" data-maxlength="100" name="detail" id="edit-detail" rows="5" cols="50" placeholder="口コミを入力してください（100文字以内）" required></textarea>
+                <textarea class="edit-maxlength showCount form-control" data-maxlength="100" name="detail" id="edit-detail" rows="5" cols="50" placeholder="口コミを入力してください（100文字以内）" required></textarea>
               </div>
                 <input type="hidden" name="lat" id="get-lat" />
                 <input type="hidden" name="lng" id="get-lng" />
