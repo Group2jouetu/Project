@@ -1544,7 +1544,7 @@
                             </tr>
                             
                             <tr>
-                              <td colspan="2">{{ $message->message_body }}</td>
+                              <td colspan="2"><i class="fa-regular fa-comment-dots"></i>{{ $message->message_body }}</td>
                             </tr>
                           </tbody>
                         </table>
