@@ -800,8 +800,11 @@
                 <input type="hidden" name="lng" id="get-lng" />
                 <br>
                 <div class="ly_snsmap_2buttons">
-                    <input type="reset" value="キャンセル" class="btn btn-secondary btn-lg" onclick="newPinReset()">
-                    <input type="submit" value="登録" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+                  <input type="reset" value="キャンセル" class="btn btn-secondary" onclick="newPinReset()">
+                  <input type="submit" value="登録" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+                  {{-- btn-lgがあるとキャンセルボタンがなぜか右寄せになるので消しました --}}
+                  {{-- <input type="reset" value="キャンセル" class="btn btn-secondary btn-lg" onclick="newPinReset()">
+                  <input type="submit" value="登録" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)"> --}}
                 </div>
             </form>
         </div>
@@ -861,8 +864,8 @@
                 </div>
                 <div class="modal-body">以上の内容で登録しますか？</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="btn-custom_left" data-bs-dismiss="modal" onclick="closeSecondModalAndOpenFirstModal()">いいえ</button>
-                    <button type="button" class="btn btn-primary" id="btn-custom_right" onclick="saveAction()">はい</button>
+                  <button type="button" class="btn btn-secondary" id="btn-custom_left" data-bs-dismiss="modal" onclick="closeSecondModalAndOpenFirstModal()">いいえ</button>
+                  <button type="button" class="btn btn-primary" id="btn-custom_right" onclick="saveAction()">はい</button>
                 </div>
             </div>
         </div>
@@ -879,61 +882,50 @@
                     <h3 class="modal-newadd-h3">ピン情報の編集</h3>
                 </li>
             </ul>
-
             <form action="/pinEdit" id="pinEditForm" method="post" enctype="multipart/form-data">
-
-                <input type="hidden" name="id" id="edit-id">
-
-                <ul class="ly_snsmap_ul">
-                    <li class="ly_snsmap_li_1">
-                        <div class="ly_snsmap_li_div_left">
-                            <p class="ly_snsmap_process">編集したいピンの名前を入力してください</p>
-                            <input class="edit-maxlength showCount" type="text" name="pin_name" id="edit-title" size="30" data-maxlength="30" placeholder="ピンの名前（30文字以内）" value="" />
-                        </div>
-                        
-                        <label for="select-genre">ジャンルを以下から選択してください（必須）</label><br>
-                        <select name="select_genre" id="edit-genre" class="form-select" aria-label="Default select example">
-                            <option value="1">食べ物</option>
-                            <option value="2">宿・ホテル</option>
-                            <option value="3">文化</option>
-                            <option value="4">遊び施設</option>
-                            <option value="5">自然</option>
-                        </select>
+              <input type="hidden" name="id" id="edit-id">
+              <ul class="ly_snsmap_ul">
+              <li class="ly_snsmap_li_1">
+                <div class="ly_snsmap_li_div_left">
+                  <p class="ly_snsmap_process">ピンの名前を入力（必須）</p>
+                    <div class="input-wrapper">
+                      <input class="edit-maxlength showCount form-control" data-maxlength="30" type="text" name="pin_name" id="edit-title" size="30" placeholder="ピンの名前（30文字以内）" value="" />
                     </div>
-                    </li>
-                    <li class="ly_snsmap_li_2">
-                    <div class="ly_snsmap_li_div_right">
-                        <p class="ly_snsmap_process">表示する画像を選択（任意）</p>
-                        {{ csrf_field() }}
-                        <label for="image-input" class="image-label">
-                        <input type="file" name="image" id="image-input" class="image" accept="image/*" style="display: none;" />
-                        <img id="preview-image" src="" alt="画像を選択する" />
-                        </label>
-                    </div>
-                    </li>
-                    </li>
-                    <li class="ly_snsmap_li_2">
-                        <div class="ly_snsmap_li_div_right">
-                            <p class="ly_snsmap_process">表示する画像を選択</p>
-                            {{ csrf_field() }}
-                            <label for="image-update" class="image-label">
-                                <input type="file" name="image" id="image-update" class="image" accept="image/*" style="display: none;" />
-                                <img id="edit-image" src="" alt="画像を選択する" />
-                            </label>
-                        </div>
-                    </li>
-                </ul>
-                <div class="ly_snsmap_center_div">
-                    <p class="ly_snsmap_process">口コミを入力してください</p>
-                    <textarea class="edit-maxlength showCount" data-maxlength="100" name="detail" id="edit-detail" rows="5" cols="50" placeholder="口コミを入力してください（100文字以内）" required></textarea>
-
-                    <!-- <input class="maxlength showCount" data-maxlength="100" type="text" name="detail" id="edit-detail"  /> -->
+                  <label for="select-genre" class="janru">ジャンルを以下から選択（必須）</label><br>
+                  <select name="select_genre" id="edit-genre" class="form-select" aria-label="Default select example">
+                    <option value="1">食べ物</option>
+                    <option value="2">宿・ホテル</option>
+                    <option value="3">文化</option>
+                    <option value="4">遊び施設</option>
+                    <option value="5">自然</option>
+                  </select>
                 </div>
+              </li>
+              <li class="ly_snsmap_li_2">
+                <div class="ly_snsmap_li_div_right">
+                  <p class="ly_snsmap_process">表示する画像を選択（任意）</p>
+                  {{ csrf_field() }}
+                  <label for="image-update" class="image-label">
+                    <input type="file" name="image" id="image-update" class="image" accept="image/*" style="display: none;" />
+                      <img id="edit-image" src="" alt="画像を選択する" />
+                  </label>
+                </div>
+              </li>
+              </ul>
+              <div class="ly_snsmap_center_div">
+                <p class="ly_snsmap_process">口コミを入力してください（必須）</p>
+                <textarea class="edit-maxlength showCount form-control" data-maxlength="100" name="detail" id="edit-detail" rows="5" cols="50" placeholder="口コミを入力してください（100文字以内）" required></textarea>
+              </div>
+                <input type="hidden" name="lat" id="get-lat" />
+                <input type="hidden" name="lng" id="get-lng" />
                 <br>
-                <div class="ly_snsmap_2buttons">
-                    <input type="reset" value="キャンセル" onclick="editCloseButton()">
-                    <input type="submit" value="更新" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
-                </div>
+              <div class="ly_snsmap_2buttons">
+                <input type="reset" value="キャンセル" class="btn btn-secondary" onclick="editCloseButton()">
+                <input type="submit" value="更新" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+                {{-- btn-lgがあるとキャンセルボタンがなぜか右寄せになるので消しました --}}
+                {{-- <input type="reset" value="キャンセル" class="btn btn-secondary btn-lg" onclick="editCloseButton()">
+                <input type="submit" value="更新" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)"> --}}
+              </div>
             </form>
         </div>
     </div>
@@ -1090,7 +1082,6 @@
             }
 
             reader.readAsDataURL(file);
-            console.log("できてます。");
         });
 
         // 入力されたテキストの文字数をリアルタイムで表示
@@ -1135,9 +1126,10 @@
     directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(map);
 
-    google.maps.event.addListener(map, 'click', function(event) {
-      clickListener(event, map);
-    });
+    // ↓ 新規登録ピンがうまく立たない原因 ↓
+    // google.maps.event.addListener(map, 'click', function(event) {
+    //   clickListener(event, map);
+    // });
 
     //初期配置テスト
     var buttons = [{
@@ -1387,7 +1379,7 @@
                 }
                 window.onclick = function(event) {
                     if (event.target == modal) {
-                        newPinReset();
+                        // newPinReset();
                     }
                 }
 
@@ -1596,7 +1588,6 @@
                 pinName = document.getElementById('title').value;
                 genre_number = parseInt(document.getElementById('select-genre').value, 10);
                 detail = document.getElementById('detail').value;
-                console.log("登録からのアクセス");
             }
 
             if(button_value === "更新") {// 編集から入力されたデータの場合
@@ -1604,7 +1595,6 @@
                 pinName = document.getElementById('edit-title').value;
                 genre_number = parseInt(document.getElementById('edit-genre').value, 10);
                 detail = document.getElementById('edit-detail').value;
-                console.log("更新からのアクセス");
             }
              // 入力データの文字数＆空白確認
             maxlengthElems.forEach((elem) => {
@@ -1615,20 +1605,17 @@
                         createError(elem, maxlength + '文字以内で入力ください');
                         event.preventDefault();
                         val_flg = false;
-                        console.log("正しく入力できてないためfalse");
                     }
                 }
                 if (elem.value == '') {
                     createError(elem, '文字を入力してください');
                     val_flg = false;
-                    console.log("空白のためfalse");
                 }
             });
             // スクリプトの無効化
             pinName = pinName.replace(/<script[^>]*?>.*?<\/script>/gi, '');
             detail = detail.replace(/<script[^>]*?>.*?<\/script>/gi, '');
 
-            console.log(val_flg);
             // モーダルウインドウの表示/非表示
             if (val_flg) {
                 // button_valueが登録　→　1枚目（新規登録）と2枚目（登録確認）の挙動
@@ -1699,9 +1686,7 @@
                 }
             }
             
-                document.getElementById('pinNameValue').textContent = pinName;// 登録確認のウィンドウに値をセット
-                console.log("pinNameは以下");
-                console.log(pinName);
+            document.getElementById('pinNameValue').textContent = pinName;// 登録確認のウィンドウに値をセット
                 
             var genre;
             switch (genre_number) {

@@ -40,3 +40,7 @@ button.navbar-toggler {
 .navbar-expand-lg .navbar-collapse {
     justify-content: flex-end;
 }
+
+#app-icon{
+    height: 52px;
+}
