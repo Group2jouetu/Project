@@ -1,16 +1,19 @@
+/* 共通のCSS */
+
 #map {
     height: 80vh;
     width: 80vw;
     margin: 0 auto;
 }
 
+
 /* ボトムナビゲーション */
 
-h3{
+h3 {
     margin-bottom: 0 !important;
 }
 
-p{
+p {
     margin-bottom: 0 !important;
 }
 
@@ -18,7 +21,7 @@ button.btn.btn-primary.rounded-circle.p-0 {
     margin: 0 1rem !important;
 }
 
-.detailComment{
+.detailComment {
     margin: 1rem 0 0 0 !important;
 }
 
@@ -26,7 +29,7 @@ input.btn.btn-outline-primary {
     margin: 1rem 0 0 0;
 }
 
-.commentSend{
+.commentSend {
     display: flex;
     flex-direction: column;
 }
@@ -39,18 +42,8 @@ input#form-message {
     color: #ed5353;
 }
 
-/* モーダルウインドウのCSSここから */
-
 #modal.modal {
     background-color: transparent;
-}
-
-.modal-content {
-    position: absolute;
-    z-index: 10;
-    margin: 78px 0 80px 0;
-    transform: translateY(90%);
-    transition: transform 0.2s ease-in-out;
 }
 
 .modal-newadd-head {
@@ -61,28 +54,8 @@ input#form-message {
     height: 60px;
 }
 
-.ly_snsmap_ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1rem 0;
-    flex-wrap: wrap;
-    height: 220px;
-}
-
 .ly_snsmap_center_div {
     text-align: center !important;
-}
-
-.ly_snsmap_li_1 {
-    flex-basis: 50%;
-    width: 50%;
-    padding: 0.5rem;
-}
-
-.ly_snsmap_li_2 {
-    width: 50%;
-    padding: 0.5rem;
 }
 
 .modal-newadd-head li {
@@ -104,9 +77,18 @@ input#form-message {
     position: relative;
 }
 
-#title {
-    width: 100%;
-    margin-bottom: 1rem;
+#title,
+#edit-title {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#select-genre,
+#edit-genre {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .modal-newadd-icon img {
@@ -176,6 +158,7 @@ input#form-message {
     padding: 10px;
     border: 2px solid #ccc;
     position: relative;
+    margin: auto;
 }
 
 .image-label:hover {
@@ -197,23 +180,15 @@ input#form-message {
     max-height: 100%;
 }
 
-#detail {
-    display: block;
-    width: 90%;
-    height: 50px;
-    margin: 0 auto;
-}
-
 .ly_snsmap_2buttons {
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 25%;
 }
 
 .ly_snsmap_2buttons input[type="reset"],
 .ly_snsmap_2buttons input[type="submit"] {
     width: 30%;
-    
 }
 
 
@@ -343,6 +318,7 @@ input#form-message {
     padding: 1rem;
 }
 
+
 /* .modal-content {
     margin-top: auto;
 } */
@@ -403,31 +379,71 @@ input#form-message {
     box-sizing: border-box;
 }
 
-@media screen and (max-width:375px) {
 
+/* モーダルウインドウのCSSここから */
+
+
+/* PC表示のCSS */
+
+@media screen and (min-width: 501px) {
+    .modal-content {
+        position: absolute;
+        z-index: 10;
+        margin: 78px 0 0 0;
+        transform: translateY(-0.5%);
+        height: 81vh;
+        transition: transform 0.2s ease-in-out;
+        width: 33% !important;
+    }
+    .ly_snsmap_ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1rem 0;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    .ly_snsmap_li_1 {
+        flex-basis: 50%;
+        padding: 0.5rem;
+    }
+    .ly_snsmap_li_2 {
+        padding: 0.5rem;
+    }
+    #detail,
+    #edit-detail {
+        display: block;
+        width: 90%;
+        height: 75px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width:500px) {
+    /* スマートフォン表示のCSS */
+    .modal-content {
+        position: absolute;
+        z-index: 10;
+        margin: 78px 0 80px 0;
+        transform: translateY(90%);
+    }
     p.ly_snsmap_process {
         font-size: 12px;
     }
-
     #preview-image,
     #edit-image {
         /* padding: 0 0 1rem 0;
         max-width: 250px; */
         /* height: 150px; */
     }
-
-
     .countSpanWrapper {
         /* margin-bottom: 0; */
         text-align: center;
     }
-
     label {
         display: inline-block;
         font-size: 10px;
         text-align: center;
     }
-
     label.janru {
         font-size: 11px;
         /* text-align: revert; */
@@ -457,8 +473,32 @@ input#form-message {
         position: relative;
         margin: 0 auto;
     }
-
+    .ly_snsmap_ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1rem 0;
+        flex-wrap: wrap;
+        height: 220px;
+    }
+    .ly_snsmap_li_1 {
+        flex-basis: 50%;
+        width: 50%;
+        padding: 0.5rem;
+    }
+    .ly_snsmap_li_2 {
+        width: 50%;
+        padding: 0.5rem;
+    }
+    #detail,
+    #edit-detail {
+        display: block;
+        width: 90%;
+        height: 50px;
+        margin: 0 auto;
+    }
 }
-input{
+
+input {
     font-size: 12px;
 }

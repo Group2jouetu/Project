@@ -953,69 +953,49 @@
                     <h3 class="modal-newadd-h3">ピン情報の編集</h3>
                 </li>
             </ul>
-
             <form action="/pinEdit" id="pinEditForm" method="post" enctype="multipart/form-data">
-
                 <input type="hidden" name="id" id="edit-id">
-
                 <ul class="ly_snsmap_ul">
-                    <li class="ly_snsmap_li_1">
-                        <div class="ly_snsmap_li_div_left">
-                            <p class="ly_snsmap_process">編集したいピンの名前を入力してください</p>
-                            <input class="edit-maxlength showCount" type="text" name="pin_name" id="edit-title"
-                                size="30" data-maxlength="30" placeholder="ピンの名前（30文字以内）" value="" />
-                        </div>
-
-                        <label for="select-genre">ジャンルを以下から選択してください（必須）</label><br>
-                        <select name="select_genre" id="edit-genre" class="form-select"
-                            aria-label="Default select example">
-                            <option value="1">食べ物</option>
-                            <option value="2">宿・ホテル</option>
-                            <option value="3">文化</option>
-                            <option value="4">遊び施設</option>
-                            <option value="5">自然</option>
-                        </select>
+                <li class="ly_snsmap_li_1">
+                  <div class="ly_snsmap_li_div_left">
+                    <p class="ly_snsmap_process">ピンの名前を入力（必須）</p>
+                      <div class="input-wrapper">
+                        <input class="edit-maxlength showCount form-control" data-maxlength="30" type="text" name="pin_name" id="edit-title" size="30" placeholder="ピンの名前（30文字以内）" value="" />
+                      </div>
+                    <label for="select-genre" class="janru">ジャンルを以下から選択（必須）</label><br>
+                    <select name="select_genre" id="edit-genre" class="form-select" aria-label="Default select example">
+                      <option value="1">食べ物</option>
+                      <option value="2">宿・ホテル</option>
+                      <option value="3">文化</option>
+                      <option value="4">遊び施設</option>
+                      <option value="5">自然</option>
+                    </select>
+                  </div>
+                </li>
+                <li class="ly_snsmap_li_2">
+                  <div class="ly_snsmap_li_div_right">
+                    <p class="ly_snsmap_process">表示する画像を選択（任意）</p>
+                    {{ csrf_field() }}
+                    <label for="image-update" class="image-label">
+                      <input type="file" name="image" id="image-update" class="image" accept="image/*" style="display: none;" />
+                        <img id="edit-image" src="" alt="画像を選択する" />
+                    </label>
+                  </div>
+                </li>
+                </ul>
+                <div class="ly_snsmap_center_div">
+                  <p class="ly_snsmap_process">口コミを入力してください（必須）</p>
+                  <textarea class="maxlength showCount form-control" data-maxlength="100" name="detail" id="edit-detail" rows="5" cols="50" placeholder="口コミを入力してください（100文字以内）" required></textarea>
+                </div>
+                  <input type="hidden" name="lat" id="get-lat" />
+                  <input type="hidden" name="lng" id="get-lng" />
+                  <br>
+                <div class="ly_snsmap_2buttons">
+                  <input type="reset" value="キャンセル" class="btn btn-secondary btn-lg" onclick="editCloseButton()">
+                  <input type="submit" value="更新" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dialogSubmit(event)">
+                </div>
+            </form>
         </div>
-        </li>
-        <li class="ly_snsmap_li_2">
-            <div class="ly_snsmap_li_div_right">
-                <p class="ly_snsmap_process">表示する画像を選択（任意）</p>
-                {{ csrf_field() }}
-                <label for="image-input" class="image-label">
-                    <input type="file" name="image" id="image-input" class="image" accept="image/*"
-                        style="display: none;" />
-                    <img id="preview-image" src="" alt="画像を選択する" />
-                </label>
-            </div>
-        </li>
-        </li>
-        <li class="ly_snsmap_li_2">
-            <div class="ly_snsmap_li_div_right">
-                <p class="ly_snsmap_process">表示する画像を選択</p>
-                {{ csrf_field() }}
-                <label for="image-update" class="image-label">
-                    <input type="file" name="image" id="image-update" class="image" accept="image/*"
-                        style="display: none;" />
-                    <img id="edit-image" src="" alt="画像を選択する" />
-                </label>
-            </div>
-        </li>
-        </ul>
-        <div class="ly_snsmap_center_div">
-            <p class="ly_snsmap_process">口コミを入力してください</p>
-            <textarea class="edit-maxlength showCount" data-maxlength="100" name="detail" id="edit-detail" rows="5"
-                cols="50" placeholder="口コミを入力してください（100文字以内）" required></textarea>
-
-            <!-- <input class="maxlength showCount" data-maxlength="100" type="text" name="detail" id="edit-detail"  /> -->
-        </div>
-        <br>
-        <div class="ly_snsmap_2buttons">
-            <input type="reset" value="キャンセル" onclick="editCloseButton()">
-            <input type="submit" value="更新" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                onclick="dialogSubmit(event)">
-        </div>
-        </form>
-    </div>
     </div>
     <!-- 編集用モーダルウィンドウここまで -->
 
@@ -1492,9 +1472,9 @@
                 document.getElementById('preview-image').setAttribute('src', "");
                 document.getElementById('image-input').value = "";
                 document.getElementById('title').value = "";
-                modal.style.display = "none";
-                // edit_modal.style.display = "none";
             }
+            modal.style.display = "none";
+            edit_modal.style.display = "none";
             // 入力された文字数のリセット
             let showCountElems = document.querySelectorAll('.showCount');
             showCountElems.forEach((elem) => {
