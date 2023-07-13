@@ -9,7 +9,10 @@
 
 @section('content')
 
-    <video id="video" src="/movie/uesugi.mp4" autoplay muted></video>
+    <div class="overlay-container">
+      <img id="video" src="/movie/uesugi.gif" autoplay muted></img>
+    </div>
+    {{-- <video id="video" src="/movie/uesugi.mp4" autoplay muted></video> --}}
 
     <div id="map"></div>
 
@@ -1546,7 +1549,7 @@
                     var created_at = "{{ $message->created_at }}";
                     // 作成日付の秒数部分を切り落とす
                     created_at = created_at.slice(0, -3);
-                    messages = `
+                    messages += `
                         <table class="table">
                           <thead>
                             <tr>
@@ -1832,30 +1835,28 @@
         }
 
         // ピンの登録に成功したら、メッセージをトーストで表示
-        // @if (session('message'))
-        //     const jsFrame = new JSFrame();
-        //     jsFrame.showToast({
-        //         html: '{{ session('message') }}',
-        //         align: 'top',
-        //         duration: 2000
-        //     });
-        // @endif
-        
         // ピン登録成功時に表示
         @if(session('message'))
-          
+        
+          const jsFrame = new JSFrame();
+          jsFrame.showToast({
+              html: '{{ session('message') }}',
+              align: 'top',
+              duration: 2000
+          });
+
           // 動画要素を取得
           const video = document.getElementById('video');
           video.style.display = "block";
 
           // 動画再生を開始
-          video.play();
+          // video.play();
 
           // 数秒後に動画を停止し、動画要素を非表示にする
           setTimeout(function() {
-            video.pause();
+            // video.pause();
             video.style.display = 'none';
-          }, 3000);
+          }, 2800);
         @endif
         
     </script>
