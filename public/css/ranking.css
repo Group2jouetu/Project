@@ -87,6 +87,9 @@ li.list-group-item.detailIcon {
     display: flex;
     justify-content: flex-end;
 }
+h1#exampleModalLabel {
+    margin: 0 0.5rem 0 0;
+}
 /* ボトムナビゲーション */
 .ranking a{
     color: #ed5353;
